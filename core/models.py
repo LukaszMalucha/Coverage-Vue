@@ -100,6 +100,9 @@ class DocumentModel(models.Model):
 
     product = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
 
+    uploaded = models.DateTimeField(auto_now=True)
+
+
     objects = models.Manager()
 
     class Meta:
@@ -113,6 +116,9 @@ class TopicModel(models.Model):
     """Model for Topic submission entry"""
     topic_title = models.CharField(max_length=254, default='Not Specified', blank=True)
     document = models.ForeignKey(DocumentModel, on_delete=models.CASCADE)
+
+
+    uploaded = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Document Topic"
