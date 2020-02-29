@@ -1,0 +1,408 @@
+/*----------------------------------------------
+    COMMON  STYLES    
+------------------------------------------------*/
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 400 500;
+    src: url('/static/fonts/TTF/SourceSansPro-Regular.ttf');
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: bold 600;
+    src: url('/static/fonts/TTF/SourceSansPro-Semibold.ttf');
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    position: relative;
+    margin: 0;
+    padding-bottom: 0;
+    background-color: #fcfcfd;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+#page-index {
+    width: 100%;
+    display: block;
+    overflow: auto;
+    position: relative;
+    top: 56px;
+    min-height: 1100px;
+}
+
+#page-index a {
+    text-decoration: none;
+    outline: 0;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+.plain-element {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+
+/*------------------------------------------------------------------------------
+    Row Header
+------------------------------------------------------------------------------*/
+
+.header {
+    height: 150px;
+    margin: 0px;
+    background: transparent;
+    padding: 0 15% 0 15%;
+}
+
+.img-header {
+    position:relative;
+    height: 120px;
+    margin-top: 15px;
+}
+
+.summary {
+    height: 150px;
+    padding: 15px 30px;
+    color: #333333 !important;
+    margin: 0px;
+
+}
+
+.summary b {
+    color: #003f67;
+    font-size: 1.4rem;
+}
+
+.header-small {
+    height: 120px;
+}
+
+a {
+    color: #4267b2
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.overflow_hidden {
+    overflow: hidden !important;
+}
+
+.transparent {
+    background: transparent;
+}
+
+
+/*----------------------------------------------
+    Row Message
+------------------------------------------------*/
+
+.row-message {
+  position: absolute;
+  width: 100%;
+}
+
+.alert {
+  position: absolute;
+  width: 100%;
+}
+
+.messages {
+    height: 20px;
+}
+
+
+
+
+/*----------------------------------------------
+    MENU CARD
+------------------------------------------------*/
+
+.menu-card {
+    box-shadow: 1px 1px 2px 2px #A9A9A9;
+    text-align: left;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
+    float: none;
+    border-radius: 5px;
+
+}
+
+.menu-card:hover {
+    box-shadow: 0 3px 3px 0 #414141, 0 3px 2px -2px #414141, 0 2px 5px 0 #414141;
+}
+
+
+
+/*----------------------------------------------
+    BUTTONS
+------------------------------------------------*/
+
+.btn-function {
+    background-color: #f2f2f2;
+    color: #777777;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    height: 68px;
+    font-size: 16px;
+    border-radius: 2px;
+    width: 204px;
+    margin: 10px 0px;
+}
+
+.btn-function i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.btn-function:hover,
+.btn-function:active,
+.btn-function:focus {
+    background-color: #d8d8d8;
+}
+
+
+
+/*----------------------------------------------
+    SEARCHBOX
+------------------------------------------------*/
+
+.row-search {
+    margin: 50px 0px;
+}
+
+.row-search h4 {
+    font-size: 42px;
+    color: #5f6368;
+    margin-bottom: 30px;
+
+}
+
+#searchbox {
+    box-shadow: 0 1px rgba(180,180,175,0.30);
+    border: 1px solid rgba(180,180,175,0.50);
+    border-radius: 8px;
+    width: 97%;
+    margin: auto;
+    padding: 4px 8px;
+    font-size: 18px;
+    background-color: #fff;
+}
+
+
+/*------------------------------------------------------------------------------
+    FOOTER
+------------------------------------------------------------------------------*/
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 12px;
+    color: #868e96;
+    padding: 15px 0px;
+    text-align: center;
+}
+
+.footer a {
+    color: #868e96;
+}
+
+.footer a:hover,
+.footer a:focus,
+.footer a:active {
+    color: #4f84ae;
+    text-decoration: none;
+}
+
+
+
+/*------------------------------------------------------------------------------
+    TABLES
+------------------------------------------------------------------------------*/
+
+.search-wrapper {
+    width: 80%;
+    margin-left:20%;
+    margin-bottom: 20px;
+    text-align: right;
+
+}
+.search-wrapper label {
+    margin: 0px;
+    color: #55595d;
+}
+
+input[type="text"]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #5f6368;
+    box-shadow: 0 1px 0 0 #5f6368;
+}
+
+
+
+tr {
+    border-bottom: none
+}
+
+thead > tr {
+    background-color: #f9f9f9;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+td {
+    padding: 10px 5px;
+
+}
+
+.field-medium {
+    width: 12%;
+}
+
+
+.field-long {
+    width: 20%;
+}
+
+.field-short {
+    width: 8%;
+}
+
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
+    border-top: 0px solid;
+}
+
+
+/*----------------------------------------------
+    MEDIA QUERIES
+------------------------------------------------*/
+
+
+@media(max-width:1700px) {
+
+    .header  {
+        padding: 0 1% 0 1%;
+    }
+
+    .menu-card {
+      width: 80%;
+    }
+
+}
+
+
+
+@media(max-width:1361px) {
+
+    .summary {
+      padding: 15px 50px;
+    }
+
+    .menu-card .card-header p {
+      width: 75%;
+    }
+
+    .menu-card {
+        width: 90%;
+    }
+
+
+}
+
+@media(max-width:1200px) {
+
+
+    .menu-card .row-comment {
+      height: 36px;
+
+    }
+
+}
+
+
+@media(max-width:1025px) {
+
+    .menu-card {
+      width: 90%;
+    }
+
+
+    .menu-card .card-content b{
+        font-size: 11px;
+
+    }
+
+
+
+
+}
+
+@media(max-width:800px) {
+
+    .summary {
+      padding: 15px 70px;
+    }
+}
+
+@media(max-width:600px) {
+
+    .header {
+        height: 90px;
+
+    }
+
+    .header-small {
+      height: 40px;
+    }
+
+    .img-header {
+        position:relative;
+        height: 60px;
+        margin-top: 15px;
+    }
+
+    .summary {
+        height: 90px;
+        padding: 15px 0px 15px 40px;
+
+    }
+
+    .summary h5, h6 {
+        font-size: 0.9rem;
+        margin: 5px 0px;
+    }
+
+    .counter {
+        font-size: 0.9rem;
+        margin: 5px 0px;
+    }
+
+
+}
+
+
+

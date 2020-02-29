@@ -1,0 +1,77 @@
+/*------------------------------------------------------------------------------
+    DASHBOARD CARDS
+------------------------------------------------------------------------------*/
+
+
+.dashboard-cards {
+    border: none;
+    text-align: center;
+    box-shadow: none;
+    width: 80%;
+    margin: auto;
+    padding-bottom: 80px;
+    min-height: 700px;
+    display: block;
+    overflow: auto;
+}
+
+.row-break {
+    height: 40px;
+}
+
+.row-cards {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+row-banner {
+
+}
+
+
+/*----------------------------------------------
+    MENU CARD
+------------------------------------------------*/
+
+.menu-card {
+    box-shadow: 1px 1px 2px 2px #A9A9A9;
+    text-align: left;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
+    float: none;
+    border-radius: 5px;
+
+}
+
+.menu-card:hover {
+    box-shadow: 0 3px 3px 0 #414141, 0 3px 2px -2px #414141, 0 2px 5px 0 #414141;
+}
+
+
+
+.btn-menu-card {
+    background-color: #fff;
+    height: 80px;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    font-weight: 400;
+    box-shadow: none;
+    border:none;
+    color: #414141;
+    white-space: normal;
+    display: inline-block;
+}
+
+
+
+.btn-menu-card:hover,
+.btn-menu-card:focus,
+.btn-menu-card:active {
+    background-color: #fff;
+    color: #00539E;
+}
+
