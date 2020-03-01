@@ -263,6 +263,7 @@ tr {
 
 thead > tr {
     background-color: #f9f9f9;
+    cursor: pointer;
 }
 
 tr:nth-child(even) {

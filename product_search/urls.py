@@ -1,9 +1,9 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from brand_search import views
+from product_search import views
 
-app_name = "brands"
+app_name = "products"
 
 router = DefaultRouter()
 

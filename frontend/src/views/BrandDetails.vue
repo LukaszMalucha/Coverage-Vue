@@ -18,29 +18,25 @@
             </div>
         </div>
         <div class="row plain-element">
-            <table id="documentTable">
+            <table id="dataTable">
                 <thead>
                     <tr>
                       <th onclick="sortTable(0)" class="text-left">Product Name</th>
                       <th onclick="sortTable(1)" class="text-left">Product Category</th>
-                      <th onclick="sortTable(2)">Document Title</th>
-                      <th onclick="sortTable(3)">Topic Title</th>
-                      <th onclick="sortTable(4)" class="text-center">Document No.</th>
-                      <th onclick="sortTable(5)" class="text-center">Created At</th>
-                      <th onclick="sortTable(6)" class="text-center">Last Edition</th>
-                      <th onclick="sortTable(7)" class="text-center">Link</th>
+                      <th onclick="sortTable(2)">Product Code</th>
+                      <th onclick="sortTable(3)">Product Series</th>
+                      <th onclick="sortTable(4)" class="text-center">Product Part Number</th>
+                      <th onclick="sortTable(5)">Business</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="document in filteredDocumentList" :key="document.pk">
-                      <td class="text-left field-medium">{{ document.product_name }}</td>
-                      <td class="text-left field-medium">{{ document.product_category }}</td>
-                      <td class="text-left field-long">{{ document.document_title }}</td>
-                      <td class="text-left field-long">{{ document.topic_title }}</td>
-                      <td class="text-center field-medium">{{ document.document_number }}</td>
-                      <td class="text-center field-short">{{ document.document_created_at }}</td>
-                      <td class="text-center field-short">{{ document.document_last_edition }}</td>
-                      <td class="text-center field-short"><a target="_blank" :href="'https://johnsoncontrols-uat.fluidtopics.net' + document.document_link"><i class="far fa-file-pdf fa-2x"></i></a></td>
+                    <tr v-for="product in filteredProductList" :key="product.pk">
+                      <td class="text-left field-medium">{{ product.product_name }}</td>
+                      <td class="text-left field-medium">{{ product.product_category }}</td>
+                      <td class="text-left field-long">{{ product.product_code }}</td>
+                      <td class="text-left field-long">{{ product.product_series }}</td>
+                      <td class="text-center field-medium">{{ product.product_part_number }}</td>
+                      <td class="text-center field-medium">{{ product.business }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -70,31 +66,31 @@ export default {
   data() {
     return {
       search: "",
-      documentList: [],
+      productList: [],
     }
   },
   methods: {
    async getBrandData() {
-    let endpoint = `/api/brands/${this.brand}/`;
+    let endpoint = `/api/products/${this.brand}/`;
     await apiService(endpoint)
      .then(data => {
         window.console.log(data);
-        this.documentList = data.results;
+        this.productList = data.results;
       }).then (
-        window.console.log(this.documentList)
+        window.console.log(this.productList)
       )
     },
   },
   computed: {
 //  Search company function
-    filteredDocumentList() {
-      return this.documentList.filter(document => {
-        return document.document_title.toLowerCase().includes(this.search.toLowerCase()) ||
-               document.document_number.toLowerCase().includes(this.search.toLowerCase()) ||
-               document.product_name.toLowerCase().includes(this.search.toLowerCase()) ||
-               document.product_category.toLowerCase().includes(this.search.toLowerCase()) ||
-               document.document_created_at.toLowerCase().includes(this.search.toLowerCase()) ||
-               document.document_last_edition.toLowerCase().includes(this.search.toLowerCase())
+    filteredProductList() {
+      return this.productList.filter(product => {
+        return product.product_name.toLowerCase().includes(this.search.toLowerCase()) ||
+               product.product_category.toLowerCase().includes(this.search.toLowerCase()) ||
+               product.product_code.toLowerCase().includes(this.search.toLowerCase()) ||
+               product.product_series.toLowerCase().includes(this.search.toLowerCase()) ||
+               product.product_part_number.toLowerCase().includes(this.search.toLowerCase()) ||
+               product.business.toLowerCase().includes(this.search.toLowerCase())
       })
     }
   },

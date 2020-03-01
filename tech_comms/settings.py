@@ -55,9 +55,9 @@ INSTALLED_APPS = [
     "core",
     "db_manager",
     "user",
-    
-    "brand_search",
+
     "document_search",
+    "product_search"
 ]
 
 MIDDLEWARE = [

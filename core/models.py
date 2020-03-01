@@ -69,9 +69,7 @@ class ProductModel(models.Model):
     product_code = models.TextField(default='Not Specified')
     product_series = models.CharField(max_length=254, default='Not Specified', blank=True)
     product_part_number = models.CharField(max_length=254, default='Not Specified', blank=True)
-
     business = models.CharField(max_length=254, default='Not Specified', blank=True)
-
     uploaded = models.DateTimeField(auto_now=True)
 
     objects = models.Manager()

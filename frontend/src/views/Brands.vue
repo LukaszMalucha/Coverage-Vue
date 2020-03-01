@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     getBrandList() {
-    let endpoint = "/api/brands/brand-list/";
+    let endpoint = "/api/products/brand-list/";
     apiService(endpoint)
         .then(data => {
             this.brandsList = data.brand_list

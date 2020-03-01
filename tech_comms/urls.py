@@ -29,6 +29,6 @@ urlpatterns = [
     path("api/", include("api.urls")),
     path("core/", include("core.urls")),
     path("db/", include("db_manager.urls")),
-    path("api/brands/", include("brand_search.urls")),
+    path("api/products/", include("product_search.urls")),
     re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
