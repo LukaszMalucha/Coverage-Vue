@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 
 from product_search import serializers
 from product_search.utils import clean_brand_list, get_brand_name
-from core.models import  ProductModel, DocumentModel, TopicModel
+from core.models import  ProductModel, DocumentModel
 from core.permissions import IsAdminOrReadOnly
 
 

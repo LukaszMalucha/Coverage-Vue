@@ -40,6 +40,12 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="my-4">
+              <p v-show="loadingProducts">...loading...</p>
+              <button v-show="next" @click="getBrandData" class="btn btn-sm btn-success">
+              Load More
+              </button>
+            </div>
         </div>
     </div>
 </div>
@@ -67,15 +73,27 @@ export default {
     return {
       search: "",
       productList: [],
+      next: null,
+      loadingProducts: false
     }
   },
   methods: {
    async getBrandData() {
     let endpoint = `/api/products/${this.brand}/`;
+    if (this.next) {
+      endpoint = this.next;
+    }
+    this.loadingProducts = true;
     await apiService(endpoint)
      .then(data => {
         window.console.log(data);
         this.productList = data.results;
+        this.loadingProducts = false;
+        if(data.next) {
+          this.next = data.next;
+        } else {
+          this.next = null;
+        }
       }).then (
         window.console.log(this.productList)
       )

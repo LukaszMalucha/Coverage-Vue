@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import ProductModel,DocumentModel, TopicModel
+from core.models import ProductModel, DocumentModel
 
 
 class ProductModelSerializer(serializers.ModelSerializer):
@@ -16,13 +16,5 @@ class DocumentModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DocumentModel
-        fields = "__all__"
-        read_only_fields = ('id',)
-
-class TopicModelSerializer(serializers.ModelSerializer):
-    """Serializer for Document Model"""
-
-    class Meta:
-        model = TopicModel
         fields = "__all__"
         read_only_fields = ('id',)

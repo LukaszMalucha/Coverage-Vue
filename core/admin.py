@@ -21,6 +21,14 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {"classes": ("wide",), "fields": ("email", "password1", "password2")}),)  # Coma - TUPLE!
 
+class ProductModelAdmin(admin.ModelAdmin):
+    ordering = ["product_name", "product_brand", "product_code", "product_category", "business"]
+    list_display = ["product_name", "product_brand", "product_code", "product_category", "business"]
+    search_fields = ["product_name","product_brand", "product_name", "product_code"]
+    list_filter = ("product_brand",)
+
+    class Meta:
+        model = models.ProductModel
 
 class DocumentModelAdmin(admin.ModelAdmin):
     ordering = ["document_title", "document_created_at", "document_last_edition"]
@@ -32,7 +40,6 @@ class DocumentModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.MyProfile)
-admin.site.register(models.ProductModel)
+admin.site.register(models.ProductModel, ProductModelAdmin)
 admin.site.register(models.DocumentModel, DocumentModelAdmin)
-admin.site.register(models.TopicModel)
 

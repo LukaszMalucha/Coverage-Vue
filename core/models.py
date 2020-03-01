@@ -63,7 +63,8 @@ class MyProfile(models.Model):
 class ProductModel(models.Model):
     """Model for Products"""
 
-    product_name = models.CharField(max_length=254, default='Not Specified', unique=True)
+    product_identifier = models.CharField(max_length=254, unique=True)
+    product_name = models.CharField(max_length=254, default='Not Specified', blank=True)
     product_brand = models.CharField(max_length=254, default='Not Specified', blank=True)
     product_category = models.CharField(max_length=254, default='Not Specified', blank=True)
     product_code = models.TextField(default='Not Specified')
@@ -95,8 +96,8 @@ class DocumentModel(models.Model):
     document_revised_modified = models.DateField(blank=True)
     document_link = models.CharField(max_length=254, default='Not Specified', blank=True)
     maps_link = models.CharField(max_length=254, default='Not Specified', blank=True)
-
     product = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
+    document_category = models.CharField(max_length=254, default='Not Specified', blank=True)
 
     uploaded = models.DateTimeField(auto_now=True)
 
@@ -108,19 +109,3 @@ class DocumentModel(models.Model):
 
     def __str__(self):
         return self.document_title
-
-
-class TopicModel(models.Model):
-    """Model for Topic submission entry"""
-    topic_title = models.CharField(max_length=254, default='Not Specified', blank=True)
-    document = models.ForeignKey(DocumentModel, on_delete=models.CASCADE)
-
-
-    uploaded = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = "Document Topic"
-        verbose_name_plural = "Document Topics"
-
-    def __str__(self):
-        return self.topic_title

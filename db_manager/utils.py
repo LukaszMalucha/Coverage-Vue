@@ -6,7 +6,7 @@ import re
 import pandas as pd
 from django.conf import settings
 from django.shortcuts import get_object_or_404
-from core.models import DocumentModel, ProductModel, TopicModel
+from core.models import DocumentModel, ProductModel
 from datetime import datetime
 
 # FILE PATHS
@@ -28,18 +28,19 @@ def dataset_products_upload():
             reader = csv.reader(f)  # skip header
             next(reader, None)
             for row in reader:
-                try:
-                    _, created = ProductModel.objects.get_or_create(
-                        product_name=row[0],
-                        product_brand=row[1],
-                        product_category=row[2],
-                        product_code=row[3],
-                        product_series=row[4],
-                        product_part_number=row[5],
-                        business=row[6],
-                    )
-                except Exception as e:
-                    pass
+                # try:
+                _, created = ProductModel.objects.get_or_create(
+                    product_name=row[0],
+                    product_brand=row[1],
+                    product_category=row[2],
+                    product_code=row[3],
+                    product_series=row[4],
+                    product_part_number=row[5],
+                    business=row[6],
+                    product_identifier=row[7]
+                )
+                # except Exception as e:
+                #     pass
     else:
         pass
 
@@ -56,7 +57,7 @@ def dataset_documents_upload():
             next(reader, None)
             for row in reader:
                 # try:
-                related_product = get_object_or_404(ProductModel, product_name=row[11])
+                related_product = get_object_or_404(ProductModel, product_identifier=row[11])
                 date_created_at = datetime.strptime(row[5], "%Y-%m-%d")
                 date_last_edition = datetime.strptime(row[6], "%Y-%m-%d")
                 date_last_publication = datetime.strptime(row[7], "%Y-%m-%d")
@@ -74,84 +75,10 @@ def dataset_documents_upload():
                     document_revised_modified=date_revised_modified,
                     document_link=row[9],
                     maps_link=row[10],
-                    product=related_product
+                    product=related_product,
+                    document_category="document"
                 )
                 # except Exception as e:
                 #     pass
-    else:
-        pass
-
-
-def dataset_topics_upload():
-    """Upload documents to database"""
-    # DELETE OLDER DATA FOR TEST
-    topics = TopicModel.objects.all()
-    topics.delete()
-
-    if dataset_documents_path:
-        with open(dataset_topics_path, encoding="utf-8-sig") as f:
-            reader = csv.reader(f)  # skip header
-            next(reader, None)
-            for row in reader:
-                # try:
-                date_last_edition = datetime.strptime(row[3], "%Y-%m-%d")
-                related_document = DocumentModel.objects.filter(document_number=row[2]).filter(document_last_edition=date_last_edition).first()
-                _, created = TopicModel.objects.get_or_create(
-                    topic_title=row[0],
-                    document=related_document
-                )
-                # except Exception as e:
-                #     pass
-    else:
-        pass
-
-
-def database_upload():
-    """Upload scraped data to db"""
-    # DELETE OLDER DATA FOR TEST
-    documents = DocumentModel.objects.all()
-    documents.delete()
-
-    if documents_cleaned_path:
-        with open(documents_cleaned_path, encoding="utf-8-sig") as f:
-            reader = csv.reader(f)  # skip header
-            next(reader, None)
-            for row in reader:
-                try:
-                    _, created = DocumentModel.objects.get_or_create(
-                        topic_title=row[0],
-                        document_title=row[1],
-                        document_number=row[2],
-                        document_version=row[3],
-                        document_revision=row[4],
-                        document_type=row[5],
-                        document_lang=row[6],
-                        document_created_at=row[7],
-                        document_last_edition=row[8],
-                        document_last_publication=row[9],
-                        document_revised_modified=row[10],
-                        document_link=row[11],
-
-                        product_name=row[12],
-                        product_brand=row[13],
-                        product_category=row[14],
-                        product_code=row[15],
-                        product_series=row[16],
-                        product_part_number=row[17],
-
-                        business=row[18],
-                        maps_link=row[19],
-
-                        # meta_category_bas=row[20],
-                        # meta_category_ductedsystems=row[21],
-                        # meta_category_visonic=row[22],
-                        # meta_dita_id=row[23],
-                        # meta_dita_mapPath=row[24],
-                        # meta_baseId=row[25],
-                        # meta_mapsId=row[26],
-                        # meta_originId=row[27],
-                    )
-                except Exception as e:
-                    pass
     else:
         pass

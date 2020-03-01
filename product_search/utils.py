@@ -8,7 +8,7 @@ BRAND_MAPPER = {('ansul', 'ANSUL'), ('autocall', 'Autocall'), ('bcpro', 'BCPro')
                 ('ruskin', 'Ruskin'), ('sabo-foam', 'SABO FOAM'), ('skum', 'SKUM'), ('sensormatic', 'Sensormatic'),
                 ('shoppertrak', 'ShopperTrak'), ('simplex', 'Simplex'), ('thorn-security', 'THORN SECURITY'),
                 ('tempmaster', 'TempMaster'), ('triatek', 'Triatek'), ('truevue', 'TrueVUE'), ('tyco', 'Tyco'),
-                ('verasys', 'Verasys'), ('williams', 'WILLIAMS'), ('york', 'YORK')}
+                ('verasys', 'Verasys'), ('williams', 'WILLIAMS'), ('york', 'YORK'), ('zettler','Zettler')}
 
 
 def clean_brand_list(lst):
@@ -24,9 +24,8 @@ def clean_brand_list(lst):
 
 
 def get_brand_name(string):
-
     for element in BRAND_MAPPER:
         if string == element[0]:
-          brand_string = element[1]
-
-    return brand_string
+            brand_string = element[1]
+            return brand_string
+    return string
