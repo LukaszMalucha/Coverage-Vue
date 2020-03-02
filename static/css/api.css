@@ -43,6 +43,17 @@ b {
 
 }
 
+
+.navbar .nav li a {
+    color: #414141;
+
+ }
+
+ .navbar .nav li a  b{
+    font-weight: 400 !important;
+
+ }
+
 .welcome {
     padding: 10px 15px 10px 0px;
 }

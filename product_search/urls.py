@@ -8,7 +8,6 @@ app_name = "products"
 router = DefaultRouter()
 
 
-
 urlpatterns = [
     path('', include(router.urls)),
     path('brand-list/', views.BrandListView.as_view(), name="brand-list"),

@@ -6,11 +6,8 @@ $(".alert").delay(3000).fadeOut(200, function() {
 });
 
 
-
-
-
-
 $(document).ready(function() {
+
 
     $('.sidenav').sidenav();
 

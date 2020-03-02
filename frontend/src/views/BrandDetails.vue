@@ -7,13 +7,16 @@
 
     <div class="row row-cards">
         <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10 plain-element text-left">
-                <img :src="'/static/img/brands/' + brand + '.png'" class="img responsive">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 plain-element text-left">
+                      <label> TABLE ONLY</label>
+                      <input type="text" v-model="search"/>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 plain-element">
+            <div class="col-xs-4 col-sm-4 col-md-2 col-lg-9 plain-element">
                 <div class="search-wrapper">
-                    <label> Search Table:</label>
-                    <input type="text" v-model="search"/>
+                  <form @submit.prevent="onSubmit">
+                      <label> QUERY</label>
+                      <input type="text" v-model="searchQuery"/>
+                  </form>
                 </div>
             </div>
         </div>
@@ -33,7 +36,13 @@
                     <tr v-for="product in filteredProductList" :key="product.pk">
                       <td class="text-left field-medium">{{ product.product_name }}</td>
                       <td class="text-left field-medium">{{ product.product_category }}</td>
-                      <td class="text-left field-long">{{ product.product_code }}</td>
+                      <td class="text-left field-long">{{ product.product_series }}</td>
+                      <td class="text-center field-medium">{{ product.product_part_number }}</td>
+                      <td class="text-center field-medium">{{ product.business }}</td>
+                    </tr>
+                    <tr v-for="product in queryList" :key="product.pk">
+                      <td class="text-left field-medium">{{ product.product_name }}</td>
+                      <td class="text-left field-medium">{{ product.product_category }}</td>
                       <td class="text-left field-long">{{ product.product_series }}</td>
                       <td class="text-center field-medium">{{ product.product_part_number }}</td>
                       <td class="text-center field-medium">{{ product.business }}</td>
@@ -43,7 +52,14 @@
             <div class="my-4">
               <p v-show="loadingProducts">...loading...</p>
               <button v-show="next" @click="getBrandData" class="btn btn-sm btn-success">
-              Load More
+              GET DATA
+              </button>
+            </div>
+            <br><br><br><br>
+            <div class="my-4">
+              <p v-show="loadingQuery">...loading...</p>
+              <button v-show="nextQuery" @click="onSubmit" class="btn btn-sm btn-success">
+                Submit
               </button>
             </div>
         </div>
@@ -73,8 +89,13 @@ export default {
     return {
       search: "",
       productList: [],
+      queryList: [],
       next: null,
-      loadingProducts: false
+      nextQuery: null,
+      loadingProducts: false,
+      loadingQuery: false,
+      searchQuery: null,
+      currentSearch: "",
     }
   },
   methods: {
@@ -87,7 +108,7 @@ export default {
     await apiService(endpoint)
      .then(data => {
         window.console.log(data);
-        this.productList = data.results;
+        this.productList.push(...data.results);
         this.loadingProducts = false;
         if(data.next) {
           this.next = data.next;
@@ -98,6 +119,35 @@ export default {
         window.console.log(this.productList)
       )
     },
+    onSubmit() {
+        this.productList = [];
+        if (this.searchQuery != this.currentSearch) {
+          this.queryList = [];
+          this.nextQuery = null;
+        }
+        window.console.log(this.searchQuery, this.currentSearch)
+        let endpoint = `/api/products/${this.brand}/?search=${this.searchQuery}`;
+        window.console.log(endpoint);
+        if (this.nextQuery) {
+          endpoint = this.nextQuery;
+        }
+        this.loadingQuery = true;
+        apiService(endpoint)
+        .then(data => {
+            this.queryList.push(...data.results);
+            window.console.log(data);
+            this.loadingQuery = false;
+             if(data.next) {
+               this.nextQuery = data.next;
+             } else {
+               this.nextQuery = null;
+             }
+             this.currentSearch = this.searchQuery;
+        })
+    },
+    clearList() {
+      this.productList = [];
+    }
   },
   computed: {
 //  Search company function

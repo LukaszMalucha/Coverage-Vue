@@ -76,7 +76,7 @@ def dataset_documents_upload():
                     document_link=row[9],
                     maps_link=row[10],
                     product=related_product,
-                    document_category="document"
+                    document_category=row[12]
                 )
                 # except Exception as e:
                 #     pass

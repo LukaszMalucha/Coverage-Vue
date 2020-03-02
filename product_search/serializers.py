@@ -11,10 +11,3 @@ class ProductModelSerializer(serializers.ModelSerializer):
         fields = "__all__"
         read_only_fields = ('id',)
 
-class DocumentModelSerializer(serializers.ModelSerializer):
-    """Serializer for Document Model"""
-
-    class Meta:
-        model = DocumentModel
-        fields = "__all__"
-        read_only_fields = ('id',)
