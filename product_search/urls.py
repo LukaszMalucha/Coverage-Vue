@@ -11,5 +11,6 @@ router = DefaultRouter()
 urlpatterns = [
     path('', include(router.urls)),
     path('brand-list/', views.BrandListView.as_view(), name="brand-list"),
-    path("<str:brand>/",  views.BrandAPIView.as_view(), name="brand")
+    path("<str:brand>/",  views.BrandAPIView.as_view(), name="brand"),
+    path("product/<int:pk>/", views.ProductModelView.as_view(), name="product"),
 ]

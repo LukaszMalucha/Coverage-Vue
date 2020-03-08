@@ -18,7 +18,7 @@
                             class="img responsive">
                     </div>
                       <button class="btn btn-menu-card">
-                        Brand Search
+                        Product Search
                       </button>
                   </div>
                   </router-link>

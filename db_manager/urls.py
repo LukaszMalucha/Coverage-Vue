@@ -8,4 +8,5 @@ urlpatterns = [
     path("db-manager", views.db_manager, name="db-manager"),
     path("products-upload", views.products_upload, name="products-upload"),
     path("documents-upload", views.documents_upload, name="documents-upload"),
+    path("topics-upload", views.topics_upload, name="topics-upload"),
 ]

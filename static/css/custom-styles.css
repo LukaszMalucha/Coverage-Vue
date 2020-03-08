@@ -139,6 +139,11 @@ a:hover {
 
 }
 
+.menu-card .card-image {
+    min-height: 200px
+}
+
+
 .menu-card:hover {
     box-shadow: 0 3px 3px 0 #414141, 0 3px 2px -2px #414141, 0 2px 5px 0 #414141;
 }
@@ -154,10 +159,10 @@ a:hover {
     color: #777777;
     font-weight: 600;
     border: 1px solid #ddd;
-    height: 68px;
+    height: 60px;
     font-size: 16px;
     border-radius: 2px;
-    width: 204px;
+    width: 240px;
     margin: 10px 0px;
 }
 
@@ -170,6 +175,7 @@ a:hover {
 .btn-function:active,
 .btn-function:focus {
     background-color: #d8d8d8;
+    outline: none !important;
 }
 
 
@@ -212,7 +218,7 @@ a:hover {
 .btn-transparent {
     position: absolute;
     top: -18px;
-    right: 30px;
+    right: 10px;
     font-size: 28px;
     height:100%;
     color: #4267b2;
@@ -234,7 +240,7 @@ a:hover {
     box-shadow: 0 1px rgba(188,188,183,0.30);
     border: 1px solid rgba(188,188,183,0.50);
     border-radius: 8px;
-    width: 96%;
+    width: 98%;
     margin: auto;
     padding: 4px 8px;
     font-size: 18px;
@@ -257,6 +263,12 @@ a:hover {
     font-size: 18px;
 }
 
+.productCount {
+    margin-left: 12px;
+    color: #0054a0 !important;
+    font-size: 18px;
+}
+
 
 /*------------------------------------------------------------------------------
     TABLES
@@ -267,12 +279,18 @@ a:hover {
 }
 
 .col-results {
-    padding: 24px 5px !important;
+    padding: 20px 2px !important;
 
 }
 
+.col-load-more {
+    position: relative;
+}
+
+
+
 .search-wrapper {
-    width: 60%;
+    width: 80%;
     margin: auto;
     margin-bottom: 10px;
     text-align: center;
@@ -284,10 +302,12 @@ a:hover {
 }
 
 #dataTable {
+    display: none;
     table-layout: fixed;
 }
 
 #tableSearch {
+  display: none;
   margin-bottom: 30px;
 }
 
@@ -335,6 +355,7 @@ td {
 .field-long {
     min-width: 20%;
     width: 20%;
+    word-wrap: break-word;
 }
 
 
@@ -368,8 +389,8 @@ td {
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding-left: 10%;
-    padding-right: 9%;
+    padding-left: 9.5%;
+    padding-right: 9.5%;
     text-align: center;
     background-color: transparent;
 }
@@ -398,15 +419,9 @@ td {
 }
 
 /*----------------------------------------------
-    EFFECTS
+
 ------------------------------------------------*/
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to  {
-  opacity: 0;
-}
 
 /*----------------------------------------------
     MEDIA QUERIES

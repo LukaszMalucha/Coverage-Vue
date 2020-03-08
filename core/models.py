@@ -86,21 +86,22 @@ class DocumentModel(models.Model):
     """Model for Document"""
     document_title = models.CharField(max_length=254, default='Not Specified', blank=True)
     document_number = models.CharField(max_length=254, default='Not Specified', blank=True)
+    document_part_number = models.CharField(max_length=254, default='Not Specified', blank=True)
     document_version = models.CharField(max_length=254, default='Not Specified', blank=True)
     document_revision = models.CharField(max_length=254, default='Not Specified', blank=True)
     document_type = models.CharField(max_length=254, default='Not Specified', blank=True)
     document_lang = models.CharField(max_length=254, default='Not Specified', blank=True)
     document_created_at = models.DateField(blank=True)
-    document_last_edition = models.DateField(blank=True)
+    document_last_edition = models.DateField(blank=True)  # REMEMBER TO RELATE IT LATER TO TOPIC MODIFICATION
     document_last_publication = models.DateField(blank=True)
     document_revised_modified = models.DateField(blank=True)
+    document_brand = models.CharField(max_length=254, default='Not Specified', blank=True)
     document_link = models.CharField(max_length=254, default='Not Specified', blank=True)
     maps_link = models.CharField(max_length=254, default='Not Specified', blank=True)
     product = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
-    document_category = models.CharField(max_length=254, default='Not Specified', blank=True)
+    document_identifier = models.CharField(max_length=254, default='Not Specified', unique=True)
 
     uploaded = models.DateTimeField(auto_now=True)
-
 
     objects = models.Manager()
 
@@ -109,3 +110,27 @@ class DocumentModel(models.Model):
 
     def __str__(self):
         return self.document_title
+
+
+class TopicModel(models.Model):
+    """Model for Document Topics"""
+    topic_title = models.CharField(max_length=254, default='Not Specified', blank=True)
+    topic_parent = models.CharField(max_length=254, default='Not Specified', blank=True)
+    topic_depth = models.IntegerField(blank=False, default=0) # Keep zero for later QA checks
+    topic_last_edition = models.DateField(blank=True)
+    topic_link = models.CharField(max_length=254, default='Not Specified', blank=True)
+    document = models.ForeignKey(DocumentModel, on_delete=models.CASCADE)
+    uploaded = models.DateTimeField(auto_now=True)
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = "Document Topic"
+        verbose_name_plural = "Document Topics"
+
+    def __str__(self):
+        return self.topic_title
+
+
+
+

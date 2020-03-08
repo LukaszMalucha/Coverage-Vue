@@ -29,3 +29,10 @@ def get_brand_name(string):
             brand_string = element[1]
             return brand_string
     return string
+
+def reverse_brand_name(string):
+    for element in BRAND_MAPPER:
+        if string == element[1]:
+            brand_string = element[0]
+            return brand_string
+    return "johnson-controls"

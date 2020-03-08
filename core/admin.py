@@ -38,8 +38,17 @@ class DocumentModelAdmin(admin.ModelAdmin):
     class Meta:
         model = models.DocumentModel
 
+class TopicModelAdmin(admin.ModelAdmin):
+    ordering = ["topic_title", "document", "topic_last_edition"]
+    list_display = ["topic_title", "document", "topic_last_edition"]
+    search_fields = ["topic_title", "document"]
+
+    class Meta:
+        model = models.TopicModel
+
 
 admin.site.register(models.MyProfile)
 admin.site.register(models.ProductModel, ProductModelAdmin)
 admin.site.register(models.DocumentModel, DocumentModelAdmin)
+admin.site.register(models.TopicModel, TopicModelAdmin)
 

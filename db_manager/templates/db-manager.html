@@ -8,53 +8,100 @@
 {% block content %}
 <div id="page-index">
     <div class="dashboard-cards">
-        <div class="row row-search">
-            <h4> Database Management</h4>
-        </div>
-        <div class="row row-cards text-left">
-            <div class="row">
-                <div class="col-md-3 plain-element">
-                    <button class="btn btn-function">
-                        <i class="fas fa-upload"></i> Upload Dataset
-                    </button>
+        <div class="row row-break"></div>
+        <div class="row row-cards">
+            <div class="card card-description">
+                <div class="row plain-element text-left row-back">
+                    <router-link :to="{ name: 'brand-details', params: {brand: document.document_brand}}">
+                        <i class="fas fa-chevron-left"></i> Back To Search
+                    </router-link>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 plain-element">
-                    <button class="btn btn-function">
-                        <i class="fas fa-upload"></i> Products Upload
-                    </button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 plain-element">
-                    <button class="btn btn-function">
-                        <i class="fas fa-upload"></i> Documents Upload
-                    </button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 plain-element">
-                    <button class="btn btn-function">
-                        <i class="fas fa-upload"></i> Topics Upload
-                    </button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 plain-element">
-                    <button class="btn btn-function">
-                        <i class="fas fa-chart-bar"></i> Database Report
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="row row-cards text-left">
+                <br>
+                <div class="row plain-element">
+                    <div class="col s6 m6 l6 plain-element">
+                        <div class="row plain-element text-left">
+                            <h4>02 MCL Tool 5.3 User Guide Section 1: Software Overview</h4>
+                            <h5> MCL Tool  </h5>
+                        </div>
+                        <div class="row row-functions text-left">
+                            <a class="btn btn-document" href="">
+                                <i class="fas fa-file-pdf"></i> &nbsp; Document in PDF
+                            </a>
+                            <a class="btn btn-document" href="">
+                                <i class="fas fa-file-code"></i> &nbsp; Document in HTML
+                            </a>
+                        </div>
 
+                        <div class="row plain-element text-left">
+                            <h6>Document Number: </h6>
+                            <p>TD-2058</p>
+                        </div>
+                        <div class="row plain-element text-left">
+                            <h6>Document Version: </h6>
+                            <p>Not Specified</p>
+                        </div>
+                        <div class="row plain-element text-left">
+                            <h6>Document Type: </h6>
+                            <p>Not Specified</p>
+                        </div>
+                        <div class="row plain-element text-left">
+                            <h6>Date Created: </h6>
+                            <p>2003-12-31</p>
+                        </div>
+                        <div class="row plain-element text-left">
+                            <h6>Last Edition:  </h6>
+                            <p>2003-12-31</p>
+                        </div>
+                        <div class="row plain-element text-left">
+                            <h6>Last Publication: </h6>
+                            <p>2003-12-31</p>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l6 plain-element">
+                        <div class="row plain-element text-left">
+                            <h4>Document Topics:</h4>
+                        </div>
+                        <ol>
+                          <li><span>One</span></li>
+                          <li>
+                            <span>Two</span>
+                            <ol>
+                              <li><span>Three</span></li>
+                              <li>
+                                <span>Four</span>
+                                <ol>
+                                  <li><span>Five</span></li>
+                                  <li><span>Six</span></li>
+                                </ol>
+                              </li>
+                              <li><span>Seven</span></li>
+                            </ol>
+                          </li>
+                          <li><span>Eight</span></li>
+                        </ol>
+
+
+                        { "id": 194912, "document_title": "Single point of contact", "document_number": "LIT-12013450",
+                        "document_last_edition": "2019-11-12",
+                        "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/7yaebwxtXVKP2AJxh4xqLA", "product_id": 2790 },
+                        { "id": 194913, "document_title": "Product warranty", "document_number": "LIT-12013450",
+                        "document_last_edition": "2019-11-12", "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/iZvfNIIzutVf4q76vnukFw",
+                        "product_id": 2790 }, { "id": 194914, "document_title": "Troubleshooting", "document_number": "LIT-12013450",
+                        "document_last_edition": "2019-11-12", "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/_aUC51BEfctYNQPb34fvjA",
+                        "product_id": 2790 }, { "id": 194915, "document_title": "Cisco IE switch repair information", "document_number":
+                        "LIT-12013450", "document_last_edition": "2019-11-12", "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/4RvpGMxbNcmUUjKAQ6_ssg",
+                        "product_id": 2790 }, { "id": 194916, "document_title": "Additional IOS commands", "document_number": "LIT-12013450",
+                        "document_last_edition": "2019-11-12", "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/1p~OxIHSZ_vctYwJYzYQhg",
+                        "product_id": 2790 }, { "id": 194917, "document_title": "Mirroring a port for packet capture", "document_number":
+                        "LIT-12013450", "document_last_edition": "2019-11-12", "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/y6Rv4xKr3Zq3d0NGnqWoFQ",
+                        "product_id": 2790 }
+                    </div>
+                </div>
+            </div>
         </div>
-
-
     </div>
 </div>
+
 {% endblock %}
 
 

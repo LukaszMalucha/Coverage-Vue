@@ -27,6 +27,13 @@
 }
 
 
+
+.row-documents {
+    width: 70%;
+    margin: auto;
+}
+
+
 row-banner {
 
 }
@@ -43,7 +50,7 @@ row-banner {
     margin: auto;
     margin-bottom: 50px;
     float: none;
-    border-radius: 5px;
+    border-radius: 4px;
 
 }
 
@@ -76,16 +83,54 @@ row-banner {
     color: #00539E;
 }
 
-
 /*----------------------------------------------
-    BUTTONS
+    PRODUCT LIST CARDS
 ------------------------------------------------*/
+
+.card-product {
+    width: 90%;
+    margin: 5%;
+    box-shadow: 1px 1px 1px 0px #c7c7c7;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+}
+
+.card-product .card-image {
+    height: 150px;
+}
+
+.col-product a {
+    color: #414141 !important;
+}
+
+.card-product .card-title {
+    font-size: 1em;
+    min-height: 100px;
+    height: 100px;
+
+}
+
+.card-product .card-content {
+    padding: 4px;
+
+}
+
+.card-product .card-content .card-title {
+    margin-bottom: 2px;
+}
+
+.card-product:hover {
+    box-shadow: 0 3px 3px 0 #A9A9A9, 0 3px 2px -2px #A9A9A9, 0 2px 5px 0 #A9A9A9;
+}
+
 
 .btn-loading {
     margin-top: 20px;
+    margin-right: 2px;
     background: #0054a0;
-    border-radius: 5px;
+    border-radius: 4px;
     font-weight: 600;
+    margin-top: 10px;
 }
 
 
@@ -95,3 +140,217 @@ row-banner {
     background: #4571b1;
     color: #fff;
 }
+
+/*----------------------------------------------
+    PRODUCT DESCRIPTION CARD
+------------------------------------------------*/
+
+.row-back {
+    position: relative;
+    font-size: 24px;
+    height: 32px;
+}
+
+.row-back a {
+    color: #0054a0;
+}
+
+.row-back i {
+    position: relative;
+    top: 1px;
+}
+
+.card-description {
+    min-height: 780px;
+    width: 99.9%;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid #e1e1e1;
+    box-shadow: 1px 1px 1px 0px #c7c7c7;
+}
+
+.card-description h4 {
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.card-description h5 {
+    font-size: 16px;
+}
+
+.card-description b {
+    color: #0054a0;
+}
+
+.card-description h6 {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.card-description p {
+    font-size: 14px;
+}
+
+.img-description {
+    width: 98%;
+    margin-right: 2%;
+}
+
+.img-small {
+    height: 30px;
+}
+
+.row-functions {
+    margin: 10px 0px !important;
+    width: 90%;
+    padding: 10px 0px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.1);
+    border-width: 1px 0 1px 0;
+}
+
+.btn-document {
+    background: #0054a0;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0px 20px 0px 0px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.btn-document i {
+    font-size: 16px;
+}
+
+
+.btn-document:hover,
+.btn-document:focus,
+.btn-document:active {
+    background: #4571b1;
+    color: #fff;
+}
+
+
+/*----------------------------------------------
+    DOCUMENT ROW
+------------------------------------------------*/
+
+.row-document {
+    height: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 0px;
+}
+
+.row-document:hover,
+.row-document:active,
+.row-document:focus {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+
+
+.row-document h6 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    margin: 10px 0px 5px 0px;
+
+}
+
+.row-document p {
+    color: #5f6368;
+    color: rgba(0, 0, 0, 0.6) !important;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+
+
+.row-meta-top {
+    color: rgba(0, 0, 0, 0.6) !important;
+    width: 99%;
+    font-size: 12px;
+    height: 76px;
+    margin: 0px !important;
+    padding: 0px;
+    padding-left: 2px;
+}
+
+.row-meta-bottom {
+    color: rgba(0, 0, 0, 0.6) !important;
+    width: 70%;
+    font-size: 12px
+    height: 16px;
+    margin: 0px !important;
+    padding: 0px;
+    padding-left: 2px;
+}
+
+.col-image {
+    background: #fff;
+    height: 100%;
+}
+
+.img-document {
+    width: 80%;
+    margin-left: 10%;
+    padding: 32px 0px;
+}
+
+.btn-quicklook {
+    background: transparent;
+    border-radius: 4px;
+    color: #333;
+    font-size: 14px;
+    float: right;
+    border: none;
+    margin: 10px;
+    height: 24px;
+    line-height: 24px;
+    padding: 2px 6px;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
+    display: none;
+}
+
+.row-document:hover .btn-quicklook {
+    display: block;
+}
+
+.btn-quicklook:hover,
+.btn-quicklook:active,
+.btn-quicklook:focus {
+    background: #919294;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+
+/*----------------------------------------------
+    DOCUMENT DETAILS
+------------------------------------------------*/
+
+
+.table-details {
+    width: 100%;
+    font-size: 16px;
+}
+
+.table-details tr {
+    background-color: transparent;
+}
+
+.table-details td {
+    padding: 5px 0px;
+    height: 50px;
+}
+
+.table-details  b{
+    color: #333;
+}
+
+.cell-meta {
+    width: 180px !important;
+}
+
