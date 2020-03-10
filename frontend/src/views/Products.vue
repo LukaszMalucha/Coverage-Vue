@@ -7,12 +7,12 @@
 
     <div class="row row-cards">
         <div class="row">
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 plain-element text-left">
+            <div class="col s2 m2 l2 plain-element left-align">
                 <a @click="getBrandData">
-                    <img :src="'/static/img/brands/' + brand + '.png'" class="img responsive">
+                    <img :src="'/static/img/brands/' + brand + '.png'" class="img responsive img-banner">
                 </a>
             </div>
-            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-searchbox">
+            <div class="col s10 m10 l10 col-searchbox">
              <div class="row searchbox-wrapper-long">
                 <form @submit.prevent="onSubmit">
                   <input class="form-control" id="searchbox" type="text" placeholder="Search for Product"
@@ -27,15 +27,21 @@
               <p v-show="loadingQuery">...loading...</p>
         </div>
         <div class="row plain-element row-table-functions">
-            <div class="col s1 m4 l4 col-results plain-element text-left">
+            <div class="col s1 m4 l4 col-results plain-element left-align">
                 <p class="productCount" v-if="resultCount">{{ resultCount }}</p>
             </div>
             <div class="col s10 m4 l4 plain-element">
-              <div id="productSearch" class="search-wrapper">
+              <div id="productSearch" class="filter-wrapper">
                 <input type="text" placeholder="Keyword Search" class="place-holder-center" v-model="search"/>
               </div>
             </div>
-            <div class="col s1 m4 l4 plain-element">
+            <div class="col s1 m4 l4 plain-element right-align">
+                <button v-show="next" @click="getBrandData" class="btn btn-loading">
+                    Load More
+                </button>
+                <button v-show="nextQuery" @click="onSubmit" class="btn btn-loading">
+                    Load More
+                </button>
             </div>
           </div>
         <div class="row plain-element">

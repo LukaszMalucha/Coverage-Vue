@@ -27,18 +27,6 @@
 }
 
 
-
-.row-documents {
-    width: 70%;
-    margin: auto;
-}
-
-
-row-banner {
-
-}
-
-
 /*----------------------------------------------
     MENU CARD
 ------------------------------------------------*/
@@ -83,15 +71,39 @@ row-banner {
     color: #00539E;
 }
 
+
+/*----------------------------------------------
+    BRANDS
+------------------------------------------------*/
+
+.company-card {
+  width: 92%;
+  margin-left: 0.1%;
+
+}
+
+
+
 /*----------------------------------------------
     PRODUCT LIST CARDS
 ------------------------------------------------*/
 
+.img-banner {
+  border-radius: 4px;
+}
+
+.productCount {
+    margin-left: 0px;
+    color: #0054a0 !important;
+    font-size: 18px;
+}
+
 .card-product {
-    width: 90%;
-    margin: 5%;
-    box-shadow: 1px 1px 1px 0px #c7c7c7;
-    border: 1px solid #e1e1e1;
+    width: 93%;
+    margin-left: 0.1%
+
+    box-shadow: 1px 1px 1px 0px #b3b3b3;
+    border: 1px solid #b3b3b3;
     border-radius: 4px;
 }
 
@@ -131,6 +143,9 @@ row-banner {
     border-radius: 4px;
     font-weight: 600;
     margin-top: 10px;
+    margin-right: 15px;
+    height: 32px;
+    line-height: 32px;
 }
 
 
@@ -149,6 +164,7 @@ row-banner {
     position: relative;
     font-size: 24px;
     height: 32px;
+    margin-bottom: 10px;
 }
 
 .row-back a {
@@ -165,8 +181,8 @@ row-banner {
     width: 99.9%;
     padding: 10px 20px;
     border-radius: 4px;
-    border: 1px solid #e1e1e1;
-    box-shadow: 1px 1px 1px 0px #c7c7c7;
+    border: 1px solid #b3b3b3;
+    box-shadow: 1px 1px 1px 0px #b3b3b3;
 }
 
 .card-description h4 {
@@ -236,8 +252,13 @@ row-banner {
     DOCUMENT ROW
 ------------------------------------------------*/
 
+.row-documents {
+    width: 80%;
+    margin: auto;
+}
+
 .row-document {
-    height: 100px;
+    height: 80px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     background: #fff;
     padding: 0px;
@@ -252,7 +273,7 @@ row-banner {
 
 
 .row-document h6 {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     color: #333;
     margin: 10px 0px 5px 0px;
@@ -263,7 +284,7 @@ row-banner {
     color: #5f6368;
     color: rgba(0, 0, 0, 0.6) !important;
     font-size: 12px;
-    margin-bottom: 5px;
+    margin: 0px 0px 4px 0px;
 }
 
 
@@ -272,7 +293,7 @@ row-banner {
     color: rgba(0, 0, 0, 0.6) !important;
     width: 99%;
     font-size: 12px;
-    height: 76px;
+    height: 50px;
     margin: 0px !important;
     padding: 0px;
     padding-left: 2px;
@@ -280,7 +301,7 @@ row-banner {
 
 .row-meta-bottom {
     color: rgba(0, 0, 0, 0.6) !important;
-    width: 70%;
+    width: 99%;
     font-size: 12px
     height: 16px;
     margin: 0px !important;
@@ -294,9 +315,9 @@ row-banner {
 }
 
 .img-document {
-    width: 80%;
-    margin-left: 10%;
-    padding: 32px 0px;
+    width: 62.5px;
+    margin: auto;
+    padding: 25px 0px;
 }
 
 .btn-quicklook {
@@ -308,7 +329,7 @@ row-banner {
     border: none;
     margin: 10px;
     height: 24px;
-    line-height: 24px;
+    line-height: 20px;
     padding: 2px 6px;
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
     display: none;
@@ -353,4 +374,55 @@ row-banner {
 .cell-meta {
     width: 180px !important;
 }
+
+.topic-tier-2 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+
+}
+
+.topic-tier-3 {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+
+.topic-tier-4 {
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 40px;
+    color: #333;
+}
+
+
+.topic-other:hover,
+.topic-other:active,
+.topic-other:focus,
+.topic-tier-2:hover,
+.topic-tier-2:active,
+.topic-tier-2:focus,
+.topic-tier-3:hover,
+.topic-tier-3:active,
+.topic-tier-3:focus,
+.topic-tier-4:hover,
+.topic-tier-4:active,
+.topic-tier-4:focus {
+    color: #0054a0;
+}
+
+.col-topics .filter-wrapper {
+    width: 60%;
+    margin-right: 40%;
+    margin-bottom: -8px;
+}
+
+.col-topics li {
+    margin-bottom: 10px;
+    margin-left: 16px;
+}
+
+
+
+
 

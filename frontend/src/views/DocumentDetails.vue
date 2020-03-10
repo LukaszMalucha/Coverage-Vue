@@ -4,7 +4,7 @@
         <div class="row row-break"></div>
         <div class="row row-cards">
             <div class="card card-description">
-                <div class="row plain-element text-left row-back">
+                <div class="row plain-element left-align row-back">
                     <router-link :to="{ name: 'brand-details', params: {brand: document.document_brand}}">
                     <i class="fas fa-chevron-left"></i> Back To Search
                     </router-link>
@@ -12,11 +12,11 @@
                 <br>
                 <div class="row plain-element">
                     <div class="col s6 m6 l6 plain-element">
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h4>{{ document.document_title}}</h4>
                             <h5> {{ product_name }} </h5>
                         </div>
-                        <div class="row row-functions text-left">
+                        <div class="row row-functions left-align">
                             <a class="btn btn-document" href="">
                                 <i class="fas fa-file-pdf"></i> &nbsp; Document in PDF
                             </a>
@@ -24,31 +24,80 @@
                                 <i class="fas fa-file-code"></i> &nbsp; Document in HTML
                             </a>
                         </div>
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h6>Document Number: </h6>
                             <p>{{ document.document_number }}</p>
                         </div>
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h6>Document Version: </h6>
                             <p>{{ document.document_version }}</p>
                         </div>
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h6>Document Type: </h6>
                             <p>{{ document.document_version }}</p>
                         </div>
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h6>Date Created: </h6>
                             <p>{{ document.document_created_at}}</p>
                         </div>
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h6>Last Edition:  </h6>
                             <p>{{ document.document_last_edition }}</p>
                         </div>
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h6>Last Publication: </h6>
                             <p>{{ document.document_last_publication }}</p>
                         </div>
                         {{document.topics}}
+                    </div>
+                    <div class="col s6 m6 l6 plain-element col-topics">
+                        <div class="row plain-element left-align">
+
+                            <div class="col s6 m6 l6 plain-element left-align">
+                                <h4>Document Content:</h4>
+                            </div>
+                            <div class="col s6 m6 l6 plain-element">
+                                <div class="filter-wrapper">
+                                    <input type="text" placeholder="Topic Filter" class="place-holder-center"
+                                           v-model="search"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-for="element in filteredTopicList"  class="row plain-element left-align" :key="element.id">
+                            <div v-if="element.topic_depth == 2" class="row plain-element left-align">
+                                <li>
+                                    <a class="topic-tier-2" target="_blank" :href="'https://johnsoncontrols.fluidtopics.net' + element.topic_link">
+                                        {{element.topic_title}}
+                                    </a>
+                                </li>
+                            </div>
+                            <div v-else-if="element.topic_depth == 3" class="row plain-element left-align">
+                                <ol >
+                                    <a class="topic-tier-3" target="_blank" :href="'https://johnsoncontrols.fluidtopics.net' + element.topic_link">
+                                    &#9656; {{element.topic_title}}
+                                     </a>
+                                </ol>
+                            </div>
+                             <div v-else-if="element.topic_depth == 4" class="row plain-element left-align">
+                                <ol>
+                                    <a class="topic-tier-4" target="_blank" :href="'https://johnsoncontrols.fluidtopics.net' + element.topic_link">
+                                        &#9656; {{element.topic_title}}
+                                     </a>
+                                </ol>
+                            </div>
+                            <div v-else class="row plain-element left-align">
+                                <ol>
+                                    <a v-bind:style="{
+                                        'margin-left': (element.topic_depth * 15) + 'px',
+                                        'font-size': (14 - (element.topic_depth * 0.25)) + 'px',
+                                        'color':  '#66' + element.topic_depth + element.topic_depth + element.topic_depth + element.topic_depth,
+                                        }" class="topic-other"
+                                    target="_blank" :href="'https://johnsoncontrols.fluidtopics.net' + element.topic_link">
+                                        {{element.topic_title}}
+                                    </a>
+                                </ol>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,6 +109,7 @@
 
 <script>
 import { apiService } from "@/common/api.service.js";
+import _ from 'lodash';
 
 export default {
   name: "DocumentDetails",
@@ -73,10 +123,15 @@ export default {
   data() {
     return {
       document: [],
+      documentTopics: [],
       product_name: "",
+      search: "",
     }
   },
   methods: {
+    sortArrays(arrays) {
+            return _.orderBy(arrays, 'topic_breadcrumb');
+    },
     getDocumentData() {
     let endpoint = `/api/documents/${this.id}/`;
     apiService(endpoint)
@@ -85,19 +140,30 @@ export default {
           window.console.log(data);
           if (data) {
             this.document = data;
-            this.product_name = this.document.product['product_name']
+            this.product_name = this.document.product['product_name'];
+            this.documentTopics = this.document.topic;
+            this.documentSortedTopics = this.sortArrays(this.documentTopics)
             document.title = this.document.document_title;
-
-
           } else {
             this.document = null;
             document.title = "404 - Page Not Found"
           }
         })
     },
+
+  },
+  computed: {
+    filteredTopicList() {
+      return this.documentSortedTopics.filter(topic => {
+        return topic.topic_title.toLowerCase().includes(this.search.toLowerCase())
+      })
+    },
+
   },
   created() {
     this.getDocumentData();
   }
 }
 </script>
+
+//http://127.0.0.1:8000/document/35873

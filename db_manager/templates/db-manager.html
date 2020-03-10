@@ -1,107 +1,182 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
 {% load staticfiles %}
-{% load materializecss %}
+<html>
 
-{% load bootstrap_tags %}
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tech Comms Dashboard</title>
+    <meta name="Description"
+          content="Tech Comms Dashboard">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/logo.png' %}"/>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- FontAwesome Styles-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+          integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <!-- Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&display=swap" rel="stylesheet">
+    <!-- jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Custom Styles-->
+    <link href="{% static 'css/custom-styles.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/navbar.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/data.css' %}" rel="stylesheet"/>
 
 
-{% block content %}
-<div id="page-index">
+
+    {% block extrahead %}{% endblock %} {% block head_js %} {% endblock head_js %}
+
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- TOP NAVBAR -->
+    {% block navbar %}
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'img/logo.png' %}" alt="JC Logo"
+                     class="img-logo"/>
+            </a>
+            <a class="navbar-brand" href="/">
+                Tech Comms
+            </a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li><a class="nav-link" href="/qrgen"><i class="fas fa-qrcode"></i><b>QRC Gen</b></a></li>
+            <li><a class="nav-link" href="/api/"><i class="fas fa-terminal"></i><b>REST Api</b></a>
+            </li>
+            <li><a class="nav-link"
+                   href="{% url 'db_manager:db-manager' %}"><i class="fas fa-database"></i>
+                <b>DB Manager</b></a></li>
+            <li><a class='dropdown-trigger nav-link' href='#' data-target='dropdown-user' id="user_dropdown"><i
+                    class="fas fa-caret-down"></i><b>
+                {% if user.is_authenticated %}
+                {{ user }}
+                {% else %}
+                Login/Register
+                {% endif %}
+            </b></a></li>
+            <li><a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" id="trigger">menu</i></a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- DROPDOWN -->
+    <ul id="dropdown-user" class="dropdown-content">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'user:profile' %}"><i class="fas fa-sign-out-alt"></i> My Profile</a></li>
+        <li><a href="{% url 'user:logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+        {% else %}
+        <li><a href="{% url 'user:login' %}"><i class="fa fa-user fa-fw"></i> Log In</a></li>
+        <li><a href="{% url 'user:register' %}"><i class="fas fa-tasks"></i> Register</a></li>
+        {% endif %}
+    </ul>
+
+
+    <!-- MOBILE -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a class="dropdown-button waves-effect waves-dark" href="/api/"><i class="fas fa-qrcode"></i><b>QRC Gen</b></a></li>
+        <li><a class="dropdown-button waves-effect waves-dark" href="/api/"><i
+                class="fas fa-terminal"></i><b>REST Api</b></a></li>
+        <li><a class="dropdown-button waves-effect waves-dark"
+               href="/"><i class="fab fa-github"></i> <b>DB Manager</b></a>
+        </li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'user:profile' %}"><i class="fas fa-sign-out-alt"></i> My Profile</a></li>
+        <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:logout' %}"><i
+                class="fas fa-sign-out-alt"></i><b>Log Out {{ user.name }}</b></a></li>
+        {% else %}
+        <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:login' %}"><i
+                class="fa fa-user"></i><b> Log In</b></a></li>
+        <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:register' %}"><i
+                class="fas fa-tasks"></i><b> Register</b></a></li>
+        {% endif %}
+    </ul>
+    {% endblock %}
+    <!-- PAGE-INDEX-->
+    <div id="page-index">
+    <div class="row header">
+        <div class="row top-menu">
+            <div class="col s8 m8 l8 plain-element text-left">
+            </div>
+        </div>
+    </div>
     <div class="dashboard-cards">
         <div class="row row-break"></div>
         <div class="row row-cards">
-            <div class="card card-description">
-                <div class="row plain-element text-left row-back">
-                    <router-link :to="{ name: 'brand-details', params: {brand: document.document_brand}}">
-                        <i class="fas fa-chevron-left"></i> Back To Search
-                    </router-link>
-                </div>
-                <br>
-                <div class="row plain-element">
-                    <div class="col s6 m6 l6 plain-element">
-                        <div class="row plain-element text-left">
-                            <h4>02 MCL Tool 5.3 User Guide Section 1: Software Overview</h4>
-                            <h5> MCL Tool  </h5>
-                        </div>
-                        <div class="row row-functions text-left">
-                            <a class="btn btn-document" href="">
-                                <i class="fas fa-file-pdf"></i> &nbsp; Document in PDF
-                            </a>
-                            <a class="btn btn-document" href="">
-                                <i class="fas fa-file-code"></i> &nbsp; Document in HTML
-                            </a>
-                        </div>
+            <div class="col m2 plain-element"></div>
+            <div class="col m4 plain-element">
+            <router-link :to="{ name: 'brands'}">
+                <div class="card menu-card">
+                    <div class="card-image"><img
 
-                        <div class="row plain-element text-left">
-                            <h6>Document Number: </h6>
-                            <p>TD-2058</p>
-                        </div>
-                        <div class="row plain-element text-left">
-                            <h6>Document Version: </h6>
-                            <p>Not Specified</p>
-                        </div>
-                        <div class="row plain-element text-left">
-                            <h6>Document Type: </h6>
-                            <p>Not Specified</p>
-                        </div>
-                        <div class="row plain-element text-left">
-                            <h6>Date Created: </h6>
-                            <p>2003-12-31</p>
-                        </div>
-                        <div class="row plain-element text-left">
-                            <h6>Last Edition:  </h6>
-                            <p>2003-12-31</p>
-                        </div>
-                        <div class="row plain-element text-left">
-                            <h6>Last Publication: </h6>
-                            <p>2003-12-31</p>
-                        </div>
+                            class="img responsive">
                     </div>
-                    <div class="col s6 m6 l6 plain-element">
-                        <div class="row plain-element text-left">
-                            <h4>Document Topics:</h4>
-                        </div>
-                        <ol>
-                          <li><span>One</span></li>
-                          <li>
-                            <span>Two</span>
-                            <ol>
-                              <li><span>Three</span></li>
-                              <li>
-                                <span>Four</span>
-                                <ol>
-                                  <li><span>Five</span></li>
-                                  <li><span>Six</span></li>
-                                </ol>
-                              </li>
-                              <li><span>Seven</span></li>
-                            </ol>
-                          </li>
-                          <li><span>Eight</span></li>
-                        </ol>
-
-
-                        { "id": 194912, "document_title": "Single point of contact", "document_number": "LIT-12013450",
-                        "document_last_edition": "2019-11-12",
-                        "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/7yaebwxtXVKP2AJxh4xqLA", "product_id": 2790 },
-                        { "id": 194913, "document_title": "Product warranty", "document_number": "LIT-12013450",
-                        "document_last_edition": "2019-11-12", "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/iZvfNIIzutVf4q76vnukFw",
-                        "product_id": 2790 }, { "id": 194914, "document_title": "Troubleshooting", "document_number": "LIT-12013450",
-                        "document_last_edition": "2019-11-12", "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/_aUC51BEfctYNQPb34fvjA",
-                        "product_id": 2790 }, { "id": 194915, "document_title": "Cisco IE switch repair information", "document_number":
-                        "LIT-12013450", "document_last_edition": "2019-11-12", "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/4RvpGMxbNcmUUjKAQ6_ssg",
-                        "product_id": 2790 }, { "id": 194916, "document_title": "Additional IOS commands", "document_number": "LIT-12013450",
-                        "document_last_edition": "2019-11-12", "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/1p~OxIHSZ_vctYwJYzYQhg",
-                        "product_id": 2790 }, { "id": 194917, "document_title": "Mirroring a port for packet capture", "document_number":
-                        "LIT-12013450", "document_last_edition": "2019-11-12", "document_link": "/reader/2zPUdVsqILTtIL03xidXHg/y6Rv4xKr3Zq3d0NGnqWoFQ",
-                        "product_id": 2790 }
-                    </div>
-                </div>
+                      <button class="btn btn-menu-card">
+                        Product Search
+                      </button>
+                  </div>
+                  </router-link>
             </div>
+            <div class="col m4 plain-element">
+                <router-link :to="{ name: 'documents'}">
+                    <div class="card menu-card">
+                        <div class="card-image"><img
+
+                                class="img responsive">
+                        </div>
+                        <router-link :to="{ name: 'documents'}">
+                          <button class="btn btn-menu-card">
+                            Document Search
+                          </button>
+                        </router-link>
+                        </div>
+                </router-link>
+            </div>
+            <div class="col m2 plain-element"></div>
         </div>
     </div>
 </div>
 
+     {% block content %}
+
+     {% endblock %}
+</div>
+<!-- /. WRAPPER  -->
+<div class="footer">
+    <div class="row plain-element">
+        <div class="col m6 footer-left">
+        <p><a target="_blank" href="https://www.johnsoncontrols.com">© 2020 Johnson Controls. All Rights Reserved.</a></p>
+        </div>
+        <div class="col m6 footer-right">
+            <p><a target="_blank" href="https://www.johnsoncontrols.com/legal/terms">Legal</a> |
+               <a target="_blank" href="https://www.johnsoncontrols.com/legal/privacy">Privacy </a>
+            </p>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap Js -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<!-- Materialize Js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- custom JS -->
+<script src="{% static 'js/custom-scripts.js' %}"></script>
+
+{% block js %}
 {% endblock %}
+</body>
 
-
+</html>

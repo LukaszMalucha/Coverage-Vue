@@ -1,12 +1,12 @@
 <template>
 <div id="page-index">
-  <div class="dashboard-cards">
-    <div class="row row-search">
+    <div class="row header">
             <input class="form-control" id="searchbox" type="text" placeholder="Search for Brand"
                    aria-label="Search for Brand" v-model="search">
     </div>
+  <div class="dashboard-cards">
     <div class="row row-cards">
-        <div v-for="(brand, i) in filteredList" :key="i" class="col-md-2 ">
+        <div v-for="(brand, i) in filteredList" :key="i" class="col m2 plain-element">
             <router-link :to="{ name: 'brand-details', params: {brand: brand}}">
                 <div class="card company-card">
                     <div class="card-image"><img  :src="'/static/img/brands/' + brand + '.png'" class="img responsive">

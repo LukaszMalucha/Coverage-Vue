@@ -9,9 +9,9 @@ class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         """Create and save new user"""
         if not email:
-            raise ValueError('User must have a valid email address')
+            raise ValueError("User must have a valid email address")
         if len(str(password)) < 8:
-            raise ValueError('This password is too short. It must contain at least 8 characters.')
+            raise ValueError("This password is too short. It must contain at least 8 characters.")
         user = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -37,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = "email"
 
     def save(self, *args, **kwargs):
         super(User, self).save(*args, **kwargs)
@@ -46,8 +46,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class MyProfile(models.Model):
     """User Profile Details"""
-    position = models.CharField(max_length=254, default='guest', blank=True)
-    image = models.ImageField(upload_to=content_file_name, default='portraits/default.jpg')
+    position = models.CharField(max_length=254, default="guest", blank=True)
+    image = models.ImageField(upload_to=content_file_name, default="portraits/default.jpg")
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     objects = models.Manager()
@@ -64,13 +64,13 @@ class ProductModel(models.Model):
     """Model for Products"""
 
     product_identifier = models.CharField(max_length=254, unique=True)
-    product_name = models.CharField(max_length=254, default='Not Specified', blank=True)
-    product_brand = models.CharField(max_length=254, default='Not Specified', blank=True)
-    product_category = models.CharField(max_length=254, default='Not Specified', blank=True)
-    product_code = models.TextField(default='Not Specified')
-    product_series = models.CharField(max_length=254, default='Not Specified', blank=True)
-    product_part_number = models.CharField(max_length=254, default='Not Specified', blank=True)
-    business = models.CharField(max_length=254, default='Not Specified', blank=True)
+    product_name = models.CharField(max_length=254, default="Not Specified", blank=True)
+    product_brand = models.CharField(max_length=254, default="Not Specified", blank=True)
+    product_category = models.CharField(max_length=254, default="Not Specified", blank=True)
+    product_code = models.TextField(default="Not Specified")
+    product_series = models.CharField(max_length=254, default="Not Specified", blank=True)
+    product_part_number = models.CharField(max_length=254, default="Not Specified", blank=True)
+    business = models.CharField(max_length=254, default="Not Specified", blank=True)
     uploaded = models.DateTimeField(auto_now=True)
 
     objects = models.Manager()
@@ -84,22 +84,22 @@ class ProductModel(models.Model):
 
 class DocumentModel(models.Model):
     """Model for Document"""
-    document_title = models.CharField(max_length=254, default='Not Specified', blank=True)
-    document_number = models.CharField(max_length=254, default='Not Specified', blank=True)
-    document_part_number = models.CharField(max_length=254, default='Not Specified', blank=True)
-    document_version = models.CharField(max_length=254, default='Not Specified', blank=True)
-    document_revision = models.CharField(max_length=254, default='Not Specified', blank=True)
-    document_type = models.CharField(max_length=254, default='Not Specified', blank=True)
-    document_lang = models.CharField(max_length=254, default='Not Specified', blank=True)
+    document_title = models.CharField(max_length=254, default="Not Specified", blank=True)
+    document_number = models.CharField(max_length=254, default="Not Specified", blank=True)
+    document_part_number = models.CharField(max_length=254, default="Not Specified", blank=True)
+    document_version = models.CharField(max_length=254, default="Not Specified", blank=True)
+    document_revision = models.CharField(max_length=254, default="Not Specified", blank=True)
+    document_type = models.CharField(max_length=254, default="Not Specified", blank=True)
+    document_lang = models.CharField(max_length=254, default="Not Specified", blank=True)
     document_created_at = models.DateField(blank=True)
     document_last_edition = models.DateField(blank=True)  # REMEMBER TO RELATE IT LATER TO TOPIC MODIFICATION
     document_last_publication = models.DateField(blank=True)
     document_revised_modified = models.DateField(blank=True)
-    document_brand = models.CharField(max_length=254, default='Not Specified', blank=True)
-    document_link = models.CharField(max_length=254, default='Not Specified', blank=True)
-    maps_link = models.CharField(max_length=254, default='Not Specified', blank=True)
+    document_brand = models.CharField(max_length=254, default="Not Specified", blank=True)
+    document_link = models.CharField(max_length=254, default="Not Specified", blank=True)
+    maps_link = models.CharField(max_length=254, default="Not Specified", blank=True)
     product = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
-    document_identifier = models.CharField(max_length=254, default='Not Specified', unique=True)
+    document_identifier = models.CharField(max_length=254, default="Not Specified", unique=True)
 
     uploaded = models.DateTimeField(auto_now=True)
 
@@ -114,12 +114,12 @@ class DocumentModel(models.Model):
 
 class TopicModel(models.Model):
     """Model for Document Topics"""
-    topic_title = models.CharField(max_length=254, default='Not Specified', blank=True)
-    topic_parent = models.CharField(max_length=254, default='Not Specified', blank=True)
-    topic_depth = models.IntegerField(blank=False, default=0) # Keep zero for later QA checks
+    topic_title = models.CharField(max_length=254, default="Not Specified", blank=True)
+    topic_breadcrumb = models.TextField(default="Not Specified")
+    topic_depth = models.IntegerField(blank=False, default=0)  # Keep zero for later QA checks
     topic_last_edition = models.DateField(blank=True)
-    topic_link = models.CharField(max_length=254, default='Not Specified', blank=True)
-    document = models.ForeignKey(DocumentModel, on_delete=models.CASCADE)
+    topic_link = models.CharField(max_length=254, default="Not Specified", blank=True)
+    document = models.ForeignKey(DocumentModel, on_delete=models.CASCADE, related_name="topic")
     uploaded = models.DateTimeField(auto_now=True)
 
     objects = models.Manager()
@@ -130,7 +130,3 @@ class TopicModel(models.Model):
 
     def __str__(self):
         return self.topic_title
-
-
-
-

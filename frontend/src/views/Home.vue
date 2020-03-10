@@ -2,15 +2,15 @@
 <div id="page-index">
     <div class="row header">
         <div class="row top-menu">
-            <div class="col-xs-8 col-sm-8 col-md-8 plain-element text-left">
+            <div class="col s8 m8 l8 plain-element left-align">
             </div>
         </div>
     </div>
     <div class="dashboard-cards">
         <div class="row row-break"></div>
         <div class="row row-cards">
-            <div class="col-md-2 plain-element"></div>
-            <div class="col-md-4 plain-element">
+            <div class="col m2 plain-element"></div>
+            <div class="col m4 plain-element">
             <router-link :to="{ name: 'brands'}">
                 <div class="card menu-card">
                     <div class="card-image"><img
@@ -23,7 +23,7 @@
                   </div>
                   </router-link>
             </div>
-            <div class="col-md-4 plain-element">
+            <div class="col m4 plain-element">
                 <router-link :to="{ name: 'documents'}">
                     <div class="card menu-card">
                         <div class="card-image"><img
@@ -38,7 +38,7 @@
                         </div>
                 </router-link>
             </div>
-            <div class="col-md-2 plain-element"></div>
+            <div class="col m2 plain-element"></div>
         </div>
     </div>
 </div>

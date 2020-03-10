@@ -102,7 +102,7 @@ def dataset_topics_upload():
 
                 _, created = TopicModel.objects.get_or_create(
                     topic_title=row[0],
-                    topic_parent=row[1],
+                    topic_breadcrumb=row[1],
                     topic_depth=row[2],
                     topic_last_edition=date_last_edition,
                     topic_link=row[4],

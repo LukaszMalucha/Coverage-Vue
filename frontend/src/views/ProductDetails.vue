@@ -4,18 +4,18 @@
         <div class="row row-break"></div>
         <div class="row row-cards">
             <div class="card card-description">
-                <div class="row plain-element text-left row-back">
+                <div class="row left-align row-back">
                     <router-link :to="{ name: 'brand-details', params: {brand: product.product_brand}}">
                     <i class="fas fa-chevron-left"></i> Back To Search
                     </router-link>
                 </div>
                 <div class="row plain-element">
-                    <div class="col s5 m5 l5 plain-element text-left">
-                        <div class="row plain-element text-left" style="display:block">
+                    <div class="col s5 m5 l5 plain-element left-align">
+                        <div class="row plain-element left-align">
                             <img :src="'/static/img/products/sample' + product.image + '.jpg'" class="img responsive img-description">
                         </div>
                         <br>
-                        <div class="row plain-element text-left" style="display:block">
+                        <div class="row plain-element left-align" style="display:block">
                             <img src="/static/img/products/sample2.jpg" class="img responsive">
                             <img src="/static/img/products/sample3.jpg" class="img responsive">
                             <img src="/static/img/products/sample4.jpg" class="img responsive">
@@ -23,13 +23,13 @@
 
                     </div>
                     <div class="col s6 m7 l7 plain-element">
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h4>{{ product.product_name}}</h4>
                             <h5>by <router-link :to="{ name: 'brand-details', params: {brand: product.product_brand}}">
                                     {{ product.product_brand}}
                                    </router-link> </h5>
                         </div>
-                        <div class="row row-functions text-left">
+                        <div class="row row-functions left-align">
                             <a class="btn btn-document" href="">
                                 <i class="fas fa-file-pdf"></i> &nbsp; Document in PDF
                             </a>
@@ -37,23 +37,23 @@
                                 <i class="fas fa-file-code"></i> &nbsp; Document in HTML
                             </a>
                         </div>
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h6>Category: </h6>
                             <p>{{ product.product_category}}</p>
                         </div>
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h6>Product Codes: </h6>
                             <p>{{ product.product_code}}</p>
                         </div>
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h6>Product Series: </h6>
                             <p>{{ product.product_series}}</p>
                         </div>
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h6>Part Number: </h6>
                             <p>{{ product.product_part_number}}</p>
                         </div>
-                        <div class="row plain-element text-left">
+                        <div class="row plain-element left-align">
                             <h6>Business:  </h6>
                             <p>{{ product.business}}</p>
                         </div>

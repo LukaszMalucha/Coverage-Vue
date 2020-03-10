@@ -18,7 +18,7 @@ body {
     position: relative;
     margin: 0;
     padding-bottom: 0;
-    background-color: #fcfcfd;
+    background-color: #f9f9f9;
 }
 
 html {
@@ -50,6 +50,12 @@ html {
     padding: 0px !important;
 }
 
+.col .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
 
 
 /*------------------------------------------------------------------------------
@@ -59,8 +65,8 @@ html {
 .header {
     height: 150px;
     margin: 0px;
-    background: transparent;
-    padding: 0 15% 0 15%;
+    padding: 50px 10% 0px 10%;
+
 }
 
 .img-header {
@@ -102,6 +108,92 @@ a:hover {
     background: transparent;
 }
 
+
+/*----------------------------------------------
+    SEARCHBOX
+------------------------------------------------*/
+
+.col-searchbox {
+    height: 100px;
+    padding: 22.5px 5px !important;
+}
+
+.row-search {
+    margin: 50px 0px;
+}
+
+.row-search h4 {
+    font-size: 42px;
+    color: #5f6368;
+    margin-bottom: 30px;
+
+}
+
+.searchbox-wrapper {
+    position: relative;
+    width: 80%;
+    margin: auto;
+}
+
+.searchbox-wrapper-long {
+    position: relative;
+    width: 100%;
+
+}
+
+.searchbox-wrapper-long .btn-transparent {
+    top: 0px;
+}
+
+.btn-transparent {
+    position: absolute;
+    top: -18px;
+    right: 10px;
+    font-size: 28px;
+    height:100%;
+    color: #4267b2;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.btn-transparent:hover,
+.btn-transparent:active,
+.btn-transparent:focus {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+
+#searchbox {
+    box-shadow: 0 1px rgba(188,188,183,0.30);
+    border: 1px solid rgba(188,188,183,0.50);
+    border-radius: 8px;
+    width: 97.5%;
+    margin: auto;
+    padding: 4px 8px;
+    font-size: 18px;
+    background: #fff;
+}
+
+
+
+.row-error {
+  margin: 10px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.error {
+   color: red !important;
+}
+
+.resultCount {
+    color: #0054a0 !important;
+    font-size: 18px;
+    margin-left: 2px;
+}
 
 /*----------------------------------------------
     Row Message
@@ -179,95 +271,6 @@ a:hover {
 }
 
 
-/*----------------------------------------------
-    SEARCHBOX
-------------------------------------------------*/
-
-.col-searchbox {
-    height: 100px;
-    padding: 22.5px 0px;
-}
-
-.row-search {
-    margin: 50px 0px;
-}
-
-.row-search h4 {
-    font-size: 42px;
-    color: #5f6368;
-    margin-bottom: 30px;
-
-}
-
-.searchbox-wrapper {
-    position: relative;
-    width: 70%;
-    margin: auto;
-}
-
-.searchbox-wrapper-long {
-    position: relative;
-    width: 100%;
-
-}
-
-.searchbox-wrapper-long .btn-transparent {
-    top: 0px;
-}
-
-.btn-transparent {
-    position: absolute;
-    top: -18px;
-    right: 10px;
-    font-size: 28px;
-    height:100%;
-    color: #4267b2;
-    background: transparent;
-    box-shadow: none;
-    border: none;
-}
-
-.btn-transparent:hover,
-.btn-transparent:active,
-.btn-transparent:focus {
-    background: transparent;
-    box-shadow: none;
-    border: none;
-}
-
-
-#searchbox {
-    box-shadow: 0 1px rgba(188,188,183,0.30);
-    border: 1px solid rgba(188,188,183,0.50);
-    border-radius: 8px;
-    width: 98%;
-    margin: auto;
-    padding: 4px 8px;
-    font-size: 18px;
-}
-
-
-
-.row-error {
-  margin: 10px;
-  height: 16px;
-  font-size: 16px;
-}
-
-.error {
-   color: red !important;
-}
-
-.resultCount {
-    color: #0054a0 !important;
-    font-size: 18px;
-}
-
-.productCount {
-    margin-left: 12px;
-    color: #0054a0 !important;
-    font-size: 18px;
-}
 
 
 /*------------------------------------------------------------------------------
@@ -279,8 +282,12 @@ a:hover {
 }
 
 .col-results {
-    padding: 20px 2px !important;
+    padding: 0x !important;
 
+}
+
+.col-results p {
+    float: left;
 }
 
 .col-load-more {
@@ -289,14 +296,14 @@ a:hover {
 
 
 
-.search-wrapper {
+.filter-wrapper {
     width: 80%;
     margin: auto;
     margin-bottom: 10px;
     text-align: center;
 }
 
-.search-wrapper label {
+.filter-wrapper label {
     margin: 0px;
     color: #55595d;
 }
@@ -390,12 +397,12 @@ td {
     bottom: 0;
     width: 100%;
     padding-left: 9.5%;
-    padding-right: 9.5%;
+    padding-right: 10.5%;
     text-align: center;
     background-color: transparent;
 }
 
-.footer-right {
+.footer-right p{
     float: right !important;
 }
 
@@ -405,6 +412,7 @@ td {
     color: #868e96;
     padding: 15px 0px;
     text-align: center;
+    float: left;
 }
 
 .footer a {
@@ -419,7 +427,7 @@ td {
 }
 
 /*----------------------------------------------
-
+    ANIMATIONS & EFFECTS
 ------------------------------------------------*/
 
 
