@@ -6,7 +6,7 @@
     </div>
   <div class="dashboard-cards">
     <div class="row row-cards">
-        <div v-for="(brand, i) in filteredList" :key="i" class="col m2 plain-element">
+        <div v-for="(brand, i) in filteredList" :key="i" class="col s6 m3 l2 plain-element">
             <router-link :to="{ name: 'brand-details', params: {brand: brand}}">
                 <div class="card company-card">
                     <div class="card-image"><img  :src="'/static/img/brands/' + brand + '.png'" class="img responsive">

@@ -10,19 +10,25 @@
                     </router-link>
                 </div>
                 <div class="row plain-element">
-                    <div class="col s5 m5 l5 plain-element left-align">
+                    <div class="col s2 m3 l5 plain-element left-align col-product-images">
                         <div class="row plain-element left-align">
                             <img :src="'/static/img/products/sample' + product.image + '.jpg'" class="img responsive img-description">
                         </div>
                         <br>
                         <div class="row plain-element left-align" style="display:block">
-                            <img src="/static/img/products/sample2.jpg" class="img responsive">
-                            <img src="/static/img/products/sample3.jpg" class="img responsive">
-                            <img src="/static/img/products/sample4.jpg" class="img responsive">
+                          <div class="col s12 m12 l4 plain-element left-align">
+                              <img src="/static/img/products/sample2.jpg" class="img img-small">
+                          </div>
+                          <div class="col s12 m12 l4 plain-element left-align">
+                              <img src="/static/img/products/sample3.jpg" class="img img-small">
+                          </div>
+                          <div class="col s12 m12 l4 plain-element left-align">
+                              <img src="/static/img/products/sample4.jpg" class="img img-small">
+                          </div>
                         </div>
 
                     </div>
-                    <div class="col s6 m7 l7 plain-element">
+                    <div class="col s10 m9 l7 plain-element">
                         <div class="row plain-element left-align">
                             <h4>{{ product.product_name}}</h4>
                             <h5>by <router-link :to="{ name: 'brand-details', params: {brand: product.product_brand}}">

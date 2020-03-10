@@ -1,9 +1,10 @@
+/*----------------------------------------------
+    LOGIN/REGISTER FORMS
+------------------------------------------------*/
+
 body {
     background-color: #bfbfbf;
-    background-size: cover;
 }
-
-
 
 #page-index {
     background-image: none;
@@ -13,7 +14,6 @@ body {
     padding-top: 148px;
     width: 70%;
     margin: auto;
-    min-height: 1000px;
 }
 
 .form-signin {
@@ -59,8 +59,12 @@ body {
 }
 
 .form-box {
+    margin: 0px;
     margin-top: -50px;
     padding: 0px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: none;
 }
 
 .row-login {

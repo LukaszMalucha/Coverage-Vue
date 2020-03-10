@@ -8,9 +8,8 @@
     </div>
     <div class="dashboard-cards">
         <div class="row row-break"></div>
-        <div class="row row-cards">
-            <div class="col m2 plain-element"></div>
-            <div class="col m4 plain-element">
+        <div class="row row-menu center-align ">
+            <div class="col s12 m6 l6 plain-element">
             <router-link :to="{ name: 'brands'}">
                 <div class="card menu-card">
                     <div class="card-image"><img
@@ -23,7 +22,7 @@
                   </div>
                   </router-link>
             </div>
-            <div class="col m4 plain-element">
+            <div class="col s12 m6 l6 plain-element">
                 <router-link :to="{ name: 'documents'}">
                     <div class="card menu-card">
                         <div class="card-image"><img
@@ -38,7 +37,7 @@
                         </div>
                 </router-link>
             </div>
-            <div class="col m2 plain-element"></div>
+
         </div>
     </div>
 </div>

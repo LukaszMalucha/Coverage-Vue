@@ -78,7 +78,7 @@
 
 .company-card {
   width: 92%;
-  margin-left: 0.1%;
+  margin-left: 1%;
 
 }
 
@@ -88,9 +88,7 @@
     PRODUCT LIST CARDS
 ------------------------------------------------*/
 
-.img-banner {
-  border-radius: 4px;
-}
+
 
 .productCount {
     margin-left: 0px;
@@ -101,19 +99,19 @@
 .card-product {
     width: 93%;
     margin-left: 0.1%
-
     box-shadow: 1px 1px 1px 0px #b3b3b3;
     border: 1px solid #b3b3b3;
     border-radius: 4px;
 }
 
 .card-product .card-image {
-    height: 150px;
+
 }
 
 .col-product a {
     color: #414141 !important;
 }
+
 
 .card-product .card-title {
     font-size: 1em;
@@ -132,8 +130,11 @@
 }
 
 .card-product:hover {
-    box-shadow: 0 3px 3px 0 #A9A9A9, 0 3px 2px -2px #A9A9A9, 0 2px 5px 0 #A9A9A9;
+    box-shadow: 0 3px 3px 0 #A9A9A9, 0 3px 2px -2px #A9A9A9, 0 2px 5px 0 #333333;
+    color: #004a8c !important;
 }
+
+
 
 
 .btn-loading {
@@ -178,8 +179,8 @@
 
 .card-description {
     min-height: 780px;
-    width: 99.9%;
-    padding: 10px 20px;
+    width: 98%;
+    padding: 10px 20px 40px 20px;
     border-radius: 4px;
     border: 1px solid #b3b3b3;
     box-shadow: 1px 1px 1px 0px #b3b3b3;
@@ -189,6 +190,7 @@
     font-size: 24px;
     line-height: 24px;
     font-weight: 600;
+    margin-top: 0px;
 }
 
 .card-description h5 {
@@ -214,13 +216,14 @@
 }
 
 .img-small {
-    height: 30px;
+    width: 98%;
+    margin-right: 2%;
 }
 
 .row-functions {
     margin: 10px 0px !important;
     width: 90%;
-    padding: 10px 0px;
+    padding: 0px;
     border-style: solid;
     border-color: rgba(0,0,0,0.1);
     border-width: 1px 0 1px 0;
@@ -230,7 +233,7 @@
     background: #0054a0;
     border-radius: 4px;
     font-size: 16px;
-    margin: 0px 20px 0px 0px;
+    margin: 10px 20px 10px 0px;
     height: 32px;
     line-height: 32px;
 }
@@ -253,8 +256,12 @@
 ------------------------------------------------*/
 
 .row-documents {
-    width: 80%;
-    margin: auto;
+    width: 79%;
+    margin-left: 10%;
+}
+
+.row-documents .btn-loading {
+  margin-right: 0px;
 }
 
 .row-document {
@@ -385,7 +392,7 @@
 .topic-tier-3 {
     font-weight: 600;
     font-size: 14px;
-    color: #333;
+    color: #414141;
 }
 
 .topic-tier-4 {
@@ -408,21 +415,134 @@
 .topic-tier-4:hover,
 .topic-tier-4:active,
 .topic-tier-4:focus {
-    color: #0054a0;
+    color: #005eb4 !important;
 }
 
-.col-topics .filter-wrapper {
+.col-topics .filter-topics {
     width: 60%;
     margin-right: 40%;
     margin-bottom: -8px;
 }
 
-.col-topics li {
+li {
     margin-bottom: 10px;
-    margin-left: 16px;
+    margin-left: 16px !important;
+}
+
+ol {
+    margin: 5px;
+}
+
+/*----------------------------------------------
+    MEDIA QUERIES
+------------------------------------------------*/
+
+
+@media(max-width:1700px) {
+  .dashboard-cards {
+    width: 98%;
+  }
+
+  .searchbox-long {
+    width: 99%;
+    margin-left: 1%;
+  }
+
+  .row-documents {
+    width: 98%;
+    margin-left: 1%;
+  }
+
 }
 
 
 
+@media(max-width:1361px) {
 
+}
+
+@media(max-width:1200px) {
+
+
+}
+
+
+@media(max-width:1025px) {
+  .card-product .card-title {
+    font-size: 0.9em;
+  }
+
+  .row-document {
+    height: 100px;
+  }
+
+  .row-document h6 {
+    font-size: 14px;
+   }
+
+  .img-document {
+    padding: 35px 0px;
+  }
+
+
+}
+
+@media(max-width:800px) {
+
+  .btn-document {
+    font-size: 14px;
+  }
+
+  .row-document {
+    height: 110px;
+  }
+
+  .row-documents {
+    width: 96%;
+    margin-left: 2%;
+  }
+
+  .row-meta-top {
+    height: 60px;
+  }
+
+
+
+}
+
+
+@media(max-width:600px) {
+  .dashboard-cards {
+    width: 96%;
+  }
+
+  .row-document {
+    height: 130px;
+  }
+
+  .row-document h6{
+    height: 12px;
+  }
+
+  .searchbox-wrapper-long {
+      width: 97%;
+  }
+
+  .col-results {
+    display: none;
+  }
+
+  .btn-loading {
+    font-size: 10px;
+  }
+
+  .row-back {
+      margin-bottom: 20px;
+  }
+
+  .col-product-images {
+    display: none;
+  }
+
+}
 

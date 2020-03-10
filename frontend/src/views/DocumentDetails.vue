@@ -11,7 +11,7 @@
                 </div>
                 <br>
                 <div class="row plain-element">
-                    <div class="col s6 m6 l6 plain-element">
+                    <div class="col s6 m8 l6 plain-element">
                         <div class="row plain-element left-align">
                             <h4>{{ document.document_title}}</h4>
                             <h5> {{ product_name }} </h5>
@@ -24,46 +24,19 @@
                                 <i class="fas fa-file-code"></i> &nbsp; Document in HTML
                             </a>
                         </div>
-                        <div class="row plain-element left-align">
-                            <h6>Document Number: </h6>
-                            <p>{{ document.document_number }}</p>
-                        </div>
-                        <div class="row plain-element left-align">
-                            <h6>Document Version: </h6>
-                            <p>{{ document.document_version }}</p>
-                        </div>
-                        <div class="row plain-element left-align">
-                            <h6>Document Type: </h6>
-                            <p>{{ document.document_version }}</p>
-                        </div>
-                        <div class="row plain-element left-align">
-                            <h6>Date Created: </h6>
-                            <p>{{ document.document_created_at}}</p>
-                        </div>
-                        <div class="row plain-element left-align">
-                            <h6>Last Edition:  </h6>
-                            <p>{{ document.document_last_edition }}</p>
-                        </div>
-                        <div class="row plain-element left-align">
-                            <h6>Last Publication: </h6>
-                            <p>{{ document.document_last_publication }}</p>
-                        </div>
-                        {{document.topics}}
-                    </div>
-                    <div class="col s6 m6 l6 plain-element col-topics">
-                        <div class="row plain-element left-align">
-
+                        <br>
+                         <div class="row plain-element left-align">
                             <div class="col s6 m6 l6 plain-element left-align">
                                 <h4>Document Content:</h4>
                             </div>
-                            <div class="col s6 m6 l6 plain-element">
-                                <div class="filter-wrapper">
-                                    <input type="text" placeholder="Topic Filter" class="place-holder-center"
-                                           v-model="search"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-for="element in filteredTopicList"  class="row plain-element left-align" :key="element.id">
+                         </div>
+                         <div class="row plain-element left-align">
+                              <div class="col s4 m4 l3 plain-element left-align">
+                                    <input type="text" placeholder="Topic Filter" v-model="search"/>
+                              </div>
+                          </div>
+                          <br>
+                         <div v-for="element in filteredTopicList"  class="row plain-element left-align" :key="element.id">
                             <div v-if="element.topic_depth == 2" class="row plain-element left-align">
                                 <li>
                                     <a class="topic-tier-2" target="_blank" :href="'https://johnsoncontrols.fluidtopics.net' + element.topic_link">
@@ -99,6 +72,35 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col s6 m4 l6 plain-element col-topics">
+                        <div class="row plain-element left-align">
+                                <h4>Document Metadata:</h4>
+                        </div>
+                        <div class="row plain-element left-align">
+                            <h6>Document Number: </h6>
+                            <p>{{ document.document_number }}</p>
+                        </div>
+                        <div class="row plain-element left-align">
+                            <h6>Document Version: </h6>
+                            <p>{{ document.document_version }}</p>
+                        </div>
+                        <div class="row plain-element left-align">
+                            <h6>Document Type: </h6>
+                            <p>{{ document.document_version }}</p>
+                        </div>
+                        <div class="row plain-element left-align">
+                            <h6>Date Created: </h6>
+                            <p>{{ document.document_created_at}}</p>
+                        </div>
+                        <div class="row plain-element left-align">
+                            <h6>Last Edition:  </h6>
+                            <p>{{ document.document_last_edition }}</p>
+                        </div>
+                        <div class="row plain-element left-align">
+                            <h6>Last Publication: </h6>
+                            <p>{{ document.document_last_publication }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,7 +112,6 @@
 <script>
 import { apiService } from "@/common/api.service.js";
 import _ from 'lodash';
-
 export default {
   name: "DocumentDetails",
   components: {
@@ -150,7 +151,6 @@ export default {
           }
         })
     },
-
   },
   computed: {
     filteredTopicList() {
@@ -158,7 +158,6 @@ export default {
         return topic.topic_title.toLowerCase().includes(this.search.toLowerCase())
       })
     },
-
   },
   created() {
     this.getDocumentData();

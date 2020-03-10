@@ -1,7 +1,7 @@
 <template>
     <div id="page-index">
         <div class="row header">
-            <div class="row searchbox-wrapper">
+            <div class="row searchbox-wrapper searchbox-long">
                 <form @submit.prevent="onSubmit">
                     <input class="form-control" id="searchbox" type="text" placeholder="Search for Document"
                            aria-label="Search for Document" v-model="searchQuery">
@@ -17,57 +17,58 @@
         <div class="dashboard-cards">
             <div class="row row-documents">
                 <div class="row plain-element">
-                    <div class="col s1 m4 l4 col-results plain-element left-align">
+                    <div class="col s1 m3 l4 col-results plain-element left-align">
                         <p class="resultCount" v-if="resultCount">{{ resultCount }}</p>
                     </div>
-                    <div class="col s10 m4 l4 plain-element">
+                    <div class="col s9 m6 l4 plain-element">
                         <div id="tableSearch" class="filter-wrapper">
-                            <input type="text" placeholder="Keyword Search" class="place-holder-center"
+                            <input type="text" placeholder="Keyword Filter" class="place-holder-center"
                                    v-model="search"/>
                         </div>
                     </div>
-                    <div class="col s1 m4 l4 plain-element right-align">
+                    <div class="col s3 m3 l4 plain-element right-align">
                         <button v-show="next" @click="onSubmit" class="btn btn-loading">
                             Load More
                         </button>
                     </div>
                 </div>
                 <div v-for="document in filteredDocumentList" :key="document.id" class="row plain-element">
-
+                  <router-link :to="{ name: 'document-details', params: {id: document.id}}">
                     <div class="row plain-element row-document">
-                        <div class="col s1 m1 l1 plain-element col-image">
+                        <div class="col s2 m2 l1 plain-element col-image">
                             <img :src="'/static/img/brands/' + document.clean_brand + '.png'"  class="img img-document">
                         </div>
-                        <div class="col s11 m11 l11 plain-element left-align">
+                        <div class="col s10 m10 l11 plain-element left-align">
                             <div class="row row-meta-top">
-                              <div class="col s8 m8 l8 plain-element left-align">
+                              <div class="col s8 m9 l8 plain-element left-align">
                                   <h6>{{ document.document_title }}</h6>
                               </div>
-                              <div class="col s4 m4 l4 plain-element left-align">
+                              <div class="col s4 m3 l4 plain-element left-align">
                                   <a target="_blank" class="btn-quicklook" :href="'https://johnsoncontrols.fluidtopics.net' + document.document_link">
                                       <i class="fas fa-eye"></i> Quick Look
                                   </a>
                               </div>
                             </div>
                             <div class="row row-meta-bottom">
-                                <div class="col s2 m2 l2 plain-element left-align">
+                                <div class="col s6 m3 l2 plain-element left-align">
                                     <p><i class="far fa-file-alt"></i> &nbsp; {{ document.document_number}}</p>
                                 </div>
-                                <div class="col s2 m2 l2 plain-element left-align">
+                                <div class="col s6 m3 l2 plain-element left-align">
                                     <p><i class="far fa-calendar-plus"></i> &nbsp; {{ document.document_created_at }}</p>
                                 </div>
-                                <div class="col s2 m2 l2 plain-element left-align">
+                                <div class="col s6 m3 l2 plain-element left-align">
                                     <p><i class="fas fa-edit"></i> &nbsp; {{ document.document_last_edition}}</p>
                                 </div>
-                                <div class="col s2 m2 l2 plain-element left-align">
+                                <div class="col s6 m3 l2 plain-element left-align">
                                     <p><i class="far fa-bookmark"></i> &nbsp; {{ document.topic.length }} Topics</p>
                                 </div>
-                                <div class="col s4 m4 l4 plain-element left-align">
+                                <div class="col s12 m12 l4 plain-element left-align">
                                     <p><i class="fas fa-cube"></i> &nbsp; {{ document.product.product_name| truncatechars(48) }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                  </router-link>
                  </div>
                  <br>
                 <div class="row">
