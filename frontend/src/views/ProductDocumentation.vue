@@ -2,7 +2,7 @@
     <div id="page-index">
         <div class="row header">
             <div class="row searchbox-wrapper searchbox-long">
-                <form @submit.prevent="submitQuery">
+                <form @submit.prevent="onSubmit">
                     <input class="form-control" id="searchbox" type="text" placeholder="Search for Document"
                            aria-label="Search for Document" v-model="searchQuery">
                     <button class="btn-transparent" type="submit"><i class="fas fa-search search-icon"></i></button>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="col s3 m3 l4 plain-element right-align">
-                        <button v-if="resultCount && filteredDocumentList.length > 0" v-show="next" @click="submitQuery" class="btn btn-loading">
+                        <button v-if="resultCount && filteredDocumentList.length > 0" v-show="next" @click="onSubmit" class="btn btn-loading">
                             Load More
                         </button>
                     </div>
@@ -72,7 +72,7 @@
                  </div>
                  <br>
                 <div v-if="resultCount && filteredDocumentList.length > 0" class="row plain-element">
-                   <button v-show="next" @click="submitQuery" class="btn btn-loading">
+                   <button v-show="next" @click="onSubmit" class="btn btn-loading">
                             Load More
                     </button>
                 </div>
@@ -90,12 +90,6 @@ import { apiService } from "@/common/api.service.js";
 
 export default {
   name: "Documents",
-    props: {
-    productId: {
-      type: String,
-      required: false,
-    }
-  },
   components: {
 
   },
@@ -112,7 +106,7 @@ export default {
     }
   },
   methods: {
-    submitQuery() {
+    onSubmit() {
         this.resultCount = null;
         this.search = "";
         if (!this.searchQuery) {
@@ -182,12 +176,6 @@ export default {
   },
   created() {
     document.title = "Document Search";
-    if (this.productId) {
-      this.searchQuery = this.productId;
-      this.submitQuery();
-      window.console.log(this.searchQuery);
-      this.searchQuery = null;
-    }
   }
 }
 

@@ -44,7 +44,8 @@ export default new Router({
     {
       path: "/documents",
       name: "documents",
-      component: Documents
+      component: Documents,
+      props: true
     },
     {
       path: "/document/:id",

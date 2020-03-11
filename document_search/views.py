@@ -13,7 +13,7 @@ class DocumentViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAdminOrReadOnly,)
     serializer_class = serializers.DocumentModelSerializer
     filter_backends = (filters.SearchFilter, filters.OrderingFilter)
-    search_fields = ("document_title", "document_number","product__product_name")
+    search_fields = ("document_title", "document_number","product__product_name", "product__product_identifier")
     ordering_fields = "__all__"
     queryset = DocumentModel.objects.order_by("document_title")
 

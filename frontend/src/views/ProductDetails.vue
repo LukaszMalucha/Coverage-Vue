@@ -5,7 +5,7 @@
         <div class="row row-cards">
             <div class="card card-description">
                 <div class="row left-align row-back">
-                    <router-link :to="{ name: 'brand-details', params: {brand: product.product_brand}}">
+                    <router-link :to="{ name: 'brand-details', params: {brand: product.clean_brand}}">
                     <i class="fas fa-chevron-left"></i> Back To Search
                     </router-link>
                 </div>
@@ -31,17 +31,14 @@
                     <div class="col s10 m9 l7 plain-element">
                         <div class="row plain-element left-align">
                             <h3>{{ product.product_name}}</h3>
-                            <h5>by <router-link :to="{ name: 'brand-details', params: {brand: product.product_brand}}">
+                            <h5>by <router-link :to="{ name: 'brand-details', params: {brand: product.clean_brand}}">
                                     {{ product.product_brand}}
                                    </router-link> </h5>
                         </div>
                         <div class="row row-functions left-align">
-                            <a class="btn btn-document" href="">
-                                <i class="fas fa-file-pdf"></i> &nbsp; Document in PDF
-                            </a>
-                            <a class="btn btn-document" href="">
-                                <i class="fas fa-file-code"></i> &nbsp; Document in HTML
-                            </a>
+                            <router-link class="btn btn-document" :to="{ name: 'documents', params: {productId: product.product_identifier}}">
+                                <i class="fas fa-file-pdf"></i> &nbsp; Documentation
+                            </router-link>
                         </div>
                         <div class="row plain-element left-align">
                             <h6>Category: </h6>
@@ -77,9 +74,8 @@ import { apiService } from "@/common/api.service.js";
 
 export default {
   name: "ProductDetails",
-  components: {
-  },
   props: {
+//  Product Id that is being passed as a search query
     id: {
       required: true
     }
@@ -90,16 +86,15 @@ export default {
     }
   },
   methods: {
+//  Method that retrieve product data
     getProductData() {
     let endpoint = `/api/products/product/${this.id}/`;
     apiService(endpoint)
         .then(data => {
-          window.console.log(endpoint);
           window.console.log(data);
           if (data) {
             this.product = data;
             document.title = this.product.product_name;
-
           } else {
             this.product = null;
             document.title = "404 - Page Not Found"

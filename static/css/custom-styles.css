@@ -122,9 +122,10 @@ a:hover {
 .img-banner {
   border-radius: 4px;
   max-width: 100%;
-  margin-right: 0.5%;
   box-shadow: 1px 1px 1px 0px #c7c7c7;
   border: 1px solid #c7c7c7;
+  cursor: pointer;
+  vertical-align:middle;
 }
 
 
@@ -171,6 +172,7 @@ a:hover {
     background: transparent;
     box-shadow: none;
     border: none;
+    cursor: pointer;
 }
 
 .btn-transparent:hover,
