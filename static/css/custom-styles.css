@@ -392,6 +392,29 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) {
 }
 
 /*----------------------------------------------
+    ERROR 404
+------------------------------------------------*/
+#errorContainer {
+  padding-top: 40px;
+  height: 900px;
+  background: white;
+  text-align: center;
+}
+
+
+#mainContainer { margin:0 auto 20px auto; width:940px; padding:0; text-align:left; }
+.company { display:inline; float:left; margin:40px 0 0px 280px; }
+.robot { display:inline; float:left; width:280px; margin:0; overflow:visible; }
+.error-header { display:inline; float:left; width:660px; font-size:20px; margin:50px 0 0 0; }
+.mainContent { display:inline; float:left; width:660px; }
+.largeFont { font-size:24px; }
+.p-error { margin:18px 0; padding:0; line-height:1.4em; font-size:16px;}
+.ul-error { margin:-10px 0 0 26px; padding:0; }
+.ul-error li { margin:5px 0; padding:0; font-size:16px;}
+.ul-error a { color:#3366cc; text-decoration:none; font-size:17px;}
+
+
+/*----------------------------------------------
     ANIMATIONS & EFFECTS
 ------------------------------------------------*/
 
