@@ -15,12 +15,14 @@ class TopicSerializer(serializers.ModelSerializer):
 class DocumentModelSerializer(serializers.ModelSerializer):
     """Serializer for Document Model"""
 
-    topic = TopicSerializer(many=True, read_only=True)
+    topics = TopicSerializer(many=True, read_only=True)
     clean_brand = serializers.SerializerMethodField("clean_brand_field")
 
     def clean_brand_field(self, obj):
         clean_brand = reverse_brand_name(obj.product.product_brand)
         return clean_brand
+
+
 
     class Meta:
         model = DocumentModel

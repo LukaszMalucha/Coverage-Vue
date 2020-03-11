@@ -54,8 +54,7 @@
         <ul class="nav navbar-top-links navbar-right">
             <li><a class="nav-link" href="/brands"><i class="fas fa-cube"></i><b>Product Search</b></a></li>
             <li><a class="nav-link" href="/documents"><i class="fas fa-file"></i><b>Document Search</b></a></li>
-            <li><a class="nav-link" href="/api/"><i class="fas fa-terminal"></i><b>REST Api</b></a>
-            </li>
+
             <li><a class="nav-link"
                    href="{% url 'db_manager:db-manager' %}"><i class="fas fa-database"></i>
                 <b>DB Manager</b></a></li>
@@ -81,6 +80,7 @@
         <li><a href="{% url 'user:login' %}"><i class="fas fa-sign-out-alt"></i> Log In</a></li>
         <li><a href="{% url 'user:register' %}"><i class="fas fa-tasks"></i> Register</a></li>
         {% endif %}
+        <li><a href="/api/"><i class="fas fa-terminal"></i>API</a></li>
     </ul>
 
 
@@ -91,7 +91,7 @@
         <li><a class="dropdown-button waves-effect waves-dark" href="/api/"><i
                 class="fas fa-terminal"></i><b>REST Api</b></a></li>
         <li><a class="dropdown-button waves-effect waves-dark"
-               href="/"><i class="fab fa-github"></i> <b>DB Manager</b></a>
+               href="{% url 'db_manager:db-manager' %}"><i class="fab fa-github"></i> <b>DB Manager</b></a>
         </li>
         {% if user.is_authenticated %}
         <li><a href="{% url 'user:profile' %}"><i class="fas fa-sign-out-alt"></i> My Profile</a></li>

@@ -119,7 +119,7 @@ class TopicModel(models.Model):
     topic_depth = models.IntegerField(blank=False, default=0)  # Keep zero for later QA checks
     topic_last_edition = models.DateField(blank=True)
     topic_link = models.CharField(max_length=254, default="Not Specified", blank=True)
-    document = models.ForeignKey(DocumentModel, on_delete=models.CASCADE, related_name="topic")
+    document = models.ForeignKey(DocumentModel, on_delete=models.CASCADE, related_name="topics")
     uploaded = models.DateTimeField(auto_now=True)
 
     objects = models.Manager()

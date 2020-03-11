@@ -30,7 +30,7 @@
           </div>
           <div class="col s8 m4 l4 plain-element">
             <div id="productSearch" class="filter-wrapper">
-              <input type="text" placeholder="Keyword Filter" class="place-holder-center" v-model="search"/>
+              <input type="text" placeholder="Keyword Filter" class="place-holder-center center-align" v-model="search"/>
             </div>
           </div>
           <div v-if="filteredProductList.length > 0" class="col s4 m4 l4 plain-element right-align">
@@ -130,7 +130,6 @@ export default {
       await apiService(endpoint)
        .then(data => {
           window.console.log(data);
-          document.getElementById("productSearch").style.display = "inline-table";
           this.productList.push(...data.results);
           this.resultCount = data.count + " Products";
           this.loadingProducts = false;
@@ -176,7 +175,6 @@ export default {
                      this.loadingProducts = false;
                      this.loadingQuery = false;
                      this.resultCount = data.count + " Products";
-                     document.getElementById("productSearch").style.display = "inline-table"
                      if(data.next) {
                         this.nextQuery = data.next;
                         } else {

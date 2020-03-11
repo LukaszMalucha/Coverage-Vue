@@ -325,6 +325,10 @@
     padding-left: 2px;
 }
 
+.col-meta-title {
+    width: 100%;
+}
+
 .row-meta-bottom {
     color: rgba(0, 0, 0, 0.6) !important;
     width: 99%;

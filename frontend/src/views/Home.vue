@@ -13,7 +13,7 @@
             <router-link :to="{ name: 'brands'}">
                 <div class="card menu-card">
                     <div class="card-image"><img
-                            src="@/img/jc-grey.png"
+                            src="/static/img/jc-grey.png"
                             class="img responsive">
                     </div>
                       <button class="btn btn-menu-card">
@@ -26,7 +26,7 @@
                 <router-link :to="{ name: 'documents'}">
                     <div class="card menu-card">
                         <div class="card-image"><img
-                                src="@/img/docs.jpg"
+                                src="/static/img/docs.jpg"
                                 class="img responsive">
                         </div>
                         <router-link :to="{ name: 'documents'}">
