@@ -17,7 +17,6 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -28,7 +27,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
 
 # Application definition
 
@@ -43,8 +41,8 @@ INSTALLED_APPS = [
     "django_forms_bootstrap",
     "materializecssform",
 
-    'rest_framework',
-    'rest_framework.authtoken',
+    "rest_framework",
+    "rest_framework.authtoken",
 
     "allauth",
     "allauth.account",
@@ -83,13 +81,13 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = "tech_comms.wsgi.application"
-
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -104,7 +102,6 @@ else:
             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -124,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -138,12 +134,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATICFILES_LOCATION = "static"
-
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (
@@ -151,8 +145,7 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_URL = "/media/"
-MEDIAFILES_LOCATION = 'media'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 LOGIN_URL = "/user/login"
@@ -166,17 +159,16 @@ SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
 
-
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
     ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",
     ),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 48
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 48
 }
 
 WEBPACK_LOADER = {
@@ -188,9 +180,3 @@ WEBPACK_LOADER = {
 
 # Get User model
 AUTH_USER_MODEL = "core.User"
-
-
-
-
-
-

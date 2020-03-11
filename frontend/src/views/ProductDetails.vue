@@ -30,7 +30,7 @@
                     </div>
                     <div class="col s10 m9 l7 plain-element">
                         <div class="row plain-element left-align">
-                            <h4>{{ product.product_name}}</h4>
+                            <h3>{{ product.product_name}}</h3>
                             <h5>by <router-link :to="{ name: 'brand-details', params: {brand: product.product_brand}}">
                                     {{ product.product_brand}}
                                    </router-link> </h5>

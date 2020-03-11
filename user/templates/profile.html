@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load staticfiles %}
+{% extends "base.html" %} {% load static %}
 {% block extrahead %}
 <link href="{% static 'css/forms.css' %}" rel="stylesheet"/>
 {% endblock %}
@@ -30,11 +30,12 @@
 
   <div class="user-profile">
     <div class="row plain-element">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 plain-element col-background">
+      <div class="col s3 m3 l3 plain-element col-background">
 
       </div>
-      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-center col-profile">
+      <div class="col s9 m9 l9 text-center col-profile">
         <div class="row plain-element">
+          <br>
           <div class="portrait">
             {% if my_profile.image %}
             <img src="{{ my_profile.image.url }}" class="img responsive img-portrait">

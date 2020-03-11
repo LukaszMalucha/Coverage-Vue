@@ -18,7 +18,7 @@
             <div class="row row-documents">
                 <div class="row plain-element">
                     <div class="col s1 m3 l4 col-results plain-element left-align">
-                        <p class="resultCount" v-if="resultCount">{{ resultCount }}</p>
+                        <p class="resultCount" v-if="resultCount && filteredDocumentList.length > 0">{{ resultCount }}</p>
                     </div>
                     <div class="col s9 m6 l4 plain-element">
                         <div id="tableSearch" class="filter-wrapper">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="col s3 m3 l4 plain-element right-align">
-                        <button v-show="next" @click="onSubmit" class="btn btn-loading">
+                        <button v-if="resultCount && filteredDocumentList.length > 0" v-show="next" @click="onSubmit" class="btn btn-loading">
                             Load More
                         </button>
                     </div>
@@ -38,12 +38,12 @@
                         <div class="col s2 m2 l1 plain-element col-image">
                             <img :src="'/static/img/brands/' + document.clean_brand + '.png'"  class="img img-document">
                         </div>
-                        <div class="col s10 m10 l11 plain-element left-align">
+                        <div class="col s12 m10 l11 plain-element left-align">
                             <div class="row row-meta-top">
-                              <div class="col s8 m9 l8 plain-element left-align">
+                              <div class="col s10 m9 l8 plain-element left-align">
                                   <h6>{{ document.document_title }}</h6>
                               </div>
-                              <div class="col s4 m3 l4 plain-element left-align">
+                              <div class="col s12 m3 l4 plain-element left-align">
                                   <a target="_blank" class="btn-quicklook" :href="'https://johnsoncontrols.fluidtopics.net' + document.document_link">
                                       <i class="fas fa-eye"></i> Quick Look
                                   </a>
@@ -71,10 +71,13 @@
                   </router-link>
                  </div>
                  <br>
-                <div class="row">
+                <div v-if="resultCount && filteredDocumentList.length > 0" class="row plain-element">
                    <button v-show="next" @click="onSubmit" class="btn btn-loading">
                             Load More
                     </button>
+                </div>
+                <div v-if="resultCount && filteredDocumentList.length == 0"   class="row plain-element">
+                  <h6>No results match search criteria</h6>
                 </div>
             </div>
         </div>

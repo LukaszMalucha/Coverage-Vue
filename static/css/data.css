@@ -89,7 +89,6 @@
 ------------------------------------------------*/
 
 
-
 .productCount {
     margin-left: 0px;
     color: #0054a0 !important;
@@ -98,8 +97,7 @@
 
 .card-product {
     width: 93%;
-    margin-left: 0.1%
-    box-shadow: 1px 1px 1px 0px #b3b3b3;
+    margin-left: 0.5%;
     border: 1px solid #b3b3b3;
     border-radius: 4px;
 }
@@ -163,7 +161,7 @@
 
 .row-back {
     position: relative;
-    font-size: 24px;
+    font-size: 20px;
     height: 32px;
     margin-bottom: 10px;
 }
@@ -186,15 +184,29 @@
     box-shadow: 1px 1px 1px 0px #b3b3b3;
 }
 
-.card-description h4 {
-    font-size: 24px;
-    line-height: 24px;
+.card-description h3 {
+    font-size: 28px;
+    line-height: 28px;
     font-weight: 600;
     margin-top: 0px;
 }
 
+.card-description h4 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
 .card-description h5 {
     font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+    height: 32px;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: 400;
+    vertical-align:middle;
 }
 
 .card-description b {
@@ -220,6 +232,10 @@
     margin-right: 2%;
 }
 
+.img-icon {
+  height: 36px;
+}
+
 .row-functions {
     margin: 10px 0px !important;
     width: 90%;
@@ -227,6 +243,10 @@
     border-style: solid;
     border-color: rgba(0,0,0,0.1);
     border-width: 1px 0 1px 0;
+}
+
+.row-functions-long {
+    width: 95%;
 }
 
 .btn-document {
@@ -390,16 +410,16 @@
 }
 
 .topic-tier-3 {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 14px;
-    color: #414141;
+    color: #333;
 }
 
 .topic-tier-4 {
     font-weight: 400;
     font-size: 14px;
     margin-left: 40px;
-    color: #333;
+    color: #414141;
 }
 
 
@@ -424,12 +444,12 @@
     margin-bottom: -8px;
 }
 
-li {
+.col-topics li {
     margin-bottom: 10px;
     margin-left: 16px !important;
 }
 
-ol {
+.col-topics ol {
     margin: 5px;
 }
 
@@ -517,7 +537,7 @@ ol {
   }
 
   .row-document {
-    height: 130px;
+    height: 180px;
   }
 
   .row-document h6{
@@ -532,6 +552,14 @@ ol {
     display: none;
   }
 
+  .col-image {
+    display: none;
+  }
+
+  .row-meta-top {
+    height: 80px;
+  }
+
   .btn-loading {
     font-size: 10px;
   }
@@ -542,6 +570,10 @@ ol {
 
   .col-product-images {
     display: none;
+  }
+
+  .card-description h3 {
+    font-size: 24px;
   }
 
 }

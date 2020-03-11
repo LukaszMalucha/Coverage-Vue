@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col s2 m2 l2 left-align col-brand">
                 <a @click="getBrandData">
-                    <img :src="'/static/img/brands/' + brand + '.png'" class="img responsive img-banner">
+                    <img :src="'/static/img/brands/' + brand + '.png'" class="img responsive img-banner" style="vertical-align:middle">
                 </a>
             </div>
             <div class="col s12 m12 l10 col-searchbox">
@@ -28,14 +28,14 @@
         </div>
         <div class="row plain-element row-table-functions">
             <div class="col s3 m4 l4 col-results plain-element left-align">
-                <p class="productCount" v-if="resultCount">{{ resultCount }}</p>
+                <p class="productCount" v-if="resultCount && filteredProductList.length > 0">{{ resultCount }}</p>
             </div>
             <div class="col s8 m4 l4 plain-element">
               <div id="productSearch" class="filter-wrapper">
                 <input type="text" placeholder="Keyword Filter" class="place-holder-center" v-model="search"/>
               </div>
             </div>
-            <div class="col s4 m4 l4 plain-element right-align">
+            <div v-if="filteredProductList.length > 0" class="col s4 m4 l4 plain-element right-align">
                 <button v-show="next" @click="getBrandData" class="btn btn-loading">
                     Load More
                 </button>
@@ -62,16 +62,20 @@
             </div>
 
         </div>
-        <div class="row plain-element ">
+        <div v-if="filteredProductList.length > 0"   class="row plain-element">
           <p v-show="loadingProducts">...loading...</p>
           <button v-show="next" @click="getBrandData" class="btn btn-loading">
           Load More
           </button>
         </div>
-        <div class="row plain-element">
+        <div v-if="filteredProductList.length > 0" class="row plain-element">
           <button v-show="nextQuery" @click="onSubmit" class="btn btn-loading">
           Load More
           </button>
+        </div>
+        <div v-if="filteredProductList.length == 0"   class="row plain-element">
+          <h6>No results match search criteria</h6>
+
         </div>
     </div>
 </div>
