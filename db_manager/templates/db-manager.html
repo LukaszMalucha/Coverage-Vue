@@ -35,152 +35,41 @@
               </form>
             </div>
             <div class="row plain-element ">
+              {% if meta %}
               <div class="row plain-element left-align">
                 <h4>Columns Summary:</h4>
               </div>
-              <div class="row plain-element left-align">
-                <h6>Product Name:</h6>
-              </div>
-              <div class="row plain-element left-align">
-                <table class="table-overview">
-                  <tr>
-                    <td class="td-category">Longest String:</td>
-                    <td>12</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Shortest String:</td>
-                    <td>14</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Not Specified:</td>
-                    <td>Doe</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="row plain-element left-align">
-                <h6>Product Brand:</h6>
-              </div>
-              <div class="row plain-element left-align">
-                <table class="table-overview">
-                  <tr>
-                    <td class="td-category">Longest String:</td>
-                    <td>12</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Shortest String:</td>
-                    <td>14</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Not in Brand List:</td>
-                    <td>Doe</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="row plain-element left-align">
-                <h6>Product Category:</h6>
-              </div>
-              <div class="row plain-element left-align">
-                <table class="table-overview">
-                  <tr>
-                    <td class="td-category">Longest String:</td>
-                    <td>12</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Shortest String:</td>
-                    <td>14</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Not Specified:</td>
-                    <td>Doe</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="row plain-element left-align">
-                <h6>Product Code:</h6>
-              </div>
-              <div class="row plain-element left-align">
-                <table class="table-overview">
-                  <tr>
-                    <td class="td-category">Longest String:</td>
-                    <td>12</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Shortest String:</td>
-                    <td>14</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Not Specified:</td>
-                    <td>Doe</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="row plain-element left-align">
-                <h6>Product Series:</h6>
-              </div>
-              <div class="row plain-element left-align">
-                <table class="table-overview">
-                  <tr>
-                    <td class="td-category">Longest String:</td>
-                    <td>12</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Shortest String:</td>
-                    <td>14</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Not Specified:</td>
-                    <td>Doe</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="row plain-element left-align">
-                <h6>Product Series:</h6>
-              </div>
-              <div class="row plain-element left-align">
-                <table class="table-overview">
-                  <tr>
-                    <td class="td-category">Longest String:</td>
-                    <td>12</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Shortest String:</td>
-                    <td>14</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Not Specified:</td>
-                    <td>Doe</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="row plain-element left-align">
-                <h6>Product Business:</h6>
-              </div>
-              <div class="row plain-element left-align">
-                <table class="table-overview">
-                  <tr>
-                    <td class="td-category">Longest String:</td>
-                    <td>12</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Shortest String:</td>
-                    <td>14</td>
-                  </tr>
-                  <tr>
-                    <td class="td-category">Not Specified:</td>
-                    <td>Doe</td>
-                  </tr>
-                </table>
-              </div>
+                {% for element in meta %}
+                <div class="row plain-element left-align">
+                  <h6>{{element.name}}</h6>
+                </div>
+                <div class="row plain-element left-align">
+                  <table class="table-overview">
+                    {% for key, value in element.items %}
+                      {% if key != "name" %}
+                      <tr>
+                        <td class="td-category">{{ key }}</td>
+                        <td>{{ value }}</td>
+                      </tr>
+                      {% endif %}
+                    {% endfor %}
+                  </table>
+                </div>
+                {% endfor %}
+              {% endif %}
             </div>
           </div>
+          {% if head %}
           <div class="col s6 m6 l7 plain-element">
             <div class="row plain-element left-align">
               <h3> dataset_products.csv</h3>
             </div>
             <div class="row plain-element left-align">
-             {{data | safe}}
+
+              {{head | safe}}
             </div>
           </div>
+          {% endif %}
         </div>
       </div>
     </div>
