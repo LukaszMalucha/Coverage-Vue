@@ -238,7 +238,7 @@
 .row-functions {
     margin: 10px 0px !important;
     width: 90%;
-    padding: 0px;
+    padding: 2px 0px;
     border-style: solid;
     border-color: rgba(0,0,0,0.1);
     border-width: 1px 0 1px 0;
@@ -252,9 +252,9 @@
     background: #0054a0;
     border-radius: 4px;
     font-size: 16px;
-    margin: 10px 20px 10px 0px;
-    height: 32px;
-    line-height: 32px;
+    margin: 8px 16px 10px 0px;
+    height: 32px !important;
+    line-height: 32px !important;
 }
 
 .btn-document i {
@@ -455,6 +455,74 @@
 .col-topics ol {
     margin: 5px;
 }
+
+/*----------------------------------------------
+    DATABASE UPLOAD
+------------------------------------------------*/
+
+.file-field .btn-file {
+  background-color: #f2f2f2;
+  color: #777777;
+  font-weight: 600;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 32px;
+  line-height: 32px;
+  margin: 6px 0px;
+  box-shadow: 0 0px 0px 0 rgba(0,0,0,0.14),0 1px 1px -1px rgba(0,0,0,0.12),0 1px 1px 0 rgba(0,0,0,0.2);
+}
+
+.csv-field {
+  margin: 0px 0px;
+}
+
+.csv-field input[type="text"]:not(.browser-default) {
+  margin-bottom: 0px;
+  font-size: 18px;
+}
+
+
+.csv-field input.valid[type="text"]:not(.browser-default) {
+  box-shadow: 0 1px 0 0 transparent;
+  color: #4CAF50;
+  font-size: 18px;
+  margin-bottom: 0px;
+}
+
+.csv-input{
+    border-bottom: 0px solid transparent !important;
+    box-shadow: 0 0px 0 0 transparent;
+    height: 32px;
+    line-height: 32px;
+    margin-bottom: 0px;
+}
+
+.table-overview tr {
+  border-bottom: 0px solid transparent;
+}
+
+.table-overview td {
+  padding: 8px 0px;
+  font-size: 12px;
+}
+
+.td-category {
+  width: 30%;
+}
+
+.dataframe tr {
+  border-bottom: 0px solid transparent;
+}
+
+.dataframe td ,th {
+  text-align: center;
+  padding: 6px 2px;
+  font-size: 12px;
+}
+
+
+
+
 
 /*----------------------------------------------
     MEDIA QUERIES

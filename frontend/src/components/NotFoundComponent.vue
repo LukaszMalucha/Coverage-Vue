@@ -12,7 +12,7 @@
       <br clear="right"/>
 
       <div class="mainContent">
-          <p class="p-error">HTTP 404 Error - The page you are were looking for appears <br> to have been moved, deleted or does not exist</p>
+          <p class="p-error">HTTP 404 Error - The page you are looking for appears <br> to have been moved, deleted or does not exist</p>
 
           <p class="p-error"><strong>You can try:</strong></p>
           <ul class="ul-error">
