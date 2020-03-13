@@ -18,7 +18,8 @@ def clean_brand_list(lst):
         new_element = new_element.replace(" ", "-")
         clean_brands.append(new_element)
 
-    clean_brands.remove("not-specified")
+    if "not-specified" in clean_brands:
+        clean_brands.remove("not-specified")
 
     return clean_brands
 
