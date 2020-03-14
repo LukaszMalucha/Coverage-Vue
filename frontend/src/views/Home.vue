@@ -29,11 +29,9 @@
                                 src="/static/img/docs.jpg"
                                 class="img responsive">
                         </div>
-                        <router-link :to="{ name: 'documents'}">
                           <button class="btn btn-menu-card">
                             Document Search
                           </button>
-                        </router-link>
                         </div>
                 </router-link>
             </div>

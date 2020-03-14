@@ -253,6 +253,7 @@ a:hover {
     margin-bottom: 50px;
     float: none;
     border-radius: 5px;
+    cursor: pointer;
 
 }
 
