@@ -20,7 +20,7 @@
             <p class="resultCount" v-if="resultCount && filteredDocumentList.length > 0">{{ resultCount }}</p>
           </div>
           <div class="col s9 m6 l4 plain-element">
-            <div v-if="(resultCount || documentList.length > 0)" id="tableSearch" class="filter-wrapper">
+            <div v-if="documentList.length > 0" id="tableSearch" class="filter-wrapper">
               <input type="text" placeholder="Keyword Filter" class="place-holder-center"
                      v-model="search"/>
             </div>
@@ -41,9 +41,9 @@
 
             <div class="col s12 m10 l11 plain-element left-align">
               <div class="row row-meta-top">
-                <router-link :to="{ name: 'document-details', params: {id: document.id}}">
+                <router-link :to="{ name: 'document-details', params: {id: document.id, stringQuery: searchQuery}}">
                   <div class="col s10 m9 l10 plain-element left-align col-meta-title">
-                    <h6>{{ document.document_title }} </h6>
+                    <h6>{{ document.document_title| truncatechars(240) }} </h6>
                   </div>
                 </router-link>
                 <div class="col s12 m3 l2 plain-element left-align">
@@ -53,7 +53,7 @@
                   </a>
                 </div>
               </div>
-              <router-link :to="{ name: 'document-details', params: {id: document.id}}">
+              <router-link :to="{ name: 'document-details', params: {id: document.id, stringQuery: searchQuery}}">
                 <div class="row row-meta-bottom">
                   <div class="col s6 m3 l2 plain-element left-align">
                     <p>
@@ -106,6 +106,10 @@ export default {
         type: String,
         required: false,
       },
+      stringQuery: {
+        type: String,
+        required: false,
+      }
   },
   data() {
     return {

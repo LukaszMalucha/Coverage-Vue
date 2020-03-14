@@ -5,19 +5,17 @@
       <div class="row row-cards">
         <div class="card card-description">
           <div class="row plain-element left-align row-back">
-            <router-link :to="{ name: 'brand-details', params: {brand: document.clean_brand}}">
-              <i class="fas fa-chevron-left"></i> Back To Search
-            </router-link>
+            <a href="javascript:history.go(-1);"><i class="fas fa-chevron-left"></i> Back To Search</a>
           </div>
           <br>
           <div class="row plain-element">
             <div class="col s6 m8 l12 plain-element">
               <div class="row plain-element left-align">
-                <h3>{{ document.document_title}}</h3>
+                <h3>{{ document.document_title }}</h3>
                 <div>
                   <img style="vertical-align:middle" :src="'/static/img/brands/' + document.clean_brand + '.png'"
                        class="img responsive img-icon">
-                  <span class="product-name">{{ product_name }}</span>
+                  <span class="product-name">{{ product_name | truncatechars(240) }}</span>
                 </div>
               </div>
               <div class="row row-functions row-functions-long left-align">
@@ -43,7 +41,7 @@
                   </div>
                   <div class="row plain-element left-align">
                     <h6>Document Type: </h6>
-                    <p>{{ document.document_version }}</p>
+                    <p>{{ document.document_type }}</p>
                   </div>
                   <div class="row plain-element left-align">
                     <h6>Date Created: </h6>
@@ -73,7 +71,7 @@
                       <li>
                         <a class="topic-tier-2" target="_blank"
                            :href="'https://johnsoncontrols.fluidtopics.net' + element.topic_link">
-                          {{element.topic_title}}
+                          {{element.topic_title| truncatechars(240)}}
                         </a>
                       </li>
                     </div>
@@ -81,7 +79,7 @@
                       <ol>
                         <a class="topic-tier-3" target="_blank"
                            :href="'https://johnsoncontrols.fluidtopics.net' + element.topic_link">
-                          &#9656; {{element.topic_title}}
+                          &#9656; {{element.topic_title| truncatechars(240)}}
                         </a>
                       </ol>
                     </div>
@@ -89,7 +87,7 @@
                       <ol>
                         <a class="topic-tier-4" target="_blank"
                            :href="'https://johnsoncontrols.fluidtopics.net' + element.topic_link">
-                          &#9656; {{element.topic_title}}
+                          &#9656; {{element.topic_title| truncatechars(240)}}
                         </a>
                       </ol>
                     </div>
@@ -101,7 +99,7 @@
                                           'color':  '#66' + element.topic_depth + element.topic_depth + element.topic_depth + element.topic_depth,
                                           }" class="topic-other"
                            target="_blank" :href="'https://johnsoncontrols.fluidtopics.net' + element.topic_link">
-                          {{element.topic_title}}
+                          {{element.topic_title| truncatechars(240)}}
                         </a>
                       </ol>
                     </div>
@@ -170,6 +168,15 @@ export default {
       return link.split("/")[1]
 
     },
+  },
+   filters: {
+//  Just in case if some strings would be too long and would destroy a layout
+      truncatechars (value, limit) {
+          if (value.length > limit) {
+              value = value.substring(0, limit) + "...";
+          }
+          return value
+      }
   },
   computed: {
 //  Standard filter for topic list

@@ -42,23 +42,23 @@
                         </div>
                         <div class="row plain-element left-align">
                             <h6>Category: </h6>
-                            <p>{{ product.product_category}}</p>
+                            <p>{{ product.product_category| truncatechars(1000)}}</p>
                         </div>
                         <div class="row plain-element left-align">
                             <h6>Product Codes: </h6>
-                            <p>{{ product.product_code}}</p>
+                            <p>{{ product.product_code| truncatechars(1000)}}</p>
                         </div>
                         <div class="row plain-element left-align">
                             <h6>Product Series: </h6>
-                            <p>{{ product.product_series}}</p>
+                            <p>{{ product.product_series| truncatechars(1000)}}</p>
                         </div>
                         <div class="row plain-element left-align">
                             <h6>Part Number: </h6>
-                            <p>{{ product.product_part_number}}</p>
+                            <p>{{ product.product_part_number| truncatechars(1000)}}</p>
                         </div>
                         <div class="row plain-element left-align">
                             <h6>Business:  </h6>
-                            <p>{{ product.business}}</p>
+                            <p>{{ product.business| truncatechars(1000)}}</p>
                         </div>
                     </div>
                 </div>
@@ -101,6 +101,15 @@ export default {
           }
         })
     },
+  },
+   filters: {
+//  Just in case if some strings would be too long and would destroy a layout
+      truncatechars (value, limit) {
+          if (value.length > limit) {
+              value = value.substring(0, limit) + "...";
+          }
+          return value
+      }
   },
   created() {
     this.getProductData();

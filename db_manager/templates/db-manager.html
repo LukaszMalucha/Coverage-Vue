@@ -1,78 +1,18 @@
-{% extends "base.html" %} {% load static %}{% load materializecss %}
-{% block extrahead %}
-<div id="page-index">
-  <div class="dashboard-cards">
-    <div class="row row-break">
-    </div>
-    <div class="row row-cards">
-      <div class="card card-description">
-        <div class="row plain-element left-align row-back">
-          <a>
-            <i class="fas fa-chevron-left"></i> Back To DB Manager
-          </a>
-        </div>
-        <br>
-        <div class="row plain-element">
-          <div class="col s6 m6 l5 plain-element">
-            <div class="row plain-element left-align">
-              <h3><i class="fas fa-cubes"></i> Product Dataset Upload</h3>
-            </div>
-            <div class="row row-functions left-align">
-              <form action="{% url 'db_manager:db-manager' %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="file-field input-field csv-field">
-                  <div class="btn btn-file">
-                    <span>File:</span>
-                    <input type="file" name="csv_file" id="csv_file" accept=".csv" required="True" class="form-control">
-                  </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate csv-input" type="text">
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-document">
-                  <i class="fas fa-file-csv"></i>&nbsp; Upload CSV File
-                </button>
-              </form>
-            </div>
-            <div class="row plain-element ">
-              {% if meta %}
-              <div class="row plain-element left-align">
-                <h4>Columns Summary:</h4>
-              </div>
-                {% for element in meta %}
-                <div class="row plain-element left-align">
-                  <h6>{{element.name}}</h6>
-                </div>
-                <div class="row plain-element left-align">
-                  <table class="table-overview">
-                    {% for key, value in element.items %}
-                      {% if key != "name" %}
-                      <tr>
-                        <td class="td-category">{{ key }}</td>
-                        <td>{{ value }}</td>
-                      </tr>
-                      {% endif %}
-                    {% endfor %}
-                  </table>
-                </div>
-                {% endfor %}
-              {% endif %}
-            </div>
-          </div>
-          {% if head %}
-          <div class="col s6 m6 l7 plain-element">
-            <div class="row plain-element left-align">
-              <h3> dataset_products.csv</h3>
-            </div>
-            <div class="row plain-element left-align">
+{% extends "base.html" %}
+{% load static %}
+{% load materializecss %}
 
-              {{head | safe}}
-            </div>
-          </div>
-          {% endif %}
-        </div>
-      </div>
+{% load bootstrap_tags %}
+
+
+{% block content %}
+<div id="page-index">
+    <div class="dashboard-cards">
+
+
+
     </div>
-  </div>
 </div>
 {% endblock %}
+
+

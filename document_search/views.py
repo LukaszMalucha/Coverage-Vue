@@ -16,7 +16,7 @@ class DocumentViewSet(viewsets.ModelViewSet):
                      "document_brand", "document_identifier", "product__product_name", "product__product_identifier",
                      "product__product_code")
     ordering_fields = "__all__"
-    queryset = DocumentModel.objects.order_by("document_title").order_by("-document_created_at")
+    queryset = DocumentModel.objects.order_by("document_title", "-document_created_at")
 
     def get_queryset(self):
         queryset = self.queryset
