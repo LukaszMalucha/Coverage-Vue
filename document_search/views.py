@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from document_search import serializers
 
+
 from core.models import ProductModel, DocumentModel
 from core.permissions import IsAdminOrReadOnly
 
@@ -21,3 +22,7 @@ class DocumentViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = self.queryset
         return queryset
+
+
+
+

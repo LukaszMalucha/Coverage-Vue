@@ -1,9 +1,24 @@
 Tech Comms Backend
 
 
-- YK i inne dlugie nazwy zetnij
-- zainstaluj moduly 
-- zdjecie do FRICK
+Recent searchquery nie resetuje się jak jeszcze raz się tego samego szuka
+http://127.0.0.1:8000/brands/Not%20Specified - i inne - notyfikacja pustej strony
+Brand w tytule do strony
+Karty za długie nazwy
+Produkt i brand logo linkuje do stron w doc details
+Update w dokumentach zamiast duplikatu (może dok link...)
+Żeby nie skakał overflow może pasek niewidoczny
+zeby ikona download zniknela z dokumentow
+Blokada widokow dla nie-admina
+clear imports
+
+
+## DANE
+DOCUMENT TITLE MA ZJEBANY "-"
+DOCUMENT NUMBER MA ()
+Controller Tool Help - duplicat jako metasys i johnson controls
+
+
 
 
 Django + Vue.js

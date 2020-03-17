@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django_forms_bootstrap",
     "materializecssform",
+    "storages",
 
     "rest_framework",
     "rest_framework.authtoken",
@@ -53,11 +54,12 @@ INSTALLED_APPS = [
 
     "webpack_loader",
 
-    "storages",
+
     "core",
-    "db_manager",
     "user",
 
+    "db_manager",
+    "analytics",
     "document_search",
     "product_search"
 ]
