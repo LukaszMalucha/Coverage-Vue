@@ -41,6 +41,7 @@ body {
 	color: white;
 	background-color: #205592;
 	font-size: 18px;
+	cursor: pointer;
 }
 
 .btn-login:hover,
@@ -201,6 +202,7 @@ blockquote {
 	margin-left: 10px;
 	color: white;
 	position: absolute;
+	cursor: pointer;
 }
 
 .btn-edit:hover,

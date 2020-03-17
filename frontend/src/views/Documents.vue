@@ -1,13 +1,14 @@
 <template>
   <div id="page-index">
     <div class="row header">
-      <div class="row searchbox-wrapper searchbox-long">
+      <div class="row searchbox-wrapper searchbox-long" style="float: left; margin-left: 10%">
         <form @submit.prevent="submitQuery">
           <input class="form-control" id="searchbox" type="text" placeholder="Search for Document"
                  aria-label="Search for Document" v-model="searchQuery">
           <button class="btn-transparent" type="submit"><i class="fas fa-search search-icon"></i></button>
         </form>
       </div>
+
     </div>
     <div class="dashboard-cards">
       <div id="formError" class="row row-error text-center">
@@ -17,7 +18,10 @@
       <div class="row row-documents">
         <div class="row plain-element row-table-functions">
           <div class="col s1 m3 l4 col-results plain-element left-align">
-            <p class="resultCount" v-if="resultCount && filteredDocumentList.length > 0">{{ resultCount }}</p>
+            <p class="resultCount" v-if="resultCount && filteredDocumentList.length > 0" style="float: left;">{{ resultCount }}</p>
+             <button @click="csvExport()" class="btn btn-export" style="float: left;">
+                  <i class="fas fa-file-download"></i>
+             </button>
           </div>
           <div class="col s9 m6 l4 plain-element">
             <div v-if="documentList.length > 0" id="tableSearch" class="filter-wrapper">
@@ -33,10 +37,9 @@
           </div>
         </div>
         <div v-for="document in filteredDocumentList" :key="document.id" class="row plain-element">
-
           <div class="row plain-element row-document">
             <div class="col s2 m2 l1 plain-element col-image">
-              <img :src="'/static/img/brands/' + document.clean_brand + '.png'" class="img img-document">
+              <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/brands/' + document.clean_brand + '.png'" class="img img-document">
             </div>
 
             <div class="col s12 m10 l11 plain-element left-align">
@@ -124,6 +127,33 @@ export default {
     }
   },
   methods: {
+    csvExport() {
+      let csvContent = "data:text/csv;charset=utf-8,";
+      var responseData = this.documentList;
+      const header = ["document_title;document_number;document_part_number;document_version;document_revision;document_type;document_created_at;document_last_edition;document_last_publication;document_revised_modified;document_brand;document_link"]
+      const products = responseData.map(x => ([x.document_title,
+                                               x.document_number,
+                                               x.document_part_number,
+                                               x.document_version,
+                                               x.document_revision,
+                                               x.document_type,
+                                               x.document_created_at,
+                                               x.document_last_edition,
+                                               x.document_last_publication,
+                                               x.document_revised_modified,
+                                               x.document_brand,
+                                               x.document_link,
+                                                ]).join(";"));
+      csvContent += header.join("\n");
+      csvContent += ("\n")
+      csvContent += products.join("\n");
+      const queryData = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", queryData);
+      link.setAttribute("download", "export.txt");
+      link.click();
+    },
+
 //  Query documents database
     submitQuery() {
         this.resultCount = null;
@@ -170,7 +200,11 @@ export default {
     getFileType(link) {
       return link.split("/")[1]
 
-    }
+    },
+//    exportQuery() {
+//      let endpoint = `/db/download-queryset`;
+//      apiService(endpoint).then(data =>{ window.console.log("asd"); })
+//    }
   },
   computed: {
 //  Function that filters list of documents

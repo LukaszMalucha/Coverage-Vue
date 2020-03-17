@@ -85,7 +85,7 @@
 
 
 /*----------------------------------------------
-    PRODUCT LIST CARDS
+    BRAND PRODUCTS VIEW
 ------------------------------------------------*/
 
 
@@ -141,7 +141,7 @@
     border-radius: 4px;
     font-weight: 600;
     margin-top: 10px;
-    margin-right: 16px;
+    margin-right: 18px;
     height: 32px;
     line-height: 32px;
 }
@@ -155,7 +155,7 @@
 }
 
 /*----------------------------------------------
-    PRODUCT DESCRIPTION CARD
+    PRODUCT DESCRIPTION VIEW
 ------------------------------------------------*/
 
 .row-back {
@@ -176,7 +176,7 @@
 
 .card-description {
     min-height: 780px;
-    width: 98%;
+    width: 98.7%;
     padding: 10px 20px 40px 20px;
     border-radius: 4px;
     border: 1px solid #b3b3b3;
@@ -271,8 +271,32 @@
 
 
 /*----------------------------------------------
-    DOCUMENT ROW
+    DOCUMENTS VIEW
 ------------------------------------------------*/
+
+.btn-export {
+  margin: 12px;
+  height: 24px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  color: #333;
+}
+
+.btn-export i {
+  font-size: 24px;
+}
+
+.btn-export:hover,
+.btn-export:active,
+.btn-export:focus {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  color: #0054a0;
+}
+
+
 
 .row-documents {
     width: 79%;

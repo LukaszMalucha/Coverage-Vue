@@ -114,61 +114,61 @@ def validate_documents_dataset(dataset):
         long_document_titles = dataset[dataset['document_title'].str.len() > 254]
         long_document_titles_count = long_document_titles.shape[0]
         if long_document_titles_count > 0:
-            error_long_document_titles = "Some titles are longer than 254 characters. Count: {long_document_titles_count}"
+            error_long_document_titles = f"Some titles are longer than 254 characters. Count: {long_document_titles_count}"
             errors.append(error_long_document_titles)
 
         long_document_number = dataset[dataset['document_number'].str.len() > 254]
         long_document_number_count = long_document_number.shape[0]
         if long_document_number_count > 0:
-            error_long_document_number = "Some document numbers are longer than 254 characters. Count: {long_document_number_count}"
+            error_long_document_number = f"Some document numbers are longer than 254 characters. Count: {long_document_number_count}"
             errors.append(error_long_document_number)
 
         long_document_part_number = dataset[dataset['document_part_number'].str.len() > 254]
         long_document_part_number_count = long_document_part_number.shape[0]
         if long_document_part_number_count > 0:
-            error_long_document_part_number = "Some document part numbers are longer than 254 characters. Count: {long_document_part_number_count}"
+            error_long_document_part_number = f"Some document part numbers are longer than 254 characters. Count: {long_document_part_number_count}"
             errors.append(error_long_document_part_number)
 
         long_document_version = dataset[dataset['document_version'].str.len() > 254]
         long_document_version_count = long_document_version.shape[0]
         if long_document_version_count > 0:
-            error_long_document_version = "Some document versions are longer than 254 characters. Count: {long_document_version_count}"
+            error_long_document_version = f"Some document versions are longer than 254 characters. Count: {long_document_version_count}"
             errors.append(error_long_document_version)
 
         long_document_revision = dataset[dataset['document_revision'].str.len() > 254]
         long_document_revision_count = long_document_revision.shape[0]
         if long_document_revision_count > 0:
-            error_long_document_revision = "Some document revisions are longer than 254 characters. Count: {long_document_revision_count}"
+            error_long_document_revision = f"Some document revisions are longer than 254 characters. Count: {long_document_revision_count}"
             errors.append(error_long_document_revision)
 
         long_document_type = dataset[dataset['document_type'].str.len() > 254]
         long_document_type_count = long_document_type.shape[0]
         if long_document_type_count > 0:
-            error_long_document_type = "Some document numbers are longer than 254 characters. Count: {long_document_type_count}"
+            error_long_document_type = f"Some document numbers are longer than 254 characters. Count: {long_document_type_count}"
             errors.append(error_long_document_type)
 
         long_document_created_at = dataset[dataset['document_created_at'].str.len() != 10]
         long_document_created_at_count = long_document_created_at.shape[0]
         if long_document_created_at_count > 0:
-            error_long_document_created_at = "Some document creation dates are longer than 10 characters. Count: {long_document_created_at_count}"
+            error_long_document_created_at = f"Some document creation dates are longer than 10 characters. Count: {long_document_created_at_count}"
             errors.append(error_long_document_created_at)
 
         long_document_last_edition = dataset[dataset['document_last_edition'].str.len() != 10]
         long_document_last_edition_count = long_document_last_edition.shape[0]
         if long_document_last_edition_count > 0:
-            error_long_document_last_edition = "Some document last edition dates are longer than 10 characters. Count: {long_document_last_edition_count}"
+            error_long_document_last_edition = f"Some document last edition dates are longer than 10 characters. Count: {long_document_last_edition_count}"
             errors.append(error_long_document_last_edition)
 
         long_document_last_publication = dataset[dataset['document_last_publication'].str.len() != 10]
         long_document_last_publication_count = long_document_last_publication.shape[0]
         if long_document_last_publication_count > 0:
-            error_long_document_last_publication = "Some document last publication dates are longer than 10 characters. Count: {long_document_last_publication_count}"
+            error_long_document_last_publication = f"Some document last publication dates are longer than 10 characters. Count: {long_document_last_publication_count}"
             errors.append(error_long_document_last_publication)
 
         long_document_revised_modified = dataset[dataset['document_revised_modified'].str.len() != 10]
         long_document_revised_modified_count = long_document_revised_modified.shape[0]
         if long_document_revised_modified_count > 0:
-            error_long_document_revised_modified = "Some document last revision dates are longer than 10 characters. Count: {long_document_revised_modified_count}"
+            error_long_document_revised_modified = f"Some document last revision dates are longer than 10 characters. Count: {long_document_revised_modified_count}"
             errors.append(error_long_document_revised_modified)
 
         invalid_brands = get_missing_brands(dataset, 'brand')
@@ -233,19 +233,19 @@ def validate_topics_dataset(dataset):
         long_topic_titles = dataset[dataset['topic_title'].str.len() > 254]
         long_topic_titles_count = long_topic_titles.shape[0]
         if long_topic_titles_count > 0:
-            error_long_topic_titles = "Some titles are longer than 254 characters. Count: {long_topic_titles_count}"
+            error_long_topic_titles = f"Some titles are longer than 254 characters. Count: {long_topic_titles_count}"
             errors.append(error_long_topic_titles)
 
         invalid_document_link = dataset[~dataset['document_link'].str.contains("reader")]
         invalid_document_link_count = invalid_document_link.shape[0]
         if invalid_document_link_count > 0:
-            error_invalid_document_link = "Some document links don't contain 'reader'. Count: {invalid_document_link_count}"
+            error_invalid_document_link = f"Some document links don't contain 'reader'. Count: {invalid_document_link_count}"
             errors.append(error_invalid_document_link)
 
         long_document_last_edition = dataset[dataset['document_last_edition'].str.len() != 10]
         long_document_last_edition_count = long_document_last_edition.shape[0]
         if long_document_last_edition_count > 0:
-            error_long_document_last_edition = "Some document last edition dates are longer than 10 characters. Count: {long_document_last_edition_count}"
+            error_long_document_last_edition = f"Some document last edition dates are longer than 10 characters. Count: {long_document_last_edition_count}"
             errors.append(error_long_document_last_edition)
 
         document_id_erratic = dataset[dataset['document_identifier'].str.len() != 40]

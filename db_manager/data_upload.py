@@ -11,7 +11,6 @@ from datetime import datetime
 
 # FILE PATHS
 
-# documents_cleaned_path = os.path.join(settings.BASE_DIR, "db_manager/datasets/documents_cleaned.csv")
 dataset_products_path = os.path.join(settings.BASE_DIR, "db_manager/datasets/dataset_products.csv")
 dataset_documents_path = os.path.join(settings.BASE_DIR, "db_manager/datasets/dataset_documents.csv")
 dataset_topics_path = os.path.join(settings.BASE_DIR, "db_manager/datasets/dataset_topics.csv")
@@ -19,9 +18,6 @@ dataset_topics_path = os.path.join(settings.BASE_DIR, "db_manager/datasets/datas
 
 def dataset_products_upload(dataset):
     """Upload products to database """
-    # DELETE OLDER DATA FOR TEST
-    # products = ProductModel.objects.all()
-    # products.delete()
     errors = []
     count_successful = 0
     count_duplicates = 0
@@ -44,7 +40,7 @@ def dataset_products_upload(dataset):
 
                 count_successful += 1
             except Exception as e:
-                error_msg = f"{product.product_name} was not uploaded due to error"
+                error_msg = f"'{product.product_name}' was not uploaded due to error"
                 errors.append(error_msg)
                 count_errors += 1
                 pass
@@ -57,9 +53,6 @@ def dataset_products_upload(dataset):
 
 def dataset_documents_upload(dataset):
     """Upload products to database """
-    # DELETE OLDER DATA FOR TEST
-    # documents = DocumentModel.objects.all()
-    # documents.delete()
     errors = []
     count_successful = 0
     count_duplicates = 0
@@ -96,7 +89,7 @@ def dataset_documents_upload(dataset):
                 )
                 count_successful += 1
             except Exception as e:
-                error_msg = f"{document.document_title} was not uploaded due to error"
+                error_msg = f"'{document.document_title}' was not uploaded due to error"
                 errors.append(error_msg)
                 count_errors += 1
                 pass
@@ -107,41 +100,43 @@ def dataset_documents_upload(dataset):
     return report
 
 
-
 def dataset_topics_upload(dataset):
     """Upload products to database """
-    # DELETE OLDER DATA FOR TEST
-    # topics = TopicModel.objects.all()
-    # topics.delete()
     errors = []
     count_successful = 0
-    count_duplicates = 0
+    count_updates = 0
     count_errors = 0
     for topic in dataset.itertuples():
-        try:
-            related_document = get_object_or_404(DocumentModel, document_identifier=topic.document_identifier)
-            date_last_edition = datetime.strptime(topic.document_last_edition, "%Y-%m-%d")
-            topic = TopicModel.objects.create(
-                topic_title=topic.topic_title,
-                topic_breadcrumb=topic.breadcrumb,
-                topic_depth=topic.topic_depth,
-                topic_last_edition=date_last_edition,
-                topic_link=topic.document_link,
-                document = related_document
-            )
-            count_successful += 1
-        except Exception as e:
-            error_msg = f"{topic.topic_title} was not uploaded due to error"
+        if TopicModel.objects.filter(topic_breadcrumb=topic.breadcrumb).exists():
+            TopicModel.objects.filter(topic_breadcrumb=topic.breadcrumb).delete()
+            error_msg = f"Previous version of '{topic.topic_title}' deleted from the database"
             errors.append(error_msg)
-            count_errors += 1
-            pass
-    report = {"upload_errors": errors, "success": count_successful, "duplicate": count_duplicates,
+            count_updates += 1
+        else:
+            try:
+                related_document = get_object_or_404(DocumentModel, document_identifier=topic.document_identifier)
+                date_last_edition = datetime.strptime(topic.document_last_edition, "%Y-%m-%d")
+                topic = TopicModel.objects.create(
+                    topic_title=topic.topic_title,
+                    topic_breadcrumb=topic.breadcrumb,
+                    topic_depth=topic.topic_depth,
+                    topic_last_edition=date_last_edition,
+                    topic_link=topic.document_link,
+                    document=related_document
+                )
+                count_successful += 1
+            except Exception as e:
+                error_msg = f"'{topic.topic_title}' was not uploaded due to error"
+                errors.append(error_msg)
+                count_errors += 1
+                pass
+    report = {"upload_errors": errors, "success": count_successful, "updates": count_updates,
               "errors": count_errors}
 
     return report
 
 
-def bulk_dataset_products_upload():
+def bulk_products_upload():
     """Upload products to database 6:06"""
     # DELETE OLDER DATA FOR TEST
     products = ProductModel.objects.all()
@@ -169,10 +164,7 @@ def bulk_dataset_products_upload():
         pass
 
 
-
-
-
-def bulk_dataset_documents_upload():
+def bulk_documents_upload():
     """Upload documents to database"""
     # DELETE OLDER DATA FOR TEST
     documents = DocumentModel.objects.all()
@@ -213,7 +205,7 @@ def bulk_dataset_documents_upload():
         pass
 
 
-def bulk_dataset_topics_upload():
+def bulk_topics_upload():
     """Upload documents to database"""
     # DELETE OLDER DATA FOR TEST
     topics = TopicModel.objects.all()

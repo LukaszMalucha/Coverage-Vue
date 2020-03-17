@@ -13,7 +13,7 @@
               <div class="row plain-element left-align">
                 <h3>{{ document.document_title }}</h3>
                 <div>
-                  <img style="vertical-align:middle" :src="'/static/img/brands/' + document.clean_brand + '.png'"
+                  <img style="vertical-align:middle" :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/brands/' + document.clean_brand + '.png'"
                        class="img responsive img-icon">
                   <span class="product-name">{{ product_name | truncatechars(240) }}</span>
                 </div>

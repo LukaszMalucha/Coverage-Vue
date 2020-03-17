@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %}{% load materializecss %}
+{% extends "base.html" %} {% load staticfiles %}{% load materializecss %}
 {% block extrahead %}
 <div id="page-index">
   <div class="dashboard-cards">
@@ -13,28 +13,36 @@
         </div>
         <br>
         <div class="row plain-element">
-          <div class="col s6 m6 l5 plain-element">
+          <div class="col s12 m6 l5 plain-element">
             <div class="row plain-element left-align">
               <h3><i class="fas fa-book"></i> Document Dataset Upload </h3>
             </div>
             <div class="row row-functions left-align">
               <form action="{% url 'db_manager:documents-upload' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="file-field input-field csv-field">
-                  <div class="btn btn-file">
-                    <span>File:</span>
-                    <input type="file" name="csv_file" id="csv_file" accept=".csv" required="True" class="form-control">
-                  </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate csv-input" type="text">
+                <div class="row plain-element left-align">
+                  <div class="file-field input-field csv-field">
+                    <div class="btn btn-file">
+                      <span>File:</span>
+                      <input type="file" name="csv_file" id="csv_file" accept=".csv" required="True"
+                             class="form-control">
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate csv-input" type="text">
+                    </div>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-document">
-                  <i class="fas fa-file-csv"></i>&nbsp; Upload CSV File
-                </button>
+                <div class="row plain-element left-align">
+                  <button type="submit" class="btn btn-document">
+                    <i class="fas fa-file-csv"></i>&nbsp; Upload CSV File
+                  </button>
+                </div>
               </form>
             </div>
             <div class="row plain-element">
+              {% if critical_error %}
+                <h6 class="error">{{ critical_error }}</h6>
+              {% endif %}
               {% if meta %}
               <div class="row plain-element left-align">
                 <h4>Columns Summary:</h4>
@@ -59,7 +67,7 @@
               {% endif %}
             </div>
           </div>
-          <div class="col s6 m6 l7 plain-element">
+          <div class="col s12 m6 l7 plain-element">
             {% if upload_report %}
             <div class="row plain-element left-align">
               <h3><i class="fas fa-chart-bar"></i> Dataset Upload Report:</h3>
@@ -77,7 +85,7 @@
             <div class="row plain-element left-align">
               <h3><i class="fas fa-chart-bar"></i> Dataset Issues:</h3>
             </div>
-            {% for error in dataset_errors  %}
+            {% for error in dataset_errors %}
             <div class="row plain-element left-align">
               <h6 class="error">{{ error }}</h6>
             </div>

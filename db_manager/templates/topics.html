@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %}{% load materializecss %}
+{% extends "base.html" %} {% load staticfiles %}{% load materializecss %}
 {% block extrahead %}
 <div id="page-index">
   <div class="dashboard-cards">
@@ -13,7 +13,7 @@
         </div>
         <br>
         <div class="row plain-element">
-          <div class="col s6 m6 l5 plain-element">
+          <div class="col s12 m6 l5 plain-element">
             <div class="row plain-element left-align">
               <h3><i class="fas fa-bookmark"></i> Topics Dataset Upload </h3>
             </div>
@@ -35,6 +35,9 @@
               </form>
             </div>
             <div class="row plain-element">
+              {% if critical_error %}
+                <h6 class="error">{{ critical_error }}</h6>
+              {% endif %}
               {% if meta %}
               <div class="row plain-element left-align">
                 <h4>Columns Summary:</h4>
@@ -59,13 +62,13 @@
               {% endif %}
             </div>
           </div>
-          <div class="col s6 m6 l7 plain-element">
+          <div class="col s12 m6 l7 plain-element">
             {% if upload_report %}
             <div class="row plain-element left-align">
               <h3><i class="fas fa-chart-bar"></i> Dataset Upload Report:</h3>
 
               <p class="">Uploaded: {{ upload_report.success }}</p>
-              <p class="">Duplicates: {{ upload_report.duplicate }}</p>
+              <p class="">Updated: {{ upload_report.updates }}</p>
               <p class="">Errors: {{ upload_report.errors }}</p>
               <p>Upload Errors:</p>
               {% for element in upload_report.upload_errors %}

@@ -1,8 +1,9 @@
 Tech Comms Backend
 
-- Zalatw 404 template do vue
-- Poszukaj fajnej karty do menu
-- Zalatw stary vue przed kompilacja
+
+- YK i inne dlugie nazwy zetnij
+- zainstaluj moduly 
+- zdjecie do FRICK
 
 
 Django + Vue.js

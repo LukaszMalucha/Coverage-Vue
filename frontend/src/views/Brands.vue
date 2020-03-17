@@ -9,7 +9,7 @@
         <div v-for="(brand, i) in filteredBrandList" :key="i" class="col s6 m3 l2 plain-element">
           <router-link :to="{ name: 'brand-details', params: {brand: brand}}">
             <div class="card company-card">
-              <div class="card-image"><img :src="'/static/img/brands/' + brand + '.png'" class="img responsive">
+              <div class="card-image"><img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/brands/' + brand + '.png'" class="img responsive">
               </div>
             </div>
           </router-link>

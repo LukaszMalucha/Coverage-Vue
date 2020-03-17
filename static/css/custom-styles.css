@@ -2,16 +2,6 @@
     COMMON  STYLES
 ------------------------------------------------*/
 
-@font-face {
-    font-family: 'Source Sans Pro';
-    font-weight: 400 500;
-    src: url('/static/fonts/TTF/SourceSansPro-Regular.ttf');
-}
-@font-face {
-    font-family: 'Source Sans Pro';
-    font-weight: bold 600;
-    src: url('/static/fonts/TTF/SourceSansPro-Semibold.ttf');
-}
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
@@ -128,6 +118,7 @@ a:hover {
   margin-right: 0.5%;
   box-shadow: 1px 1px 1px 0px #c7c7c7;
   border: 1px solid #c7c7c7;
+  cursor: pointer;
 }
 
 
@@ -362,7 +353,7 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) {
     bottom: 0;
     width: 100%;
     padding-left: 9.5%;
-    padding-right: 11%;
+    padding-right: 10.5%;
     text-align: center;
     background-color: transparent;
 }

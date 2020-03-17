@@ -12,18 +12,18 @@
                 <div class="row plain-element">
                     <div class="col s2 m3 l5 plain-element left-align col-product-images">
                         <div class="row plain-element left-align">
-                            <img :src="'/static/img/products/sample' + product.image + '.jpg'" class="img responsive img-description">
+                            <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/products/sample' + product.image + '.jpg'" class="img responsive img-description">
                         </div>
                         <br>
                         <div class="row plain-element left-align" style="display:block">
                           <div class="col s12 m12 l4 plain-element left-align">
-                              <img src="/static/img/products/sample2.jpg" class="img img-small">
+                              <img src="https://techcomms.s3-eu-west-1.amazonaws.com/static/img/products/sample2.jpg" class="img img-small">
                           </div>
                           <div class="col s12 m12 l4 plain-element left-align">
-                              <img src="/static/img/products/sample3.jpg" class="img img-small">
+                              <img src="https://techcomms.s3-eu-west-1.amazonaws.com/static/img/products/sample3.jpg" class="img img-small">
                           </div>
                           <div class="col s12 m12 l4 plain-element left-align">
-                              <img src="/static/img/products/sample4.jpg" class="img img-small">
+                              <img src="https://techcomms.s3-eu-west-1.amazonaws.com/static/img/products/sample4.jpg" class="img img-small">
                           </div>
                         </div>
 

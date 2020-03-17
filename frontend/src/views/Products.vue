@@ -1,13 +1,14 @@
 <template>
   <div id="page-index">
-    <div class="dashboard-cards">
+    <div v-if="brandListContains(brand)" class="dashboard-cards">
       <div class="row row-break">
+
       </div>
       <div class="row row-cards">
         <div class="row">
           <div class="col s2 m2 l2 left-align col-brand">
             <a @click="reloadQuery">
-              <img :src="'/static/img/brands/' + brand + '.png'" class="img responsive img-banner">
+              <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/brands/' + brand + '.png'" class="img responsive img-banner">
             </a>
           </div>
           <div class="col s12 m12 l10 col-searchbox">
@@ -51,7 +52,7 @@
                      :series="product.product_series" :part_number="product.product_part_number"
                      :business="product.business">
                   <div class="card-image">
-                    <img :src="'/static/img/products/sample' + product.image + '.jpg'">
+                    <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/products/sample' + product.image + '.jpg'">
                   </div>
                   <div class="card-content">
                     <span class="card-title">{{ product.product_name }}</span>
@@ -95,7 +96,7 @@
                        :series="product.product_series" :part_number="product.product_part_number"
                        :business="product.business">
                     <div class="card-image">
-                      <img :src="'/static/img/products/sample' + product.image + '.jpg'">
+                      <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/products/sample' + product.image + '.jpg'">
                     </div>
                     <div class="card-content">
                       <span class="card-title">{{ product.product_name }}</span>
@@ -120,6 +121,7 @@
 </template>
 
 <script>
+import { cleanBrandList } from "@/common/brands.js"
 import { apiService } from "@/common/api.service.js";
 
 export default {
@@ -146,6 +148,8 @@ export default {
       loadingQuery: false,
       currentSearch: "",
       randomNumber : null,
+      brandList : cleanBrandList
+
     }
   },
   methods: {
@@ -159,6 +163,7 @@ export default {
       this.loadingProducts = true;
       await apiService(endpoint)
        .then(data => {
+          window.console.log(endpoint);
           window.console.log(data);
           this.queryList = [];
           this.productList.push(...data.results);
@@ -207,14 +212,18 @@ export default {
               window.console.log(this.queryList)
             )
         }
-      },
+    },
 //  Function that handles clicking company banner in the top-left corner
     reloadQuery(){
       this.productList = [];
       this.queryList = [];
       this.next = false;
       this.getBrandData();
-    }
+    },
+     brandListContains(n) {
+       return this.brandList.indexOf(n) > -1
+     }
+
   },
   computed: {
 //  Dynamic filter for the listed products (all fields included)

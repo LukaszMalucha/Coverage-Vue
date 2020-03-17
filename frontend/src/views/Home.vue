@@ -13,7 +13,7 @@
             <router-link :to="{ name: 'brands'}">
                 <div class="card menu-card">
                     <div class="card-image"><img
-                            src="/static/img/jc-grey.png"
+                            src="https://techcomms.s3-eu-west-1.amazonaws.com/static/img/jc-grey.png"
                             class="img responsive">
                     </div>
                       <button class="btn btn-menu-card">
@@ -26,7 +26,7 @@
                 <router-link :to="{ name: 'documents'}">
                     <div class="card menu-card">
                         <div class="card-image"><img
-                                src="/static/img/docs.jpg"
+                                src="https://techcomms.s3-eu-west-1.amazonaws.com/static/img/docs.jpg"
                                 class="img responsive">
                         </div>
                           <button class="btn btn-menu-card">

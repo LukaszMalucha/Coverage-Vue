@@ -21,7 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+if "SECRET_KEY" in os.environ:
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+else:
+    SECRET_KEY = "TestDjango"
 
 # SECURITY WARNING: don"t run with debug turned on in production!
 DEBUG = True
@@ -50,6 +53,7 @@ INSTALLED_APPS = [
 
     "webpack_loader",
 
+    "storages",
     "core",
     "db_manager",
     "user",
@@ -81,6 +85,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'django.template.context_processors.media',
 
             ],
         },
@@ -121,12 +126,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# FOR HEROKU REDIRECTING
+#
+# SECURE_SSL_REDIRECT = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
+
+DATETIME_FORMAT = '%Y-%m-%d'
 
 USE_I18N = True
 
@@ -137,7 +149,38 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+#
+# AWS_S3_OBJECT_PARAMETERS = {
+#     "Expires": "Fri, 31 Dec 2055 20:00:00 GMT",
+#     "CacheControl": "max-age=94608000",
+#
+# }
+#
+# AWS_STORAGE_BUCKET_NAME = "techcomms"
+# AWS_S3_REGION_NAME = "eu-west-1"
+# AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")  ## hidden
+# AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")  ## hidden
+#
+# AWS_S3_CUSTOM_DOMAIN = "%s.s3.amazonaws.com" % AWS_STORAGE_BUCKET_NAME
+#
+# STATICFILES_LOCATION = "static"
+# STATICFILES_STORAGE = "custom_storages.StaticStorage"
+
+# STATIC_URL = "/static/"
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "static"),
+# )
+#
+# MEDIAFILES_LOCATION = 'media'
+# DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+
+# FOR DEVELOPMENT
+
 STATICFILES_LOCATION = "static"
+
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (
@@ -145,7 +188,9 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIAFILES_LOCATION = 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 
 LOGIN_URL = "/user/login"

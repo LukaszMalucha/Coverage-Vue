@@ -6,7 +6,7 @@
                              alt="Logo Logo"/></div>
       <br clear="all"/>
 
-      <div class="robot"><img src="/static/img/404.png" width="380" height="450" alt="Robot 404"/></div>
+      <div class="robot"><img src="https://techcomms.s3-eu-west-1.amazonaws.com/static/img/404.png" width="380" height="450" alt="Robot 404"/></div>
 
       <div class="error-header"><span class="largeFont">Oops!</span> The Page you requested was not found</div>
       <br clear="right"/>

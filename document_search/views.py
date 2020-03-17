@@ -21,5 +21,3 @@ class DocumentViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = self.queryset
         return queryset
-
-

@@ -34,6 +34,7 @@ class DocumentModelAdmin(admin.ModelAdmin):
     ordering = ["document_title", "document_created_at", "document_last_edition"]
     list_display = ["document_title", "document_created_at", "document_last_edition"]
     search_fields = ["document_title",]
+    list_filter = ("document_brand",)
 
     class Meta:
         model = models.DocumentModel
@@ -41,7 +42,7 @@ class DocumentModelAdmin(admin.ModelAdmin):
 class TopicModelAdmin(admin.ModelAdmin):
     ordering = ["topic_title", "document", "topic_last_edition"]
     list_display = ["topic_title", "document", "topic_last_edition"]
-    search_fields = ["topic_title", "document"]
+    search_fields = ["topic_title", "document__document_title"]
 
     class Meta:
         model = models.TopicModel
