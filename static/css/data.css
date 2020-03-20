@@ -604,15 +604,15 @@
 
 
 .insights-card .card-header b {
-    font-size: 0.9rem;
-    color: black;
+    font-size: 14px;
+    color: #3c4146;
     font-weight: 600
 }
 
 .insights-card .card-header p {
     margin-left: 10px;
     margin-top: 0px;
-    font-size: 0.7rem;
+    font-size: 10px;
     color: #666666;
     line-height: 1.2;
     width:75%;
@@ -626,7 +626,7 @@
 
 .insights-card  .row-image {
     margin-bottom: 0px;
-    padding: 3px 8px 3px 8px;
+    padding: 3px 10px 3px 10px;
 }
 
 .insights-card-narrow-left {
@@ -684,11 +684,16 @@
     border-radius: 5px;
     padding: 10px;
     padding: 2px;
-    height: 300px;
+    height: 287px;
+}
+
+.chart-long {
+    height: 680px;
 }
 
 .table-content td {
-    padding: 12px 4px;
+    padding: 12px 0px;
+    width: 220px;
 }
 
 

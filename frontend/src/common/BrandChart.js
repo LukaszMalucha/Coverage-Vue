@@ -13,17 +13,21 @@ export default {
           xAxes: [{
               gridLines: {
                   color: "rgba(0, 0, 0, 0)",
+                  zeroLineColor: "rgba(0, 0, 0, 0)",
               },
               ticks: {
-                fontSize: 10
+                fontSize: 10,
+                stepSize: 800,
+                suggestedMin: 0,
               }
           }],
           yAxes: [{
               gridLines: {
                   color: "rgba(0, 0, 0, 0)",
+                  zeroLineColor: "rgba(0, 0, 0, 0)",
               },
               ticks: {
-                stepSize: 10
+                stepSize: 14
               }
           }],
 
@@ -35,7 +39,7 @@ export default {
           enabled: true,
           callbacks: {
             label: function(tooltipItem,data) {
-              return data['datasets'][0]['data'][tooltipItem['index']] + "XXXXX";
+              return data['datasets'][0]['data'][tooltipItem['index']] + " Documents";
             },
           }
         }
