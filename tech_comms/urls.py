@@ -21,12 +21,11 @@ from django.conf.urls.static import static
 from core.views import IndexTemplateView
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("admin/", admin.site.urls, name="admin"),
     path("user/", include("user.urls")),
     path("user/", include("django.contrib.auth.urls")),
     path("user/", include("allauth.urls")),
     path("api/user/", include("user.api.urls")),
-    path("core/", include("core.urls")),
     path("db/", include("db_manager.urls")),
     path("api/products/", include("product_search.urls")),
     path("api/analytics/", include("analytics.urls")),

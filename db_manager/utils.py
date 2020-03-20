@@ -1,16 +1,3 @@
-import csv
-import json
-import os.path
-import re
-
-import pandas as pd
-from django.conf import settings
-from django.shortcuts import get_object_or_404
-from core.models import DocumentModel, ProductModel, TopicModel
-from datetime import datetime
-
-
-
 # JOHNSON CONTROLS BRANDS
 
 BRANDS = {"YORK", "Johnson Controls", "Metasys", "Simplex", "PENN Controls", "Kantech",
@@ -22,9 +9,8 @@ BRANDS = {"YORK", "Johnson Controls", "Metasys", "Simplex", "PENN Controls", "Ka
           "THORN SECURITY", "Zettler", "FRICK"}
 
 
-
-
 def get_longest_string(dataset, column):
+    """Find longest string in the column"""
     values_list = list(dataset[column].unique())
     try:
         longest = max(values_list, key=len)
@@ -34,6 +20,7 @@ def get_longest_string(dataset, column):
 
 
 def get_shortest_string(dataset, column):
+    """Find shortest string in the column"""
     values_list = list(dataset[column].unique())
     try:
         shortest = min(values_list, key=len)
@@ -43,11 +30,13 @@ def get_shortest_string(dataset, column):
 
 
 def get_na_count(dataset, column):
+    """Count 'Not Specified' in column"""
     na_count = len(dataset[dataset[column] == "Not Specified"])
     return na_count
 
 
 def get_missing_brands(dataset, column):
+    """Check for incorrect/missing brands"""
     column_brands = set(list(dataset[column].unique()))
     difference = column_brands - BRANDS
     difference = ", ".join(difference)
@@ -55,6 +44,7 @@ def get_missing_brands(dataset, column):
 
 
 def describe_column(dataset, column):
+    """Compile all the checks above"""
     column_dict = {}
     col_name = column.replace("_", " ")
     col_name = col_name.title()
@@ -64,4 +54,3 @@ def describe_column(dataset, column):
     column_dict["Not Specified"] = get_na_count(dataset, column)
 
     return column_dict
-

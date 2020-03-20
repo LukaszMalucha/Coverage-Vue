@@ -1,7 +1,7 @@
 <template>
   <div id="page-index">
     <div class="row header">
-      <div class="row searchbox-wrapper searchbox-long" style="float: left; margin-left: 10%">
+      <div class="row searchbox-wrapper searchbox-long">
         <form @submit.prevent="submitQuery">
           <input class="form-control" id="searchbox" type="text" placeholder="Search for Document"
                  aria-label="Search for Document" v-model="searchQuery">
@@ -18,8 +18,8 @@
       <div class="row row-documents">
         <div class="row plain-element row-table-functions">
           <div class="col s1 m3 l4 col-results plain-element left-align">
-            <p class="resultCount" v-if="resultCount && filteredDocumentList.length > 0" style="float: left;">{{ resultCount }}</p>
-             <button @click="csvExport()" class="btn btn-export" style="float: left;">
+            <p class="resultCount" v-if="resultCount && filteredDocumentList.length > 0" >{{ resultCount }}</p>
+             <button v-if="resultCount && filteredDocumentList.length > 0" @click="csvExport()" class="btn btn-export" >
                   <i class="fas fa-file-download"></i>
              </button>
           </div>
@@ -127,6 +127,7 @@ export default {
     }
   },
   methods: {
+//  Function that exports current query to txt
     csvExport() {
       let csvContent = "data:text/csv;charset=utf-8,";
       var responseData = this.documentList;
@@ -201,10 +202,6 @@ export default {
       return link.split("/")[1]
 
     },
-//    exportQuery() {
-//      let endpoint = `/db/download-queryset`;
-//      apiService(endpoint).then(data =>{ window.console.log("asd"); })
-//    }
   },
   computed: {
 //  Function that filters list of documents

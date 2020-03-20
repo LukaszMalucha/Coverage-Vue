@@ -73,7 +73,7 @@
               <h3><i class="fas fa-chart-bar"></i> Dataset Upload Report:</h3>
 
               <p class="">Uploaded: {{ upload_report.success }}</p>
-              <p class="">Duplicates: {{ upload_report.duplicate }}</p>
+              <p class="">Updates: {{ upload_report.updates }}</p>
               <p class="">Errors: {{ upload_report.errors }}</p>
               <p>Upload Errors:</p>
               {% for element in upload_report.upload_errors %}

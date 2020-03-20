@@ -1,5 +1,8 @@
+from datetime import datetime
+
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+
 from core.utils import content_file_name
 
 
@@ -62,8 +65,7 @@ class MyProfile(models.Model):
 
 class ProductModel(models.Model):
     """Model for Products"""
-
-    product_identifier = models.CharField(max_length=254, unique=True)
+    product_identifier = models.CharField(max_length=254, unique=True, blank=False)
     product_name = models.CharField(max_length=254, default="Not Specified", blank=True)
     product_brand = models.CharField(max_length=254, default="Not Specified", blank=True)
     product_category = models.CharField(max_length=254, default="Not Specified", blank=True)
@@ -71,7 +73,7 @@ class ProductModel(models.Model):
     product_series = models.CharField(max_length=254, default="Not Specified", blank=True)
     product_part_number = models.CharField(max_length=254, default="Not Specified", blank=True)
     business = models.CharField(max_length=254, default="Not Specified", blank=True)
-    uploaded = models.DateTimeField(auto_now=True)
+    uploaded = models.DateTimeField(default=datetime.today().strftime('%Y-%m-%d'))
 
     objects = models.Manager()
 
@@ -99,12 +101,11 @@ class DocumentModel(models.Model):
     document_link = models.CharField(max_length=254, default="Not Specified", blank=True)
     maps_link = models.CharField(max_length=254, default="Not Specified", blank=True)
     product = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
-    document_identifier = models.CharField(max_length=254, default="Not Specified", unique=True)
+    document_identifier = models.CharField(max_length=254, blank=False, unique=True)
 
-    uploaded = models.DateTimeField(auto_now=True)
+    uploaded = models.DateTimeField(default=datetime.today().strftime('%Y-%m-%d'))
 
     objects = models.Manager()
-
 
     class Meta:
         verbose_name_plural = "Documents"
@@ -121,7 +122,7 @@ class TopicModel(models.Model):
     topic_last_edition = models.DateField(blank=True)
     topic_link = models.CharField(max_length=254, default="Not Specified", blank=True)
     document = models.ForeignKey(DocumentModel, on_delete=models.CASCADE, related_name="topics")
-    uploaded = models.DateTimeField(auto_now=True)
+    uploaded = models.DateTimeField(default=datetime.today().strftime('%Y-%m-%d'))
 
     objects = models.Manager()
 

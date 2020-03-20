@@ -1,11 +1,11 @@
 <template>
   <div id="page-index">
-    <div class="dashboard-cards">
+    <div v-if="document" class="dashboard-cards">
       <div class="row row-break"></div>
       <div class="row row-cards">
         <div class="card card-description">
           <div class="row plain-element left-align row-back">
-            <a href="javascript:history.go(-1);"><i class="fas fa-chevron-left"></i> Back To Search</a>
+            <a href="javascript:history.go(-1);"><i class="fas fa-chevron-left"></i> Back To Document Search</a>
           </div>
           <br>
           <div class="row plain-element">
@@ -13,13 +13,17 @@
               <div class="row plain-element left-align">
                 <h3>{{ document.document_title }}</h3>
                 <div>
-                  <img style="vertical-align:middle" :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/brands/' + document.clean_brand + '.png'"
+                <router-link v-if="document.clean_brand"   :to="{ name: 'brand-details', params: {brand: document.clean_brand}}">
+                  <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/brands/' + document.clean_brand + '.png'"
                        class="img responsive img-icon">
+                </router-link>
+                <router-link v-if="product_id" :to="{ name: 'product-details', params: {id: product_id}}">
                   <span class="product-name">{{ product_name | truncatechars(240) }}</span>
+                </router-link>
                 </div>
               </div>
               <div class="row row-functions row-functions-long left-align">
-                <a v-if="getFileType(document.document_link) == 'viewer'" target="_blank" class="btn btn-document"  :href="'https://johnsoncontrols.fluidtopics.net' + document.document_link">
+                <a v-if="document_link == 'viewer'" target="_blank" class="btn btn-document"  :href="'https://johnsoncontrols.fluidtopics.net' + document.document_link">
                   <i class="fas fa-file-pdf"></i> &nbsp; Document in PDF
                 </a>
                 <a v-else class="btn btn-document" target="_blank" :href="'https://johnsoncontrols.fluidtopics.net' + document.document_link">
@@ -115,16 +119,23 @@
         </div>
       </div>
     </div>
+    <div v-else>
+        <NotFoundComponent/>
+    </div>
   </div>
 </template>
 
 
 <script>
 import { apiService } from "@/common/api.service.js";
+import NotFoundComponent from "@/components/NotFoundComponent.vue"
 import _ from 'lodash';
 
 export default {
   name: "DocumentDetails",
+  components: {
+    NotFoundComponent
+  },
   props: {
     id: {
       required: true
@@ -134,7 +145,9 @@ export default {
     return {
       document: [],
       documentTopics: [],
+      document_link: "",
       product_name: "",
+      product_id: "",
       search: "",
     }
   },
@@ -152,7 +165,9 @@ export default {
             window.console.log(data);
             if (data) {
               this.document = data;
+              this.product_id = this.document.product['id'];
               this.product_name = this.document.product['product_name'];
+              this.document_link = this.document.document_link.split("/")[1]
               this.documentTopics = this.document.topics;
               this.documentSortedTopics = this.sortArrays(this.documentTopics);
               window.console.log(this.documentSortedTopics);
@@ -162,11 +177,6 @@ export default {
               document.title = "404 - Page Not Found"
             }
           })
-    },
-    //  Function that retrieve viewer/reader from document link
-    getFileType(link) {
-      return link.split("/")[1]
-
     },
   },
    filters: {
@@ -184,6 +194,11 @@ export default {
       return this.documentSortedTopics.filter(topics => {
         return topics.topic_title.toLowerCase().includes(this.search.toLowerCase())
       })
+    },
+//  Function that retrieve viewer/reader from document link
+    getFileType() {
+      return  this.document.document_link.split("/")[1]
+
     },
   },
   created() {

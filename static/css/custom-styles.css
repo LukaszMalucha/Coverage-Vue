@@ -14,6 +14,8 @@ body {
 html {
     height: 100%;
     box-sizing: border-box;
+    overflow-y: scroll;
+    color: #3c4146;
 }
 
 
@@ -204,6 +206,7 @@ a:hover {
     color: #0054a0 !important;
     font-size: 18px;
     margin-left: 2px;
+    float: left;
 }
 
 /*----------------------------------------------
@@ -254,7 +257,7 @@ a:hover {
 
 
 .menu-card:hover {
-    box-shadow: 0 3px 3px 0 #414141, 0 3px 2px -2px #414141, 0 2px 5px 0 #414141;
+    box-shadow: 0 3px 3px 0 #3c4146, 0 3px 2px -2px #3c4146, 0 2px 5px 0 #3c4146;
 }
 
 
@@ -391,7 +394,7 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) {
 #errorContainer {
   padding-top: 40px;
   height: 900px;
-  background: white;
+  background: transparent;
   text-align: center;
 }
 

@@ -1,12 +1,8 @@
-from django.shortcuts import redirect, render
-import os
-from django.conf import settings
-from db_manager.utils import get_longest_string, get_shortest_string, get_na_count, get_missing_brands, describe_column
-
-import pandas as pd
+from db_manager.utils import get_missing_brands, describe_column
 
 
 def validate_products_dataset(dataset):
+    """Validates if products dataset has correct columns, data format etc."""
     errors = []
 
     required_columns = {'product_name', 'brand', 'product_category', 'product_code', 'product_series', 'business',
@@ -75,6 +71,7 @@ def validate_products_dataset(dataset):
 
 
 def products_dataset_check(dataset):
+    """Compile validations before dataset upload for products"""
     columns = list(dataset.columns)
 
     columns_metadata = []
@@ -90,6 +87,7 @@ def products_dataset_check(dataset):
 
 
 def validate_documents_dataset(dataset):
+    """Validates if documents dataset has correct columns, data format etc."""
     errors = []
 
     required_columns = {'document_title', 'document_number', 'document_part_number', 'document_version',
@@ -197,6 +195,7 @@ def validate_documents_dataset(dataset):
 
 
 def documents_dataset_check(dataset):
+    """Compile validations before dataset upload for documents"""
     columns = list(dataset.columns)
 
     columns_metadata = []
@@ -212,6 +211,7 @@ def documents_dataset_check(dataset):
 
 
 def validate_topics_dataset(dataset):
+    """Validates if topics dataset has correct columns, data format etc."""
     errors = []
 
     required_columns = {'topic_title', 'breadcrumb', 'topic_depth', 'document_last_edition', 'document_link',
@@ -263,6 +263,7 @@ def validate_topics_dataset(dataset):
 
 
 def topics_dataset_check(dataset):
+    """Compile validations before dataset upload for topics"""
     columns = list(dataset.columns)
 
     columns_metadata = []

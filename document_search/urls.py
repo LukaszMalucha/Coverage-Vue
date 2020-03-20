@@ -9,8 +9,6 @@ router = DefaultRouter()
 
 router.register("documents", views.DocumentViewSet, basename="documents")
 
-
-
 urlpatterns = [
     path("", include(router.urls)),
 ]

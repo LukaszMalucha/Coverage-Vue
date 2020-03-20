@@ -1,12 +1,12 @@
 <template>
 <div id="page-index">
-    <div class="dashboard-cards">
+    <div v-if="product" class="dashboard-cards">
         <div class="row row-break"></div>
         <div class="row row-cards">
             <div class="card card-description">
                 <div class="row left-align row-back">
-                    <router-link :to="{ name: 'brand-details', params: {brand: product.clean_brand}}">
-                    <i class="fas fa-chevron-left"></i> Back To Search
+                    <router-link v-if="product.clean_brand"  :to="{ name: 'brand-details', params: {brand: product.clean_brand}}">
+                    <i class="fas fa-chevron-left"></i> Back To Product Search
                     </router-link>
                 </div>
                 <div class="row plain-element">
@@ -40,7 +40,7 @@
                                 <i class="fas fa-file-pdf"></i> &nbsp; Documentation
                             </router-link>
                         </div>
-                        <div class="row plain-element left-align">
+                        <div v-if="product" class="row plain-element left-align">
                             <h6>Category: </h6>
                             <p>{{ product.product_category| truncatechars(1000)}}</p>
                         </div>
@@ -65,15 +65,22 @@
             </div>
         </div>
     </div>
+    <div v-else>
+        <NotFoundComponent/>
+    </div>
 </div>
 </template>
 
 
 <script>
 import { apiService } from "@/common/api.service.js";
+import NotFoundComponent from "@/components/NotFoundComponent.vue"
 
 export default {
   name: "ProductDetails",
+  components: {
+    NotFoundComponent
+  },
   props: {
 //  Product Id that is being passed as a search query
     id: {
@@ -88,7 +95,7 @@ export default {
   methods: {
 //  Method that retrieve product data
     getProductData() {
-    let endpoint = `/api/products/product/${this.id}/`;
+    let endpoint = `/api/products/products/${this.id}/`;
     apiService(endpoint)
         .then(data => {
           window.console.log(data);
@@ -105,11 +112,13 @@ export default {
    filters: {
 //  Just in case if some strings would be too long and would destroy a layout
       truncatechars (value, limit) {
-          if (value.length > limit) {
+        if (value) {
+            if (value.length > limit) {
               value = value.substring(0, limit) + "...";
+              }
+              return value
           }
-          return value
-      }
+        }
   },
   created() {
     this.getProductData();

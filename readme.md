@@ -1,25 +1,17 @@
-Tech Comms Backend
+## Tech Comms:
 
 
-Recent searchquery nie resetuje się jak jeszcze raz się tego samego szuka
-http://127.0.0.1:8000/brands/Not%20Specified - i inne - notyfikacja pustej strony
-Brand w tytule do strony
-Karty za długie nazwy
-Produkt i brand logo linkuje do stron w doc details
-Update w dokumentach zamiast duplikatu (może dok link...)
-Żeby nie skakał overflow może pasek niewidoczny
-zeby ikona download zniknela z dokumentow
-Blokada widokow dla nie-admina
-clear imports
+Zmontowac dashboard
+HEROKU
 
 
-## DANE
+## JUTRO
 DOCUMENT TITLE MA ZJEBANY "-"
 DOCUMENT NUMBER MA ()
-Controller Tool Help - duplicat jako metasys i johnson controls
+AZURE
 
 
-
+## Vue
 
 Django + Vue.js
 
@@ -36,3 +28,36 @@ vue create frontend > Manually > Add Router > Y > Lint on save > In package.json
 cd frontend. npm run serve
 
 vue ui > project > dependencies > webpack-bundle-tracker
+
+
+## TESTY
+
+cd core/tests
+
+
+sudo pip install virtualenv
+virtualenv venv
+virtualenv --python=/usr/bin/python3 venv
+source venv/bin/activate
+
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
+conda create -n env
+
+
+conda activate env
+
+
+coverage run --source=core manage.py test
+coverage run --source=user manage.py test
+coverage run --source=db_manager manage.py test
+coverage run --source=portfolio manage.py test
+coverage run --source=api manage.py test
+coverage report
+coverage html
+
+coverage erase
+
+deactivate (to close your virtualenv)
+

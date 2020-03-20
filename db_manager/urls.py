@@ -12,5 +12,5 @@ urlpatterns = [
     path("products-upload", views.products_upload, name="products-upload"),
     path("documents-upload", views.documents_upload, name="documents-upload"),
     path("topics-upload", views.topics_upload, name="topics-upload"),
-    path("download-queryset", views.download_queryset, name="download-queryset")
+    path("bulk-delete", views.bulk_delete, name="bulk-delete"),
 ]

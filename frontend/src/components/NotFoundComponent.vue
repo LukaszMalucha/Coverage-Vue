@@ -2,8 +2,8 @@
 <div class="row plain-element">
   <div id="errorContainer">
     <div id="mainContainer">
-      <div class="company"><img src="https://www.johnsoncontrols.com/-/media/jci/be/united-states/our-brands/720/jc.png?h=320&w=720&la=en&hash=7316C1AF12DC1E1A33B842BEC63C881A472B30E8" width="280" height="120"
-                             alt="Logo Logo"/></div>
+      <div class="company"><img src="https://techcomms.s3-eu-west-1.amazonaws.com/static/img/logo-404.png" width="290" height="140"
+                             alt="Logo"/></div>
       <br clear="all"/>
 
       <div class="robot"><img src="https://techcomms.s3-eu-west-1.amazonaws.com/static/img/404.png" width="380" height="450" alt="Robot 404"/></div>

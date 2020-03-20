@@ -55,7 +55,7 @@
                     <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/products/sample' + product.image + '.jpg'">
                   </div>
                   <div class="card-content">
-                    <span class="card-title">{{ product.product_name }}</span>
+                    <span class="card-title">{{ product.product_name|truncatechars(88) }}</span>
                   </div>
                 </div>
               </router-link>
@@ -99,7 +99,7 @@
                       <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/products/sample' + product.image + '.jpg'">
                     </div>
                     <div class="card-content">
-                      <span class="card-title">{{ product.product_name }}</span>
+                      <span class="card-title">{{ product.product_name|truncatechars(88) }}</span>
                     </div>
                   </div>
                 </router-link>
@@ -117,15 +117,24 @@
         </div>
       </div>
     </div>
+    <div v-else>
+        <NotFoundComponent/>
+    </div>
+
   </div>
 </template>
 
 <script>
 import { cleanBrandList } from "@/common/brands.js"
+import { brandMapperDict } from "@/common/brandmapper.js"
 import { apiService } from "@/common/api.service.js";
+import NotFoundComponent from "@/components/NotFoundComponent.vue"
 
 export default {
   name: "Products",
+  components: {
+    NotFoundComponent
+  },
   props: {
 //  Get brand string passed from previous view
      brand: {
@@ -148,14 +157,17 @@ export default {
       loadingQuery: false,
       currentSearch: "",
       randomNumber : null,
-      brandList : cleanBrandList
-
+      brandList : cleanBrandList,
+      brandMapperDict : brandMapperDict,
     }
   },
   methods: {
+
 //  Method that initially fill the view with all products belonging to the brand
     async getBrandData() {
-      let endpoint = `/api/products/${this.brand}/`;
+
+//      this.brand =  this.getOriginalBrand(this.brand)
+      let endpoint = `/api/products/products/?product_brand=${this.getOriginalBrand}`;
       if (this.next) {
         //  Check if API returns multiple pages
         endpoint = this.next;
@@ -163,51 +175,62 @@ export default {
       this.loadingProducts = true;
       await apiService(endpoint)
        .then(data => {
-          window.console.log(endpoint);
-          window.console.log(data);
-          this.queryList = [];
-          this.productList.push(...data.results);
-          this.resultCount = data.count + " Products";
-          this.loadingProducts = false;
-          // Stop loading more if user already on the last page
-          if(data.next) {
-            this.next = data.next;
-          } else {
-            this.next = null;
+          if (data) {
+              this.queryList = [];
+              this.productList.push(...data.results);
+              this.resultCount = data.count + " Products";
+              this.loadingProducts = false;
+              // Stop loading more if user already on the last page
+              if(data.next) {
+                this.next = data.next;
+              } else {
+                this.next = null;
+              }
+          }else {
+            this.productList = [];
+            document.title = "404 - Not Found"
           }
         }).then (
           window.console.log(this.productList)
         )
       },
+//  Function that searches for data within given brand
     async submitQuery() {
        if (!this.searchQuery) {
             this.error = "Search Field can't be empty";
             setTimeout(() => this.error = null, 3000);
        } else {
-           if (this.searchQuery != this.currentSearch) {
+           if (this.searchQuery != this.currentSearch ) {
               this.queryList = [];
               this.nextQuery = null;
            }
            this.next = false;
-           let endpoint = `/api/products/${this.brand}/?search=${this.searchQuery}`;
+           let endpoint = `/api/products/products/?product_brand=${this.getOriginalBrand}&search=${this.searchQuery}`;
            if (this.nextQuery) {
               endpoint = this.nextQuery;
+           }
+           if (!this.nextQuery) {
+              this.queryList = [];
            }
            this.loadingProducts = true;
            await apiService(endpoint)
            .then(data => {
-              window.console.log(data);
-              this.productList = [];
-              this.queryList.push(...data.results);
-              this.resultCount = data.count + " Products";
-              this.loadingProducts = false;
-              // Stop loading more if user already on the last page
-              if(data.next) {
-                this.nextQuery = data.next;
+              if (data) {
+                  this.productList = [];
+                  this.queryList.push(...data.results);
+                  this.resultCount = data.count + " Products";
+                  this.loadingProducts = false;
+                  // Stop loading more if user already on the last page
+                  if(data.next) {
+                    this.nextQuery = data.next;
+                  } else {
+                    this.nextQuery = null;
+                  }
+                  this.currentSearch = this.searchQuery;
               } else {
-                this.nextQuery = null;
+                this.product = null;
+                document.title = "404 - Page Not Found"
               }
-              this.currentSearch = this.searchQuery;
             }).then (
               window.console.log(this.queryList)
             )
@@ -222,8 +245,7 @@ export default {
     },
      brandListContains(n) {
        return this.brandList.indexOf(n) > -1
-     }
-
+     },
   },
   computed: {
 //  Dynamic filter for the listed products (all fields included)
@@ -247,10 +269,24 @@ export default {
                product.business.toLowerCase().includes(this.querySearch.toLowerCase())
       })
     },
+//    Function that retrieve a brand 
+    getOriginalBrand() {
+        let cleanBrand = this.brandMapperDict[this.brand];
+        return cleanBrand
+    },
+  },
+ filters: {
+//  Just in case if some strings would be too long and would destroy a layout
+      truncatechars (value, limit) {
+          if (value.length > limit) {
+              value = value.substring(0, limit) + "...";
+          }
+          return value
+      }
   },
   created() {
     this.getBrandData();
-    document.title = "Brand Products";
+    document.title = this.getOriginalBrand + " Products";
   }
 }
 

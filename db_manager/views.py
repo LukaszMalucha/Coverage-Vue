@@ -1,24 +1,21 @@
-import os
 import pandas as pd
-
-from django.conf import settings
-from django.urls import reverse
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
-from django_pandas.io import read_frame
-
-from core.models import DocumentModel
-
-from db_manager.data_validation import products_dataset_check, documents_dataset_check, topics_dataset_check
-from db_manager.data_upload import dataset_products_upload, dataset_documents_upload, dataset_topics_upload
+from django.contrib.auth.decorators import user_passes_test
 from db_manager.data_upload import bulk_documents_upload, bulk_products_upload, bulk_topics_upload
+from db_manager.data_upload import dataset_products_upload, dataset_documents_upload, dataset_topics_upload
+from db_manager.data_validation import products_dataset_check, documents_dataset_check, topics_dataset_check
+from core.models import ProductModel, DocumentModel, TopicModel
+from datetime import datetime
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def db_manager(request):
     return render(request, "db-manager.html")
 
 
+
+@user_passes_test(lambda u: u.is_superuser)
 def products_upload(request):
+    """Product dataset upload to database"""
     if request.method == "POST":
         csv_file = request.FILES["csv_file"]
         if not csv_file.name.endswith('.csv'):
@@ -46,8 +43,9 @@ def products_upload(request):
 
     return render(request, "products.html")
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def documents_upload(request):
+    """Document dataset upload to database"""
     if request.method == "POST":
         csv_file = request.FILES["csv_file"]
         if not csv_file.name.endswith('.csv'):
@@ -73,8 +71,9 @@ def documents_upload(request):
 
     return render(request, "documents.html")
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def topics_upload(request):
+    """Topics dataset upload to database"""
     if request.method == "POST":
         csv_file = request.FILES["csv_file"]
         if not csv_file.name.endswith('.csv'):
@@ -99,39 +98,31 @@ def topics_upload(request):
             return render(request, "topics.html",
                           {"meta": meta, "dataset_errors": dataset_errors})
 
-
-
     return render(request, "topics.html")
 
 
-
-
-def download_queryset(request):
-    qs = DocumentModel.objects.filter(document_brand="Autocall")
-    q = "Autocall"
-    df = read_frame(qs)
-    csv = df.to_csv(encoding='utf-8-sig', index=False)
-    response = HttpResponse(csv, content_type='text/csv')
-    response['Content-Disposition'] = f'attachment; filename={q}.csv'
-
-    return response
-
-
-
-# ADMIN PRIVILEGES
+@user_passes_test(lambda u: u.is_superuser)
 def bulk_products(request):
     """Upload products dataset"""
     bulk_products_upload()
     return redirect("/")
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def bulk_documents(request):
-    """Upload products dataset"""
+    """Upload documents dataset"""
     bulk_documents_upload()
     return redirect("/")
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def bulk_topics(request):
-    """Upload products dataset"""
+    """Upload topics dataset"""
     bulk_topics_upload()
+    return redirect("/")
+
+@user_passes_test(lambda u: u.is_superuser)
+def bulk_delete(request):
+    """Delete today's uploads"""
+    ProductModel.objects.filter(uploaded=datetime.today().strftime('%Y-%m-%d')).delete()
+    DocumentModel.objects.filter(uploaded=datetime.today().strftime('%Y-%m-%d')).delete()
+    TopicModel.objects.filter(uploaded=datetime.today().strftime('%Y-%m-%d')).delete()
     return redirect("/")

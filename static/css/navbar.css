@@ -7,12 +7,12 @@
 }
 
 .navbar-header a {
-	font-size: 20px;
-	line-height: 56px;
+	font-size: 18px;
+	line-height: 50px;
 	margin-top: 0px;
 	font-weight: 400;
 	display: block;
-	color: #414141;
+	color: #3c4146;
 }
 
 .top-navbar {
@@ -21,8 +21,8 @@
 	width: 100%;
 	z-index: 300;
 	border: none;
-	height: 56px;
-	min-height: 56px;
+	height: 50px;
+	min-height: 50px;
 	padding-left: 10%;
 	padding-right: 10.2%;
 	padding-top: 0px;
@@ -32,12 +32,12 @@
 
 .top-navbar .navbar-brand {
 	margin: 0px;
-	height: 56px;
+	height: 50px;
 	float: left;
 	text-align: left;
 	padding: 0px;
 	font-weight: 400;
-	color: #414141;
+	color: #3c4146;
 	background: transparent;
 }
 
@@ -56,7 +56,7 @@
 	height: auto;
 	background: #0077b5;
 	padding: 3px 3px 3px 3px;
-	color: #414141;
+	color: #3c4146;
 	font-weight: normal;
 }
 
@@ -73,13 +73,13 @@
 
 .nav-link {
 	height: 100% !important;
-	margin: 18px 0px;
+	margin: 16px 0px;
 	padding: 0px;
 }
 
 .nav i,
 .nav i.material-icons {
-	height: 20px;
+	height: 18px;
 	font-size: 20px;
 	margin-right: 4px;
 }
@@ -90,15 +90,15 @@ nav ul b {
 
 .img-logo {
 	margin-top: 2px;
-	height: 34px;
-	margin: 11px;
+	height: 30px;
+	margin: 10px;
 	margin-left: 0px;
 	border-radius: 50%;
 }
 
 .top-navbar .navbar-right {
 	width: auto;
-	height: 56px;
+	height: 50px;
 	margin: 0px;
 	line-height: 1;
 	padding: 0px;
@@ -114,11 +114,11 @@ nav ul b {
 .top-navbar .navbar-right>a>i {
 	margin-right: 5px;
 	font-size: 16px;
-	height: 56px;
+	height: 50px;
 }
 
 .dropdown-content {
-	top: 56px !important;
+	top: 50px !important;
 }
 
 .dropdown-content li {
@@ -141,7 +141,7 @@ nav ul b {
 }
 
 .sidenav-trigger {
-	height: 56px !important;
+	height: 50px !important;
 }
 
 .sidenav-trigger i {
@@ -227,13 +227,13 @@ nav ul a:hover {
 }
 
 nav ul a {
-	color: #414141;
+	color: #3c4146;
 }
 
 .dropdown-content {}
 
 .dropdown-content li>a {
-	color: #414141;
+	color: #3c4146;
 	background-color: #fff;
 }
 
@@ -256,11 +256,11 @@ nav ul a {
 }
 
 .sidenav li>a {
-	color: #414141
+	color: #3c4146
 }
 
 .sidenav li>a>i {
-	color: #414141;
+	color: #3c4146;
 }
 
 
@@ -303,8 +303,8 @@ nav ul a {
 		width: 60%;
 	}
 	nav a.sidenav-trigger i {
-		height: 56px;
-		line-height: 56px;
+		height: 50px;
+		line-height: 50px;
 	}
 	#trigger {
 		position: relative;

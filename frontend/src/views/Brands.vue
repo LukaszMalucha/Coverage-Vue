@@ -40,7 +40,12 @@ export default {
     let endpoint = "/api/products/brand-list/";
     apiService(endpoint)
         .then(data => {
+            if (data) {
             this.brandsList = data.brand_list
+            } else {
+                this.brandsList = [];
+                document.title = "404 - Not Found"
+            }
         })
     },
   },

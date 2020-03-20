@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "django_forms_bootstrap",
+    "django_filters",
     "materializecssform",
     "storages",
 

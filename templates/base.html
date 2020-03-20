@@ -54,10 +54,14 @@
         <ul class="nav navbar-top-links navbar-right">
             <li><a class="nav-link" href="/brands"><i class="fas fa-cubes"></i><b>Product Search</b></a></li>
             <li><a class="nav-link" href="/documents"><i class="fas fa-file"></i><b>Document Search</b></a></li>
-
+            <li><a class="nav-link" href="/analytics"><i class="fas fa-chart-bar"></i><b>Analytics</b></a></li>
+            {% if user.is_superuser %}
             <li><a class="nav-link"
                    href="{% url 'db_manager:db-manager' %}"><i class="fas fa-database"></i>
                 <b>DB Manager</b></a></li>
+            <li><a class="nav-link" href="/api/"><i class="fas fa-terminal"></i><b>REST Api</b></a></li>
+            {% endif %}
+
             <li><a class='dropdown-trigger nav-link' href='#' data-target='dropdown-user' id="user_dropdown"><i
                     class="fas fa-caret-down"></i><b>
                 {% if user.is_authenticated %}
@@ -80,7 +84,6 @@
         <li><a href="{% url 'user:login' %}"><i class="fas fa-sign-out-alt"></i> Log In</a></li>
         <li><a href="{% url 'user:register' %}"><i class="fas fa-tasks"></i> Register</a></li>
         {% endif %}
-        <li><a href="/api/"><i class="fas fa-terminal"></i>API</a></li>
     </ul>
 
 
@@ -90,9 +93,11 @@
         <li><a class="dropdown-button waves-effect waves-dark" href="/documents"><i class="fas fa-file"></i><b>Document Search</b></a></li>
         <li><a class="dropdown-button waves-effect waves-dark" href="/api/"><i
                 class="fas fa-terminal"></i><b>REST Api</b></a></li>
+        {% if user.is_superuser %}
         <li><a class="dropdown-button waves-effect waves-dark"
-               href="{% url 'db_manager:db-manager' %}"><i class="fab fa-github"></i> <b>DB Manager</b></a>
+               href="{% url 'db_manager:db-manager' %}"><i class="fas fa-database"></i> <b>DB Manager</b></a>
         </li>
+        {% endif %}
         {% if user.is_authenticated %}
         <li><a href="{% url 'user:profile' %}"><i class="fas fa-sign-out-alt"></i> My Profile</a></li>
         <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:logout' %}"><i
@@ -113,10 +118,10 @@
 <!-- /. WRAPPER  -->
 <div class="footer">
     <div class="row plain-element">
-        <div class="col s6 m6 footer-left left-align">
+        <div class="col s8 m6 footer-left left-align">
             <p><a target="_blank" href="https://www.johnsoncontrols.com">© 2020 Johnson Controls. All Rights Reserved.</a></p>
         </div>
-        <div class="col s6 m6 footer-right right-align">
+        <div class="col s4 m6 footer-right right-align">
             <p><a target="_blank" href="https://www.johnsoncontrols.com/legal/terms">Legal</a> |
                <a target="_blank" href="https://www.johnsoncontrols.com/legal/privacy">Privacy </a>
             </p>

@@ -7,7 +7,7 @@ import Products from "./views/Products.vue";
 import ProjectDetails from "./views/ProductDetails.vue";
 import Documents from "./views/Documents.vue";
 import DocumentDetails from "./views/DocumentDetails.vue";
-import QRGen from "./views/QRGen.vue";
+import AnalyticsDashboard from "./views/AnalyticsDashboard.vue"
 
 Vue.use(Router)
 
@@ -37,11 +37,6 @@ export default new Router({
       props: true
     },
     {
-      path: "/qrgen",
-      name: "qrgen",
-      component: QRGen,
-    },
-    {
       path: "/documents",
       name: "documents",
       component: Documents,
@@ -53,6 +48,12 @@ export default new Router({
       component: DocumentDetails,
       props: true
     },
+    {
+      path: "/analytics",
+      name: "analytics",
+      component: AnalyticsDashboard,
+    },
+
     {
       path: "*",
       name: "page-not-found",
