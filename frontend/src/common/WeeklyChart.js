@@ -16,7 +16,7 @@ export default {
                   zeroLineColor: "rgba(0, 0, 0, 0)",
               },
               ticks: {
-                fontSize: 12
+                fontSize: 11
               }
           }],
           yAxes: [{
@@ -25,7 +25,7 @@ export default {
                   zeroLineColor: "rgba(0, 0, 0, 0)",
               },
               ticks: {
-                fontSize: 10,
+                fontSize: 11,
                 stepSize: 300,
                 suggestedMin: 0,
               }

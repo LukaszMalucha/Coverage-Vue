@@ -8,7 +8,7 @@ body {
     position: relative;
     margin: 0;
     padding-bottom: 0;
-    background-color: #f9f9f9;
+    background-color: #fff;
 }
 
 html {
@@ -24,7 +24,7 @@ html {
     display: block;
     overflow: auto;
     position: relative;
-    top: 56px;
+    top: 40px;
 }
 
 #page-index a {
@@ -57,9 +57,9 @@ html {
 ------------------------------------------------------------------------------*/
 
 .header {
-    height: 150px;
+    height: 40px;
     margin: 0px;
-    padding: 50px 10% 0px 10%;
+    padding: 0px 10px 0px 10px;
 
 }
 
@@ -143,7 +143,7 @@ a:hover {
 
 .searchbox-wrapper {
     position: relative;
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 
@@ -156,11 +156,11 @@ a:hover {
 
 .btn-transparent {
     position: absolute;
-    top: -2px;
-    right: 20px;
-    font-size: 28px;
+    top: -1px;
+    right: 10px;
+    font-size: 20px;
     height:100%;
-    color: #4267b2;
+    color: #6d6d6e;
     background: transparent;
     box-shadow: none;
     border: none;
@@ -182,16 +182,22 @@ a:hover {
     width: 97.5%;
     margin: auto;
     padding: 4px 8px;
-    font-size: 18px;
-    background: #fff;
+    font-size: 14px;
+    background: #e8eaed;
+    height: 32px;
+    color: #202124;
 }
 
-
+#searchbox::placeholder {
+    color: #3c4146 !important;
+}
 
 .row-error {
   margin: 10px;
   height: 16px;
-  font-size: 16px;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
 }
 
 .row-error p {
@@ -204,9 +210,12 @@ a:hover {
 
 .resultCount {
     color: #0054a0 !important;
-    font-size: 18px;
+    font-size: 14px;
     margin-left: 2px;
     float: left;
+    letter-spacing: 1px;
+    word-break: break-word;
+    text-transform: uppercase;
 }
 
 /*----------------------------------------------
@@ -227,37 +236,58 @@ a:hover {
     height: 20px;
 }
 
-
-
-
 /*----------------------------------------------
-    MENU CARD
+    SIDEBAR MENU
 ------------------------------------------------*/
 
-.row-menu {
-  width: 60%;
-  margin: auto;
+.sidebar {
+  width: 12%;
+  margin: 0px;
+  padding: 0px !important;
+  margin-top: 0px;
 }
 
-.menu-card {
-    box-shadow: 1px 1px 2px 2px #A9A9A9;
-    text-align: left;
-    width: 80%;
-    margin: auto;
-    margin-bottom: 50px;
-    float: none;
-    border-radius: 5px;
-    cursor: pointer;
+.sidebar b {
+  color: #6e6e6f;
+}
+
+.section-header {
+  color: #3c4146;
+  display: block;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 6px 24px 16px 24px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e5e5e5;
+  width: 80%;
 
 }
 
-.menu-card .card-image {
-
+.section-element {
+    color: #6d6d6e;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0px 12px;
+    letter-spacing: 1px;
+    word-break: break-word;
+    text-transform: uppercase;
 }
 
+.section {
+    width: 90%;
+    margin-bottom: 0px;
+    height: 900px;
+    margin-top: 20px;
+    padding: 0px;
+}
 
-.menu-card:hover {
-    box-shadow: 0 3px 3px 0 #3c4146, 0 3px 2px -2px #3c4146, 0 2px 5px 0 #3c4146;
+.section .row {
+  margin-bottom: 12px;
+}
+
+.section .fas {
+    margin-right: 10px;
 }
 
 
@@ -298,7 +328,7 @@ a:hover {
 ------------------------------------------------------------------------------*/
 
 .row-table-functions {
-    height: 84px;
+    height: 80px;
 }
 
 .col-results {
@@ -326,8 +356,9 @@ a:hover {
     color: #55595d;
 }
 
-#tableSearch {
-  margin-bottom: 30px;
+#keywordFilter {
+  font-size: 14px;
+  height: 36px;
 }
 
 #tableSearch input{
@@ -355,10 +386,11 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) {
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding-left: 9.5%;
-    padding-right: 10.5%;
+    padding-left: 0%;
+    padding-right: 1%;
     text-align: center;
-    background-color: transparent;
+    background-color: #fff;
+    z-index: 200;
 }
 
 .footer-right p{

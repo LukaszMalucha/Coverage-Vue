@@ -55,7 +55,6 @@ INSTALLED_APPS = [
 
     "webpack_loader",
 
-
     "core",
     "user",
 

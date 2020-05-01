@@ -16,7 +16,7 @@ export default {
                   zeroLineColor: "rgba(0, 0, 0, 0)",
               },
               ticks: {
-                fontSize: 10,
+                fontSize: 11,
                 stepSize: 800,
                 suggestedMin: 0,
               }
@@ -27,7 +27,7 @@ export default {
                   zeroLineColor: "rgba(0, 0, 0, 0)",
               },
               ticks: {
-                stepSize: 14
+
               }
           }],
 

@@ -1,0 +1,55 @@
+<template>
+<div id="page-index">
+    <div class="row header">
+        <div class="row top-menu">
+            <div class="col s8 m8 l8 plain-element left-align">
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-cards">
+        <div class="row row-break"></div>
+        <div class="row row-menu center-align ">
+            <div class="col s12 m6 l6 plain-element">
+            <router-link :to="{ name: 'brands'}">
+                <div class="card menu-card">
+                    <div class="card-image"><img
+                            src="https://techcomms.s3-eu-west-1.amazonaws.com/static/img/jc-grey.png"
+                            class="img responsive">
+                    </div>
+                      <button class="btn btn-menu-card">
+                        Product Search
+                      </button>
+                  </div>
+                  </router-link>
+            </div>
+            <div class="col s12 m6 l6 plain-element">
+                <router-link :to="{ name: 'documents'}">
+                    <div class="card menu-card">
+                        <div class="card-image"><img
+                                src="https://techcomms.s3-eu-west-1.amazonaws.com/static/img/docs.jpg"
+                                class="img responsive">
+                        </div>
+                          <button class="btn btn-menu-card">
+                            Document Search
+                          </button>
+                        </div>
+                </router-link>
+            </div>
+
+        </div>
+    </div>
+</div>
+</template>
+
+<script>
+
+export default {
+  name: 'home',
+  components: {
+  },
+  created() {
+    document.title = "Tech Comms";
+  }
+};
+
+</script>

@@ -4,7 +4,8 @@
         <div class="row row-break"></div>
         <div class="row row-cards">
             <div class="card card-description">
-                <div v-if="dataList" class="col s12 m3 l3 plain-element left-align">
+              <div class="row plain-element">
+                <div v-if="dataList" class="col s12 m6 l3 plain-element left-align">
                   <div class="row plain-element">
                     <div v-if="brandData" class="card insights-card insights-card-narrow-left">
                       <div class="card-header"><img src="/static/img/logo.png" class="img-icon">
@@ -65,7 +66,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col s12 m3 l4 plain-element left-align">
+                <div class="col s12 m12 l4 plain-element left-align">
                   <div class="row plain-element">
                     <div v-if="brandData" class="card insights-card insights-card-narrow-right">
                       <div class="card-header"><img src="/static/img/logo.png" class="img-icon"><p><b>Documents By Brand</b> <br> Top 15 Brands </p></div>
@@ -75,6 +76,7 @@
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
        </div>
     </div>
@@ -145,7 +147,7 @@ export default {
         labels: dataLabels,
         datasets: [
           {
-            backgroundColor: ["#2b5b89","#356899", "#5789b6", "#7bb0d5", "#89bddc", "#90c3df", "#98c8e2", "#9ccae3", "#9ccae3"],
+            backgroundColor: ["#5789b6","#7bb0d5","#5789b6", "#5789b6","#89bddc", "#5789b6","#7bb0d5","#2b5b89", "#356899","#7bb0d5", "#89bddc", "#2b5b89"],
             data: dataValues
           }
         ]
@@ -159,7 +161,7 @@ export default {
         labels: dataLabels,
         datasets: [
           {
-            backgroundColor: ["#5789b6", "#2b5b89", "#356899","#2b5b89", "#356899", "#2b5b89", "#5789b6"],
+            backgroundColor: ["#7bb0d5", "#2b5b89", "#5789b6","#2b5b89", "#5789b6", "#2b5b89", "#7bb0d5"],
             data: dataValues
           }
         ]

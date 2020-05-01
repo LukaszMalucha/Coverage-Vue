@@ -1,13 +1,12 @@
 ## Tech Comms:
 
 
-Zmontowac dashboard
+
+
+
 HEROKU
 
 
-## JUTRO
-DOCUMENT TITLE MA ZJEBANY "-"
-DOCUMENT NUMBER MA ()
 AZURE
 
 

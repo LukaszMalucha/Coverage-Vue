@@ -2,17 +2,26 @@
     DASHBOARD CARDS
 ------------------------------------------------------------------------------*/
 
+.col-content {
+    border-left: 1px solid #e5e5e5;
+    min-height: 780px !important;
+    margin-top: 20px !important;
+
+
+}
+
 
 .dashboard-cards {
     border: none;
     text-align: center;
     box-shadow: none;
-    width: 80%;
+    width: 100%;
     margin: auto;
-    padding-bottom: 80px;
     min-height: 700px;
+    padding: 0px 10px 0px 10px;
     display: block;
     overflow: auto;
+
 }
 
 .row-break {
@@ -32,43 +41,27 @@
 ------------------------------------------------*/
 
 .menu-card {
-    box-shadow: 1px 1px 2px 2px #A9A9A9;
-    text-align: left;
-    width: 80%;
-    margin: auto;
-    margin-bottom: 50px;
-    float: none;
-    border-radius: 4px;
-
-}
-
-.menu-card:hover {
-    box-shadow: 0 3px 3px 0 #3c4146, 0 3px 2px -2px #3c4146, 0 2px 5px 0 #3c4146;
-}
-
-
-
-.btn-menu-card {
-    background-color: #fff;
-    height: 80px;
-    width: 100%;
-    font-size: 16px;
-    padding: 10px;
-    font-weight: 400;
     box-shadow: none;
-    border:none;
-    color: #3c4146;
-    white-space: normal;
-    display: inline-block;
+    text-align: left;
+    width: 105%;
+    float: none;
+    margin: 6px 0px;
+    margin-left: -20px;
+    padding: 6px 8px 6px 20px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background: transparent;
+    transition: background-color .3s;
+    max-width: 220px;
+
 }
 
 
-
-.btn-menu-card:hover,
-.btn-menu-card:focus,
-.btn-menu-card:active {
-    background-color: #fff;
-    color: #00539E;
+.menu-card:hover,
+.menu-card:focus,
+.menu-card:active {
+    background-color: #dadce0;
+    color: #6e6e6f;
 }
 
 
@@ -136,14 +129,16 @@
 
 
 .btn-loading {
-    margin-top: 20px;
     background: #0054a0;
-    border-radius: 4px;
+    border-radius: 5px;
     font-weight: 600;
     margin-top: 10px;
     margin-right: 18px;
-    height: 32px;
-    line-height: 32px;
+    height: 28px;
+    line-height: 28px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
 }
 
 
@@ -177,21 +172,27 @@
 .card-description {
     min-height: 780px;
     width: 98.7%;
+    margin: 0px;
     padding: 10px 20px 40px 20px;
     border-radius: 4px;
-    border: 1px solid #b3b3b3;
-    box-shadow: 1px 1px 1px 0px #b3b3b3;
+    border: none;
+    box-shadow: none;
 }
 
 .card-description h3 {
-    font-size: 28px;
+    font-size: 16px;
     line-height: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     font-weight: 600;
     margin-top: 0px;
+    margin-bottom: 2px;
 }
 
 .card-description h4 {
-    font-size: 24px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     font-weight: 600;
 }
 
@@ -203,10 +204,13 @@
 }
 
 .product-name {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     vertical-align:middle;
     color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
 }
 
 .product-name:hover,
@@ -221,11 +225,14 @@
 
 .card-description h6 {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .card-description p {
     font-size: 14px;
+    color: #6d6d6e;
 }
 
 .img-description {
@@ -240,11 +247,12 @@
 
 .img-icon {
   height: 36px;
+  margin-left: -6px;
   vertical-align: middle;
 }
 
 .row-functions {
-    margin: 10px 0px !important;
+    margin: 3px 0px !important;
     width: 90%;
     padding: 2px 0px;
     border-style: solid;
@@ -258,15 +266,17 @@
 
 .btn-document {
     background: #0054a0;
-    border-radius: 4px;
-    font-size: 16px;
-    margin: 8px 16px 10px 0px;
-    height: 32px !important;
-    line-height: 32px !important;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 6px 0px 4px 0px;
+    height: 24px !important;
+    line-height: 24px !important;
+    letter-spacing: 1px;
+    font-size: 12px;
 }
 
 .btn-document i {
-    font-size: 16px;
+    font-size: 12px;
 }
 
 
@@ -283,17 +293,20 @@
 ------------------------------------------------*/
 
 .btn-export {
-  margin: 12px;
+  margin: 10px;
   height: 24px;
   background: transparent;
   box-shadow: none;
   border: none;
   color: #333;
   float: left;
+
 }
 
 .btn-export i {
-  font-size: 24px;
+  font-size: 18px;
+  top: -4px;
+  position: relative;
 }
 
 .btn-export:hover,
@@ -308,8 +321,8 @@
 
 
 .row-documents {
-    width: 79%;
-    margin-left: 10%;
+    width: 100%;
+
 }
 
 .row-documents .btn-loading {
@@ -317,10 +330,16 @@
 }
 
 .row-document {
-    height: 80px;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
     background: #fff;
     padding: 0px;
+    margin: 0px;
+    padding: 4px 10px 10px 10px;
+    margin-left: -10px !important;
+
 }
 
 .row-document:hover,
@@ -335,10 +354,10 @@
 }
 
 .row-document h6 {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
-    color: #333;
-    margin: 10px 0px 5px 0px;
+    color: #3c4146;
+    margin: 6px 0px 8px 8px;
 
 }
 
@@ -349,22 +368,15 @@
     margin: 0px 0px 4px 0px;
 }
 
-
-
 .row-meta-top {
     color: rgba(0, 0, 0, 0.6) !important;
     width: 99%;
-    font-size: 12px;
-    height: 50px;
+    font-size: 14px;
     margin: 0px !important;
     padding: 0px;
     padding-left: 2px;
 }
 
-.col-meta-title {
-    width: 100%;
-    height: 50px;
-}
 
 .row-meta-bottom {
     color: rgba(0, 0, 0, 0.6) !important;
@@ -376,42 +388,11 @@
     padding-left: 2px;
 }
 
-.col-image {
-    background: #fff;
-    height: 100%;
-}
 
 .img-document {
-    width: 62.5px;
+    width: 50px;
     margin: auto;
-    padding: 25px 0px;
-}
-
-.btn-quicklook {
-    background: transparent;
-    border-radius: 4px;
-    color: #333;
-    font-size: 14px;
-    float: right;
-    border: none;
-    margin: 10px;
-    height: 24px;
-    line-height: 20px;
-    padding: 2px 6px;
-    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
-    display: none;
-}
-
-.row-document:hover .btn-quicklook {
-    display: block;
-}
-
-.btn-quicklook:hover,
-.btn-quicklook:active,
-.btn-quicklook:focus {
-    background: #919294;
-    background-color: rgba(0, 0, 0, 0.1);
-    color: #333;
+    padding: 0px 0px 0px 4px;
 }
 
 
@@ -442,24 +423,35 @@
     width: 180px !important;
 }
 
+#contentFilter {
+  height: 32px;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
 .topic-tier-2 {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 12px;
     color: #333;
-
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .topic-tier-3 {
     font-weight: 400;
-    font-size: 14px;
-    color: #333;
+    font-size: 10px;
+    color: #202124;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .topic-tier-4 {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 10px;
     margin-left: 40px;
-    color: #3c4146;
+    color: #6d6d6e;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 
@@ -574,7 +566,7 @@
     margin-bottom: 30px;
     float: none;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 
@@ -599,7 +591,7 @@
 }
 
 .insights-card .img-icon {
-    height: 28px;
+    height: 24px;
 }
 
 
@@ -630,7 +622,7 @@
 }
 
 .insights-card-narrow-left {
-   width: 92%;
+   width: 86%;
    margin-left: 0;
    margin-right: 8%;
 }
@@ -642,58 +634,20 @@
 }
 
 
-.card .card-content .card-title {
-    color: #2d4b65;
-    font-weight: 600;
-}
-
-.card .card-content {
-    min-height: 155px;
-
-
-}
-
-.card .card-content p {
-    color: black;
-    font-size: 12px;
-    min-height: 50px;
-}
-
-.card .card-title {
-    font-size: 1.4rem;
-}
-
-
-.card .card-content {
-    padding: 7px;
-    padding-top: 0px;
-    text-align: left;
-    font-size: 12px;
-
-}
-
-.card .card-content h5 {
-    margin-top: 5px;
-    font-weight: 600;
-    font-size: 1.4rem;
-
-}
-
-
 .chart {
     border-radius: 5px;
     padding: 10px;
     padding: 2px;
-    height: 287px;
+    height: 292px;
 }
 
 .chart-long {
-    height: 680px;
+    height: 690px;
 }
 
 .table-content td {
-    padding: 12px 0px;
-    width: 220px;
+    padding: 14px 0px;
+    width: 100%;
 }
 
 
@@ -775,6 +729,10 @@
     height: 110px;
   }
 
+  .searchbox-long {
+      width: 97%;
+  }
+
   .row-documents {
     width: 96%;
     margin-left: 2%;
@@ -786,6 +744,12 @@
 
   .btn-export {
     margin: 12px 2px;
+  }
+
+  .insights-card-narrow-right {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0;
   }
 
 

@@ -7,8 +7,9 @@
 }
 
 .navbar-header a {
-	font-size: 18px;
-	line-height: 50px;
+	font-size: 14px;
+	letter-spacing: 1px;
+	line-height: 40px;
 	margin-top: 0px;
 	font-weight: 400;
 	display: block;
@@ -21,24 +22,38 @@
 	width: 100%;
 	z-index: 300;
 	border: none;
-	height: 50px;
-	min-height: 50px;
-	padding-left: 10%;
-	padding-right: 10.2%;
+	height: 40px;
+	min-height: 40px;
+	padding-left: 0.5%;
+	padding-right: 1%;
 	padding-top: 0px;
 	padding-bottom: 0px;
 	margin-bottom: 0px;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+	background-color: #fff;
+	border: none;
 }
+
+.navbar-brand .material-icons {
+	color: #1a2026;
+}
+
+
+/*------------------------------------------------------------------------------
+    LEFT-SIDE HEADER AREA
+------------------------------------------------------------------------------*/
+
 
 .top-navbar .navbar-brand {
 	margin: 0px;
-	height: 50px;
+	height: 40px;
 	float: left;
 	text-align: left;
 	padding: 0px;
 	font-weight: 400;
 	color: #3c4146;
 	background: transparent;
+	text-transform: uppercase;
 }
 
 .navbar-header {
@@ -53,6 +68,7 @@
 	font-size: 18px;
 	margin-right: 5px;
 	margin-top: -3px;
+	letter-spacing: 1px;
 	height: auto;
 	background: #0077b5;
 	padding: 3px 3px 3px 3px;
@@ -60,116 +76,17 @@
 	font-weight: normal;
 }
 
-.nav>li>a {
-	padding: 0px 15px 0px 15px;
-	font-size: 12px;
-}
-
-.nav>li>a>b {
-	position: relative;
-	font-weight: 400;
-	top: -4px;
-}
-
-.nav-link {
-	height: 100% !important;
-	margin: 16px 0px;
-	padding: 0px;
-}
-
-.nav i,
-.nav i.material-icons {
-	height: 18px;
-	font-size: 20px;
-	margin-right: 4px;
-}
-
-nav ul b {
-	font-weight: 600;
-}
-
-.img-logo {
-	margin-top: 2px;
-	height: 30px;
-	margin: 10px;
-	margin-left: 0px;
-	border-radius: 50%;
-}
-
-.top-navbar .navbar-right {
-	width: auto;
-	height: 50px;
-	margin: 0px;
-	line-height: 1;
-	padding: 0px;
-	color: #1a2026;
-	float: right !important;
-}
-
-.top-navbar .navbar-right>a {
-	padding: 0px;
-	font-size: 15px;
-}
-
-.top-navbar .navbar-right>a>i {
-	margin-right: 5px;
-	font-size: 16px;
-	height: 50px;
-}
-
-.dropdown-content {
-	top: 50px !important;
-}
-
-.dropdown-content li {
-	margin-bottom: 0px;
-	margin-left: 0px !important;
-}
-
-.dropdown-content li>a {
-	font-size: 13px;
-	text-decoration: none;
-}
-
-.dropdown-content li>a>i {
-	margin-right: 10px;
-	font-size: 18px;
-}
-
-.dropdown-content li>fa {
-	font-size: 16px;
-}
-
-.sidenav-trigger {
-	height: 50px !important;
-}
-
-.sidenav-trigger i {
-	font-weight: 600;
-}
-
-#trigger {
-	font-size: 32px;
-}
-
-.sidenav li>a>i {
-	margin: 0px !important;
-}
-
-
-/* Hovers and Focuses --------------------------------------------------------*/
-
 .navbar-header:hover,
 .navbar-header:focus {
 	background: transparent;
 	color: #00539E;
 }
 
-.navbar-right>a:hover,
-.navbar-right>a:focus {
-	text-decoration: none;
-	outline: 0px;
+
+.navbar-header a:hover {
+	text-decoration: none !important;
 }
+
 
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -177,9 +94,76 @@ nav ul b {
 	outline: 0px;
 }
 
-.navbar-header a:hover {
-	text-decoration: none !important;
+.navbar-default .navbar-brand:hover {
+	color: #00539E;
 }
+
+.navbar-default .navbar-brand:hover .navbar-default .navbar-brand:focus {
+	color: #e5ebef;
+}
+
+
+/*------------------------------------------------------------------------------
+    RIGHT SIDE LINKS
+------------------------------------------------------------------------------*/
+
+
+nav ul a {
+ font-size: 10px;
+ letter-spacing: 0.4px;
+ color: #3c4146;
+text-transform: uppercase;
+}
+
+.nav-link {
+	height: 100% !important;
+	margin: 12px 12px;
+	padding: 0px;
+}
+
+.nav i,
+.nav i.material-icons {
+	height: 14px;
+	font-size: 14px;
+	margin-right: 6px;
+}
+
+
+.img-logo {
+	height: 20px;
+	margin: 10px 8px 8px 0px;
+	border-radius: 50%;
+}
+
+.top-navbar .navbar-right {
+	width: auto;
+	height: 40px;
+	margin: 0px;
+	line-height: 1;
+	padding: 0px;
+	color: #3c4146;
+	float: right !important;
+}
+
+.top-navbar .navbar-right>a {
+	padding: 0px;
+	letter-spacing: 1px;
+	font-size: 15px;
+}
+
+.top-navbar .navbar-right>a>i {
+	margin-right: 5px;
+	font-size: 16px;
+	height: 40px;
+}
+
+
+.navbar-right>a:hover,
+.navbar-right>a:focus {
+	text-decoration: none;
+	outline: 0px;
+}
+
 
 nav ul a:hover {
 	background-color: #fff;
@@ -192,9 +176,6 @@ nav ul li:active {
 	color: #00539E;
 }
 
-.sidenav li:hover {
-	background: transparent;
-}
 
 nav ul a:hover {
 	color: #00539E;
@@ -207,30 +188,41 @@ nav ul a:hover {
 	color: #00539E;
 }
 
-.navbar-default .navbar-brand:hover {
-	color: #00539E;
+.navbar-right>a:hover,
+.navbar-right>a:focus {
+	background: transparent;
+	color: #e5ebef;
 }
 
 
 /*------------------------------------------------------------------------------
-    Colors
+    DROPDOWN MENU
 ------------------------------------------------------------------------------*/
 
-.top-navbar {
-	background-color: #fff;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
-	border: none;
+
+.dropdown-content li > span {
+    padding: 12px 0px;
 }
 
-.navbar-brand .material-icons {
-	color: #1a2026;
+.dropdown-content {
+	top: 40px !important;
+	width: max-content !important;
 }
 
-nav ul a {
-	color: #3c4146;
+.dropdown-content li {
+	margin-bottom: 0px;
+	margin-left: 0px !important;
 }
 
-.dropdown-content {}
+.dropdown-content li>a {
+	font-size: 12px 6px;
+	text-decoration: none;
+}
+
+.dropdown-content li>fa {
+	font-size: 16px;
+}
+
 
 .dropdown-content li>a {
 	color: #3c4146;
@@ -241,14 +233,35 @@ nav ul a {
 	color: #1a2026;
 }
 
-.navbar-right>a:hover,
-.navbar-right>a:focus {
-	background: transparent;
-	color: #e5ebef;
+.dropdown-content li:hover {
+  background: transparent;
 }
 
-.navbar-default .navbar-brand:hover .navbar-default .navbar-brand:focus {
-	color: #e5ebef;
+
+/*------------------------------------------------------------------------------
+    MOBILE MENU
+------------------------------------------------------------------------------*/
+
+
+.sidenav-trigger {
+	height: 40px !important;
+}
+
+.sidenav-trigger i {
+	font-weight: 600;
+}
+
+#trigger {
+	font-size: 24px;
+}
+
+.sidenav li>a>i {
+	margin: 0px !important;
+}
+
+
+.sidenav li:hover {
+	background: transparent;
 }
 
 .sidenav {
@@ -270,8 +283,8 @@ nav ul a {
 
 @media(max-width:1700px) {
 	.top-navbar {
-		padding-left: 1%;
-		padding-right: 1%;
+		padding-left: 0.5%;
+		padding-right: 0.5%;
 	}
 	.navbar-header {
 		width: 30%;
@@ -303,8 +316,8 @@ nav ul a {
 		width: 60%;
 	}
 	nav a.sidenav-trigger i {
-		height: 50px;
-		line-height: 50px;
+		height: 40px;
+		line-height: 40px;
 	}
 	#trigger {
 		position: relative;

@@ -2,12 +2,14 @@ from django.db.models import Count
 from django.db.models.functions import ExtractWeekDay
 from rest_framework import views, status
 from rest_framework.response import Response
-
+from core.permissions import IsAdminOrReadOnly
 from core.models import DocumentModel, TopicModel, ProductModel
 
 
 class AnalyticsDashboardView(views.APIView):
     """View that sends the data to Analytic Dashboard charts"""
+
+    permission_classes = (IsAdminOrReadOnly,)
 
     def get(self, request):
         document_count = DocumentModel.objects.count()
