@@ -3,20 +3,28 @@
   <div class="card card-description">
     <div class="row plain-element">
       <div class="col s6 m8 l12 plain-element">
-        <div class="row plain-element left-align"><h3>02 MCL Tool 5.3 User Guide Section 1: Software Overview</h3>
+        <div class="row plain-element left-align"><h3>{{ document.document_title }}</h3>
 
         </div>
         <div class="row row-functions row-functions-long left-align">
          <div class="col s6 m8 l6 plain-element">
-           <div><a href="/brands/metasys" class="">
-              <img src="https://techcomms.s3-eu-west-1.amazonaws.com/static/img/brands/metasys.png"
-                   class="img responsive img-icon"></a><a href="/product/707" class="">
-              <span class="product-name">MCL Tool</span></a>
+           <div>
+            <router-link v-if="document.clean_brand"   :to="{ name: 'brand-details', params: {brand: document.clean_brand}}">
+                  <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/brands/' + document.clean_brand + '.png'"
+                       class="img responsive img-icon">
+                </router-link>
+                <router-link v-if="product_id" :to="{ name: 'product-details', params: {id: product_id}}">
+                  <span class="product-name">{{ product_name | truncatechars(240) }}</span>
+                </router-link>
             </div>
          </div>
          <div class="col s6 m8 l6 plain-element right-align">
-          <a target="_blank" href="https://johnsoncontrols.fluidtopics.net/viewer/document/DMRsRzYkYZHiJ1fJvLm6Bw"
-             class="btn btn-document"><i class="fas fa-file-pdf"></i> Document in PDF </a>
+           <a v-if="document_link == 'viewer'" target="_blank" class="btn btn-document"  :href="'https://johnsoncontrols.fluidtopics.net' + document.document_link">
+                  <i class="fas fa-file-pdf"></i> &nbsp; Document in PDF
+                </a>
+                <a v-else class="btn btn-document" target="_blank" :href="'https://johnsoncontrols.fluidtopics.net' + document.document_link">
+                  <i class="fas fa-file-code"></i> &nbsp; Document in HTML
+                </a>
           </div>
         </div>
         <div class="row plain-element left-align">
@@ -77,6 +85,33 @@
 
 export default {
   name: "DocumentComponent",
+   props: {
+    document: {
+      type: Object,
+      required: true,
+    },
+    product_id: {
+      type: String,
+      required: true,
+    },
+    product_name: {
+      type: String,
+      required: true,
+    },
+    document_link: {
+      type: String,
+      required: true,
+    }
+  },
+     filters: {
+//  Just in case if some strings would be too long and would destroy a layout
+      truncatechars (value, limit) {
+          if (value.length > limit) {
+              value = value.substring(0, limit) + "...";
+          }
+          return value
+      }
+  },
 }
 
 </script>
