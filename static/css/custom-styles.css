@@ -51,6 +51,29 @@ html {
   display: none;
 }
 
+.border-line {
+  border-top: 1px solid #e5e5e5;
+  margin-left: -10px !important;
+  margin-right: -10px !important;
+}
+
+#parent{
+   	position: relative;
+   	height: 680px;
+   	overflow: hidden;
+   	width: 105%;
+   	margin: 0px;
+   	margin-right: -20px;
+   	z-index= -10;
+}
+
+#child{
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+    padding-right: 15px;
+}
+
 
 /*------------------------------------------------------------------------------
     Row Header
@@ -209,7 +232,7 @@ a:hover {
 }
 
 .resultCount {
-    color: #0054a0 !important;
+    color: #0061ba !important;
     font-size: 14px;
     margin-left: 2px;
     float: left;
@@ -275,7 +298,7 @@ a:hover {
 }
 
 .section {
-    width: 90%;
+    width: 100%;
     margin-bottom: 0px;
     height: 900px;
     margin-top: 20px;
@@ -320,62 +343,6 @@ a:hover {
     outline: none !important;
 }
 
-
-
-
-/*------------------------------------------------------------------------------
-    SEARCH FUNCTIONS
-------------------------------------------------------------------------------*/
-
-.row-table-functions {
-    height: 80px;
-}
-
-.col-results {
-    padding: 0x !important;
-
-}
-
-.col-results p {
-    float: left;
-}
-
-.col-load-more {
-    position: relative;
-}
-
-.filter-wrapper {
-    width: 80%;
-    margin: auto;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.filter-wrapper label {
-    margin: 0px;
-    color: #55595d;
-}
-
-#keywordFilter {
-  font-size: 14px;
-  height: 36px;
-}
-
-#tableSearch input{
-  text-align: center !important;
-
-}
-
-.place-holder-center::placeholder {
-      text-align: center;
-      color: #999;
-  }
-
-input[type="text"]:not(.browser-default):focus:not([readonly]) {
-    border-bottom: 1px solid #90c73e;
-    box-shadow: 0 1px 0 0 #90c73e;
-
-}
 
 
 /*------------------------------------------------------------------------------
@@ -464,16 +431,31 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) {
       padding-right: 0.5%;
     }
 
-    .header {
-      padding: 50px 0.5% 0px 1%;
+    .sidebar {
+      width: 14%;
     }
+
+    .section-header {
+      font-size: 11px;
+      padding: 0px 8px 16px 8px;
+    }
+
+    .section-element {
+      font-size: 11px;
+      letter-spacing: 0.4px;
+    }
+
+    .fas-category {
+      display: none;
+    }
+
 
 
 }
 
 
 
-@media(max-width:1361px) {
+@media(max-width:1440px) {
 
     .summary {
       padding: 15px 50px;
@@ -488,6 +470,7 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) {
     }
 
 
+
 }
 
 @media(max-width:1200px) {
@@ -496,6 +479,10 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) {
     .menu-card .row-comment {
       height: 36px;
 
+    }
+
+    .sidebar {
+      width: 16%;
     }
 
 }
@@ -525,6 +512,25 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) {
       padding: 0px !important;
     }
 
+    .section-header {
+      font-size: 10px;
+      padding: 0px 0px 16px 8px;
+    }
+
+    .section-element {
+      font-size: 10px;
+      padding-left: 6px;
+    }
+
+    .sidebar .fa-caret-right{
+      display: none;
+    }
+
+    .sidebar {
+      width: 14%;
+    }
+
+
 
 }
 
@@ -537,6 +543,10 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) {
 
   .header {
     padding: 50px 4% 0px 2%;
+  }
+
+  .sidebar {
+    width: 20%;
   }
 
   .btn-transparent {

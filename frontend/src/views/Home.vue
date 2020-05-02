@@ -13,12 +13,13 @@
         </div>
       </div>
       <div class="dashboard-cards">
+
         <div id="formError" class="row row-error text-center">
           <p class="error" v-if="error">{{ error }}</p>
           <p v-show="loadingDocuments">...loading...</p>
         </div>
-        <div class="row row-documents">
-          <div class="row plain-element row-table-functions">
+        <div class="row row-documents" >
+          <div class="row row-table-functions" >
             <div class="col s1 m3 l4 col-results plain-element left-align">
               <p class="resultCount" v-if="resultCount && filteredDocumentList.length > 0">{{ resultCount }}</p>
               <button v-if="resultCount && filteredDocumentList.length > 0" @click="csvExport()" class="btn btn-export">
@@ -38,37 +39,18 @@
               </button>
             </div>
           </div>
-          <div v-for="doc in filteredDocumentList" :key="doc.id" class="row plain-element">
-            <a @click="getDocumentData(doc.id)">
-              <div class="row row-document">
-                <div class="col s12 m10 l12 plain-element left-align">
-                  <div class="row row-meta-top">
-                      <div class="col s10 m9 l12 plain-element left-align col-meta-title">
-                        <h6>{{ doc.document_title| truncatechars(240) }} </h6>
-                      </div>
-                  </div>
-                    <div class="row row-meta-bottom">
-                      <div class="col s2 m2 l2 plain-element col-image">
-                        <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/brands/' + doc.clean_brand + '.png'"
-                             class="img img-document">
-                      </div>
-                      <div class="col s6 m3 l3 plain-element left-align">
-                        <p>
-                          <i v-if="getFileType(doc.document_link) == 'viewer'" class="far fa-file-pdf"></i>
-                          <i v-else class="far fa-file-alt"></i>
-                          &nbsp; {{ doc.document_number| truncatechars(30) }}
-                        </p>
-                      </div>
-                      <div class="col s6 m3 l3 plain-element left-align">
-                        <p><i class="far fa-bookmark"></i> &nbsp; {{ doc.topics.length }} Topics</p>
-                      </div>
-                      <div class="col s12 m12 l4 plain-element left-align">
-                        <p><i class="fas fa-cube"></i> &nbsp; {{ doc.product.product_name| truncatechars(48) }}</p>
-                      </div>
-                    </div>
-                </div>
+          <div id="parent">
+            <div id="child">
+              <div v-for="(doc, index) in filteredDocumentList" :key="index" class="row plain-element">
+                <a @click="getDocumentData(doc.id)">
+                    <DocumentCardComponent
+                      :doc = doc
+                      :index = index
+                    />
+                </a>
               </div>
-            </a>
+             <div v-if="documentList.length > 0" class="border-line"></div>
+            </div>
           </div>
           <br>
           <div v-if="resultCount && filteredDocumentList.length > 0" class="row plain-element">
@@ -82,13 +64,16 @@
         </div>
       </div>
     </div>
-    <div v-if="document" class="plain-element">
-      <DocumentComponent
-        :document = document
-        :product_id = product_id.toString()
-        :product_name = product_name
-        :document_link = document_link
-      />
+    <div class="col s12 m5 col-content-right plain-element" style="border-right: none;">
+      <div v-if="document" class="plain-element">
+        <DocumentComponent
+          :document = document
+          :product_id = product_id.toString()
+          :product_name = product_name
+          :document_link = document_link
+          :documentSortedTopics = documentSortedTopics
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -96,8 +81,9 @@
 
 <script>
 import { apiService } from "@/common/api.service.js";
-import SidebarComponent from "@/components/SidebarComponent.vue"
-import DocumentComponent from "@/components/DocumentComponent.vue"
+import SidebarComponent from "@/components/SidebarComponent.vue";
+import DocumentComponent from "@/components/DocumentComponent.vue";
+import DocumentCardComponent from "@/components/DocumentCardComponent.vue";
 import _ from 'lodash';
 
 
@@ -106,6 +92,7 @@ export default {
   components: {
     SidebarComponent,
     DocumentComponent,
+    DocumentCardComponent,
   },
     props: {
 //    Only needed if this website is being accessed from product details page in order to get product documentation
@@ -229,11 +216,6 @@ export default {
                 }
             })
         }
-    },
-//  Function that retrieve viewer/reader from document link
-    getFileType(link) {
-      return link.split("/")[1]
-
     },
   },
   computed: {

@@ -5,9 +5,11 @@
           <span class="section-header">Search Engine</span>
         </div>
         <div  class="row">
+        <router-link :to="{ name: 'home'}">
             <div class="card menu-card">
               <span class="section-element"><i class="fas fa-caret-right"></i><i class="fas fa-file fas-category"></i>Document Search</span>
             </div>
+         </router-link>
         </div>
         <div  class="row">
             <div class="card menu-card">
