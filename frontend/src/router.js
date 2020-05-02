@@ -2,11 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import NotFound from "./views/NotFound.vue";
-import Companies from "./views/Brands.vue";
 import Products from "./views/Products.vue";
-import ProjectDetails from "./views/ProductDetails.vue";
-import Documents from "./views/Documents.vue";
-import DocumentDetails from "./views/DocumentDetails.vue";
 import AnalyticsDashboard from "./views/AnalyticsDashboard.vue"
 
 Vue.use(Router)
@@ -20,40 +16,15 @@ export default new Router({
       component: Home
     },
     {
-      path: "/brands",
-      name: "brands",
-      component: Companies
-    },
-    {
-      path: "/brands/:brand",
-      name: "brand-details",
+      path: "/products",
+      name: "products",
       component: Products,
-      props: true,
-    },
-    {
-      path: "/product/:id",
-      name: "product-details",
-      component: ProjectDetails,
-      props: true
-    },
-    {
-      path: "/documents",
-      name: "documents",
-      component: Documents,
-      props: true
-    },
-    {
-      path: "/document/:id",
-      name: "document-details",
-      component: DocumentDetails,
-      props: true
     },
     {
       path: "/analytics",
       name: "analytics",
       component: AnalyticsDashboard,
     },
-
     {
       path: "*",
       name: "page-not-found",

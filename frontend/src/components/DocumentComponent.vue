@@ -1,5 +1,4 @@
 <template>
-
   <div class="card card-description">
     <div class="row plain-element">
       <div class="col s12 m12 l12 plain-element">
@@ -9,13 +8,9 @@
         <div class="row row-functions row-functions-long left-align">
          <div class="col s12 m12 l9 plain-element">
            <div>
-            <router-link v-if="document.clean_brand"   :to="{ name: 'brand-details', params: {brand: document.clean_brand}}">
-                  <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/brands/' + document.clean_brand + '.png'"
-                       class="img responsive img-icon">
-                </router-link>
-                <router-link v-if="product_id" :to="{ name: 'product-details', params: {id: product_id}}">
-                  <span class="product-name"> {{ product_name | truncatechars(240) }}</span>
-                </router-link>
+              <img :src="'https://techcomms.s3-eu-west-1.amazonaws.com/static/img/brands/' + document.clean_brand + '.png'"
+                   class="img responsive img-icon">
+              <span class="product-name"> {{ product_name | truncatechars(240) }}</span>
             </div>
          </div>
          <div class="col s12 m12 l3 plain-element right-align">
@@ -172,8 +167,3 @@ export default {
 }
 
 </script>
-
- :document = document
-:product_id = product_id.toString()
-:product_name = product_name
-:document_link = document_link

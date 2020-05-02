@@ -74,6 +74,15 @@ html {
     padding-right: 15px;
 }
 
+.active {
+  background: #e8f0fe !important;
+
+}
+
+.active .section-element {
+  color: #0061ba !important;
+}
+
 
 /*------------------------------------------------------------------------------
     Row Header

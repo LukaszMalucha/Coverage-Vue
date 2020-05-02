@@ -1,7 +1,9 @@
 <template>
 <div id="page-index">
   <div class="row plain-element">
-    <SidebarComponent/>
+    <SidebarComponent
+      :active = active
+    />
     <div class="col s12 m5 col-content plain-element">
       <div class="row header">
         <div class="row searchbox-wrapper searchbox-long">
@@ -120,6 +122,7 @@ export default {
         document_link: "",
         product_name: "",
         product_id: "",
+        active: "documents",
     }
   },
   methods: {

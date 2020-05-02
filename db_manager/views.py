@@ -25,6 +25,8 @@ def products_upload(request):
 
         data = pd.read_csv(csv_file, encoding="utf-8-sig")
         meta, dataset_errors = products_dataset_check(data)
+        meta_1 = meta[:6]
+        meta_2 = meta[6:]
         if len(dataset_errors) == 0:
             try:
                 report = dataset_products_upload(data)
@@ -35,11 +37,11 @@ def products_upload(request):
 
             upload_report = report
             return render(request, "products.html",
-                          {"meta": meta, "upload_report": upload_report, })
+                          {"meta_1": meta_1, "meta_2": meta_2, "upload_report": upload_report, })
 
         else:
             return render(request, "products.html",
-                          {"meta": meta, "dataset_errors": dataset_errors})
+                          {"meta_1": meta_1, "meta_2": meta_2, "dataset_errors": dataset_errors})
 
     return render(request, "products.html")
 
@@ -54,6 +56,8 @@ def documents_upload(request):
                           {"critical_error": critical_error, })
         data = pd.read_csv(csv_file, encoding="utf-8-sig")
         meta, dataset_errors = documents_dataset_check(data)
+        meta_1 = meta[:6]
+        meta_2 = meta[6:]
         if len(dataset_errors) == 0:
             try:
                 report = dataset_documents_upload(data)
@@ -64,10 +68,10 @@ def documents_upload(request):
 
             upload_report = report
             return render(request, "documents.html",
-                          {"meta": meta, "upload_report": upload_report})
+                          {"meta_1": meta_1, "meta_2": meta_2, "upload_report": upload_report, })
         else:
             return render(request, "documents.html",
-                          {"meta": meta, "dataset_errors": dataset_errors})
+                          {"meta_1": meta_1, "meta_2": meta_2, "dataset_errors": dataset_errors})
 
     return render(request, "documents.html")
 
@@ -82,6 +86,8 @@ def topics_upload(request):
                           {"critical_error": critical_error, })
         data = pd.read_csv(csv_file, encoding="utf-8-sig")
         meta, dataset_errors = topics_dataset_check(data)
+        meta_1 = meta[:6]
+        meta_2 = meta[6:]
         if len(dataset_errors) == 0:
             try:
                 report = dataset_topics_upload(data)
@@ -92,11 +98,11 @@ def topics_upload(request):
 
             upload_report = report
             return render(request, "topics.html",
-                          {"meta": meta, "upload_report": upload_report})
+                          {"meta_1": meta_1, "meta_2": meta_2, "upload_report": upload_report, })
 
         else:
             return render(request, "topics.html",
-                          {"meta": meta, "dataset_errors": dataset_errors})
+                          {"meta_1": meta_1, "meta_2": meta_2, "dataset_errors": dataset_errors})
 
     return render(request, "topics.html")
 

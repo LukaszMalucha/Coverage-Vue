@@ -5,7 +5,6 @@ from db_manager import views
 app_name = "db_manager"
 
 urlpatterns = [
-    path("db-manager", views.db_manager, name="db-manager"),
     path("bulk-products", views.bulk_products, name="bulk-products"),
     path("bulk-documents", views.bulk_documents, name="bulk-documents"),
     path("bulk-topics", views.bulk_topics, name="bulk-topics"),

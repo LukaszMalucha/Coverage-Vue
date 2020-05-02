@@ -79,20 +79,6 @@
 
   <!-- MOBILE -->
   <ul class="sidenav" id="mobile-demo">
-    <li><a class="dropdown-button waves-effect waves-dark" href="/brands"><i class="fas fa-cube"></i><b>Product
-      Search</b></a></li>
-    <li><a class="dropdown-button waves-effect waves-dark" href="/documents"><i class="fas fa-file"></i><b>Document
-      Search</b></a></li>
-
-    <li><a class="dropdown-button waves-effect waves-dark" href="/analytics"><i class="fas fa-chart-bar"></i><b>Analytics</b></a>
-    </li>
-    {% if user.is_superuser %}
-    <li><a class="dropdown-button waves-effect waves-dark"
-           href="{% url 'db_manager:db-manager' %}"><i class="fas fa-database"></i> <b>DB Manager</b></a>
-    </li>
-    <li><a class="dropdown-button waves-effect waves-dark" href="/api/"><i
-            class="fas fa-terminal"></i><b>REST Api</b></a></li>
-    {% endif %}
     {% if user.is_authenticated %}
     <li><a href="{% url 'user:profile' %}"><i class="fas fa-sign-out-alt"></i><b>My Profile</b></a></li>
     <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:logout' %}"><i

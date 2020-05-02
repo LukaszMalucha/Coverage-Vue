@@ -15,7 +15,7 @@ class DocumentViewSet(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins
     filter_backends = (filters.SearchFilter, filters.OrderingFilter)
     search_fields = ("document_title", "document_number", "document_link", "document_created_at",
                      "document_last_edition", "document_brand", "document_identifier", "product__product_name",
-                     "product__product_identifier", "product__product_code")
+                     "product__product_identifier", "product__product_code", "product__product_identifier")
     ordering_fields = "__all__"
     queryset = DocumentModel.objects.select_related('product').order_by("document_title", "-document_created_at")
 
