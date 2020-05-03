@@ -1,0 +1,131 @@
+{% extends "base.html" %} {% load staticfiles %}{% load materializecss %}
+{% block extrahead %}
+<div id="page-index">
+  <div class="dashboard-cards">
+    <div class="row row-cards">
+      <div class="card card-description">
+        <div class="row plain-element left-align row-back">
+          <a href="/">
+            <i class="fas fa-chevron-left"></i> Back To Dashboard
+          </a>
+        </div>
+        <br>
+        <div class="row plain-element">
+          <div class="col s12 m6 l2 plain-element">
+            <div class="row plain-element left-align">
+              <div class="input-field col s10 col-form">
+                <h4><i class="fas fa-cubes"></i> Upload Products </h4>
+              </div>
+            </div>
+            <form action="{% url 'db_manager:products-upload' %}" method="POST" enctype="multipart/form-data">
+              <div class="row plain-element left-align">
+                {% csrf_token %}
+                <div class="row plain-element left-align">
+                  <div class="file-field input-field csv-field">
+                    <div class="btn btn-file">
+                      <span>File:</span>
+                      <input type="file" name="csv_file" id="csv_file" accept=".csv" required="True"
+                             class="form-control">
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate csv-input" type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row plain-element left-align">
+                <div class="input-field col s10 col-form">
+                  <button type="submit" class="btn btn-document">
+                    <i class="fas fa-file-csv"></i>&nbsp; Upload CSV File
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div class="row plain-element">
+              <div class="input-field col s10 col-form">
+                {% if critical_error %}
+                <h6 class="error">{{ critical_error }}</h6>
+                {% endif %}
+                {% if upload_report %}
+                <div class="row plain-element left-align">
+                  <br>
+                  <h4><i class="fas fa-chart-bar"></i> Dataset Upload Report:</h4>
+
+                  <p class="">Uploaded: {{ upload_report.success }}</p>
+                  <p class="">Updates: {{ upload_report.updates }}</p>
+                  <p class="">Errors: {{ upload_report.errors }}</p>
+
+                  <p>Upload Errors:</p>
+                  {% for element in upload_report.upload_errors %}
+                  <ol><p class="error">{{element}}</p></ol>
+                  {% endfor %}
+                </div>
+                {% endif %}
+                {% if dataset_errors %}
+                <div class="row plain-element left-align">
+                  <h4><i class="fas fa-chart-bar"></i> Dataset Issues:</h4>
+                </div>
+                {% for error in dataset_errors %}
+                <div class="row plain-element left-align">
+                  <h6 class="error">{{ error }}</h6>
+                </div>
+                {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m6 l10 plain-element">
+            {% if meta_1 %}
+            <div class="row plain-element left-align">
+              <div class="input-field col s10 col-form">
+                <h4><i class="fas fa-columns"></i> Columns Summary:</h4>
+              </div>
+            </div>
+            <div class="col s12 m12 l6 plain-element">
+              {% for element in meta_1 %}
+              <div class="row plain-element left-align">
+                <h6>{{element.name}}</h6>
+              </div>
+              <div class="row plain-element left-align">
+                <table class="table-overview">
+                  {% for key, value in element.items %}
+                  {% if key != "name" %}
+                  <tr>
+                    <td class="td-category">{{ key }}</td>
+                    <td>{{ value | truncatechars:100 }}</td>
+                  </tr>
+                  {% endif %}
+                  {% endfor %}
+                </table>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="col s12 m12 l6 plain-element">
+              {% for element in meta_2 %}
+              <div class="row plain-element left-align">
+                <h6>{{element.name}}</h6>
+              </div>
+              <div class="row plain-element left-align">
+                <table class="table-overview">
+                  {% for key, value in element.items %}
+                  {% if key != "name" %}
+                  <tr>
+                    <td class="td-category">{{ key }}</td>
+                    <td>{{ value | truncatechars:100 }}</td>
+                  </tr>
+                  {% endif %}
+                  {% endfor %}
+                </table>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
