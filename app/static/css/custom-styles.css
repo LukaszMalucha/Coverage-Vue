@@ -83,6 +83,27 @@ html {
   color: #0061ba !important;
 }
 
+.text-card {
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  padding: 12px 18px;
+  border: 1px solid #e5e5e5;
+  color: #868688;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+
+}
+
+.text-card h6{
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0px;
+  margin: 0px 0px 20px 0px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+}
 
 /*------------------------------------------------------------------------------
     Row Header
